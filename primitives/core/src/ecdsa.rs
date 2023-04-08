@@ -37,6 +37,7 @@ use secp256k1::Secp256k1;
 use secp256k1::SECP256K1;
 #[cfg(feature = "full_crypto")]
 use secp256k1::{
+	ffi::CPtr, constants::SECRET_KEY_SIZE,
 	ecdsa::{RecoverableSignature, RecoveryId},
 	Message, PublicKey, SecretKey,
 };
@@ -502,8 +503,8 @@ impl Pair {
 #[cfg(feature = "full_crypto")]
 impl Drop for Pair {
 	fn drop(&mut self) {
-		let ptr = self.secret.as_mut_ptr();
-		for off in 0..self.secret.len() {
+		let ptr = self.secret.as_mut_c_ptr();
+		for off in 0..SECRET_KEY_SIZE {
 			unsafe {
 				core::ptr::write_volatile(ptr.add(off), 0);
 			}

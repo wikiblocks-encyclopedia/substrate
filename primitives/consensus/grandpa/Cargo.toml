@@ -14,16 +14,16 @@ readme = "README.md"
 targets = ["x86_64-unknown-linux-gnu"]
 
 [dependencies]
-codec = { package = "parity-scale-codec", version = "3.2.2", default-features = false, features = ["derive"] }
+codec = { package = "parity-scale-codec", version = "3.4.0", default-features = false, features = ["derive"] }
 grandpa = { package = "finality-grandpa", version = "0.16.2", default-features = false, features = ["derive-codec"] }
-log = { version = "0.4.17", default-features = false }
-scale-info = { version = "2.1.1", default-features = false, features = ["derive"] }
-serde = { version = "1.0.136", features = ["derive"], optional = true }
+log = { version = "0.4", default-features = false }
+scale-info = { version = "2.5.0", default-features = false, features = ["derive"] }
+serde = { version = "1", features = ["derive"], optional = true }
 sp-api = { version = "4.0.0-dev", default-features = false, path = "../../api" }
-sp-application-crypto = { version = "7.0.0", default-features = false, path = "../../application-crypto" }
-sp-core = { version = "7.0.0", default-features = false, path = "../../core" }
+sp-application-crypto = { version = "7", default-features = false, path = "../../application-crypto" }
+sp-core = { version = "7", default-features = false, path = "../../core" }
 sp-keystore = { version = "0.13.0", default-features = false, optional = true, path = "../../keystore" }
-sp-runtime = { version = "7.0.0", default-features = false, path = "../../runtime" }
+sp-runtime = { version = "7", default-features = false, path = "../../runtime" }
 sp-std = { version = "5.0.0", default-features = false, path = "../../std" }
 
 [features]

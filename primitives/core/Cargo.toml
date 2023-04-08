@@ -13,8 +13,8 @@ documentation = "https://docs.rs/sp-core"
 targets = ["x86_64-unknown-linux-gnu"]
 
 [dependencies]
-codec = { package = "parity-scale-codec", version = "3.2.2", default-features = false, features = ["derive","max-encoded-len"] }
-scale-info = { version = "2.1.1", default-features = false, features = ["derive"] }
+codec = { package = "parity-scale-codec", version = "3.4.0", default-features = false, features = ["derive","max-encoded-len"] }
+scale-info = { version = "2.5.0", default-features = false, features = ["derive"] }
 log = { version = "0.4", default-features = false }
 serde = { version = "1", optional = true, features = ["derive"] }
 bounded-collections = { version = "0.1", default-features = false }
@@ -47,7 +47,7 @@ blake2 = { version = "0.10", default-features = false, optional = true }
 schnorrkel = { version = "0.10", features = ["preaudit_deprecated", "u64_backend"], default-features = false, optional = true }
 libsecp256k1 = { version = "0.7", default-features = false, features = ["static-context"], optional = true }
 merlin = { version = "3", default-features = false, optional = true }
-secp256k1 = { version = "0.24", default-features = false, features = ["recovery", "alloc"], optional = true }
+secp256k1 = { version = "0.27", default-features = false, features = ["recovery", "alloc"], optional = true }
 ss58-registry = { version = "1", default-features = false }
 sp-core-hashing = { version = "5", path = "./hashing", default-features = false, optional = true }
 sp-runtime-interface = { version = "7", default-features = false, path = "../runtime-interface" }

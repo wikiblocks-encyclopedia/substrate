@@ -16,17 +16,17 @@ targets = ["x86_64-unknown-linux-gnu"]
 prost-build = "0.11"
 
 [dependencies]
-array-bytes = "4.1"
-async-trait = "0.1.58"
-codec = { package = "parity-scale-codec", version = "3.2.2", features = ["derive"] }
-futures = "0.3.21"
-futures-timer = "3.0.2"
-libp2p = "0.50.0"
-log = "0.4.17"
-lru = "0.8.1"
-mockall = "0.11.3"
+array-bytes = "4.2"
+async-trait = "0.1"
+codec = { package = "parity-scale-codec", version = "3.4.0", features = ["derive"] }
+futures = "0.3"
+futures-timer = "3"
+libp2p = "0.50"
+log = "0.4"
+lru = "0.9"
+mockall = "0.11.4"
 prost = "0.11"
-smallvec = "1.8.0"
+smallvec = "1.10.0"
 thiserror = "1.0"
 fork-tree = { version = "3.0.0", path = "../../../utils/fork-tree" }
 prometheus-endpoint = { package = "substrate-prometheus-endpoint", version = "0.10.0-dev", path = "../../../utils/prometheus" }
@@ -39,12 +39,12 @@ sc-utils = { version = "4.0.0-dev", path = "../../utils" }
 sp-arithmetic = { version = "6.0.0", path = "../../../primitives/arithmetic" }
 sp-blockchain = { version = "4.0.0-dev", path = "../../../primitives/blockchain" }
 sp-consensus = { version = "0.10.0-dev", path = "../../../primitives/consensus/common" }
-sp-core = { version = "7.0.0", path = "../../../primitives/core" }
+sp-core = { version = "7", path = "../../../primitives/core" }
 sp-consensus-grandpa = { version = "4.0.0-dev", path = "../../../primitives/consensus/grandpa" }
-sp-runtime = { version = "7.0.0", path = "../../../primitives/runtime" }
+sp-runtime = { version = "7", path = "../../../primitives/runtime" }
 
 [dev-dependencies]
-tokio = { version = "1.22.0", features = ["macros"] }
+tokio = { version = "1", features = ["macros"] }
 quickcheck = { version = "1.0.3", default-features = false }
 sc-block-builder = { version = "0.10.0-dev", path = "../../block-builder" }
 sp-test-primitives = { version = "2.0.0", path = "../../../primitives/test-primitives" }

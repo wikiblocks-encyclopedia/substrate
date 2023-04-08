@@ -13,23 +13,23 @@ readme = "README.md"
 targets = ["x86_64-unknown-linux-gnu"]
 
 [dependencies]
-array-bytes = "4.1"
+array-bytes = "4"
 chrono = "0.4"
-clap = { version = "4.0.9", features = ["derive"] }
-codec = { package = "parity-scale-codec", version = "3.2.2" }
-comfy-table = { version = "6.0.0", default-features = false }
-handlebars = "4.2.2"
-Inflector = "0.11.4"
-itertools = "0.10.3"
-lazy_static = "1.4.0"
-linked-hash-map = "0.5.4"
-log = "0.4.17"
-rand = { version = "0.8.4", features = ["small_rng"] }
-rand_pcg = "0.3.1"
-serde = "1.0.136"
-serde_json = "1.0.85"
-thiserror = "1.0.30"
-thousands = "0.2.0"
+clap = { version = "4", features = ["derive"] }
+codec = { package = "parity-scale-codec", version = "3.4.0" }
+comfy-table = { version = "6", default-features = false }
+handlebars = "4"
+Inflector = "0.11"
+itertools = "0.10"
+lazy_static = "1"
+linked-hash-map = "0.5"
+log = "0.4"
+rand = { version = "0.8", features = ["small_rng"] }
+rand_pcg = "0.3"
+serde = "1"
+serde_json = "1"
+thiserror = "1"
+thousands = "0.2"
 frame-benchmarking = { version = "4.0.0-dev", path = "../../../frame/benchmarking" }
 frame-support = { version = "4.0.0-dev", path = "../../../frame/support" }
 frame-system = { version = "4.0.0-dev", path = "../../../frame/system" }
@@ -42,17 +42,17 @@ sc-service = { version = "0.10.0-dev", default-features = false, path = "../../.
 sc-sysinfo = { version = "6.0.0-dev", path = "../../../client/sysinfo" }
 sp-api = { version = "4.0.0-dev", path = "../../../primitives/api" }
 sp-blockchain = { version = "4.0.0-dev", path = "../../../primitives/blockchain" }
-sp-core = { version = "7.0.0", path = "../../../primitives/core" }
+sp-core = { version = "7", path = "../../../primitives/core" }
 sp-database = { version = "4.0.0-dev", path = "../../../primitives/database" }
 sp-externalities = { version = "0.13.0", path = "../../../primitives/externalities" }
 sp-inherents = { version = "4.0.0-dev", path = "../../../primitives/inherents" }
 sp-keystore = { version = "0.13.0", path = "../../../primitives/keystore" }
-sp-runtime = { version = "7.0.0", path = "../../../primitives/runtime" }
+sp-runtime = { version = "7", path = "../../../primitives/runtime" }
 sp-state-machine = { version = "0.13.0", path = "../../../primitives/state-machine" }
-sp-std = { version = "5.0.0", path = "../../../primitives/std" }
-sp-storage = { version = "7.0.0", path = "../../../primitives/storage" }
-sp-trie = { version = "7.0.0", path = "../../../primitives/trie" }
-gethostname = "0.2.3"
+sp-std = { version = "5", path = "../../../primitives/std" }
+sp-storage = { version = "7", path = "../../../primitives/storage" }
+sp-trie = { version = "7", path = "../../../primitives/trie" }
+gethostname = "0.4"
 
 [features]
 default = ["rocksdb"]

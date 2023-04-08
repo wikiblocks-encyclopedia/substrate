@@ -13,23 +13,23 @@ readme = "README.md"
 targets = ["x86_64-unknown-linux-gnu"]
 
 [dependencies]
-array-bytes = "4.1"
-chrono = "0.4.10"
-clap = { version = "4.0.9", features = ["derive", "string"] }
-fdlimit = "0.2.1"
-futures = "0.3.21"
-libp2p = "0.50.0"
-log = "0.4.17"
-names = { version = "0.13.0", default-features = false }
-parity-scale-codec = "3.2.2"
-rand = "0.8.5"
-regex = "1.6.0"
-rpassword = "7.0.0"
-serde = "1.0.136"
-serde_json = "1.0.85"
-thiserror = "1.0.30"
-tiny-bip39 = "1.0.0"
-tokio = { version = "1.22.0", features = ["signal", "rt-multi-thread", "parking_lot"] }
+array-bytes = "4.2"
+chrono = "0.4"
+clap = { version = "4.2.1", features = ["derive", "string"] }
+fdlimit = "0.2"
+futures = "0.3"
+libp2p = "0.50"
+log = "0.4"
+names = { version = "0.14", default-features = false }
+parity-scale-codec = "3.4.0"
+rand = "0.8"
+regex = "1"
+rpassword = "7"
+serde = "1"
+serde_json = "1"
+thiserror = "1"
+tiny-bip39 = "1"
+tokio = { version = "1", features = ["signal", "rt-multi-thread", "parking_lot"] }
 sc-client-api = { version = "4.0.0-dev", path = "../api" }
 sc-client-db = { version = "0.10.0-dev", default-features = false, path = "../db" }
 sc-keystore = { version = "4.0.0-dev", path = "../keystore" }
@@ -40,16 +40,16 @@ sc-telemetry = { version = "4.0.0-dev", path = "../telemetry" }
 sc-tracing = { version = "4.0.0-dev", path = "../tracing" }
 sc-utils = { version = "4.0.0-dev", path = "../utils" }
 sp-blockchain = { version = "4.0.0-dev", path = "../../primitives/blockchain" }
-sp-core = { version = "7.0.0", path = "../../primitives/core" }
-sp-keyring = { version = "7.0.0", path = "../../primitives/keyring" }
+sp-core = { version = "7", path = "../../primitives/core" }
+sp-keyring = { version = "7", path = "../../primitives/keyring" }
 sp-keystore = { version = "0.13.0", path = "../../primitives/keystore" }
 sp-panic-handler = { version = "5.0.0", path = "../../primitives/panic-handler" }
-sp-runtime = { version = "7.0.0", path = "../../primitives/runtime" }
+sp-runtime = { version = "7", path = "../../primitives/runtime" }
 sp-version = { version = "5.0.0", path = "../../primitives/version" }
 
 [dev-dependencies]
-tempfile = "3.1.0"
-futures-timer = "3.0.1"
+tempfile = "3"
+futures-timer = "3"
 sp-tracing = { version = "6.0.0", path = "../../primitives/tracing" }
 
 [features]

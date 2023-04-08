@@ -14,26 +14,26 @@ readme = "README.md"
 targets = ["x86_64-unknown-linux-gnu"]
 
 [dependencies]
-codec = { package = "parity-scale-codec", version = "3.2.2", default-features = false, features = ["derive", "max-encoded-len"] }
-either = { version = "1.5", default-features = false }
+codec = { package = "parity-scale-codec", version = "3.4.0", default-features = false, features = ["derive", "max-encoded-len"] }
+either = { version = "1.8", default-features = false }
 hash256-std-hasher = { version = "0.15.2", default-features = false }
 impl-trait-for-tuples = "0.2.2"
-log = { version = "0.4.17", default-features = false }
+log = { version = "0.4", default-features = false }
 paste = "1.0"
 rand = { version = "0.8.5", optional = true }
-scale-info = { version = "2.1.1", default-features = false, features = ["derive"] }
-serde = { version = "1.0.136", features = ["derive"], optional = true }
-sp-application-crypto = { version = "7.0.0", default-features = false, path = "../application-crypto" }
+scale-info = { version = "2.5.0", default-features = false, features = ["derive"] }
+serde = { version = "1", features = ["derive"], optional = true }
+sp-application-crypto = { version = "7", default-features = false, path = "../application-crypto" }
 sp-arithmetic = { version = "6.0.0", default-features = false, path = "../arithmetic" }
-sp-core = { version = "7.0.0", default-features = false, path = "../core" }
-sp-io = { version = "7.0.0", default-features = false, path = "../io" }
+sp-core = { version = "7", default-features = false, path = "../core" }
+sp-io = { version = "7", default-features = false, path = "../io" }
 sp-std = { version = "5.0.0", default-features = false, path = "../std" }
 sp-weights = { version = "4.0.0", default-features = false, path = "../weights" }
 
 [dev-dependencies]
 rand = "0.8.5"
-serde_json = "1.0.85"
-zstd = { version = "0.11.2", default-features = false }
+serde_json = "1"
+zstd = { version = "0.12", default-features = false }
 sp-api = { version = "4.0.0-dev", path = "../api" }
 sp-state-machine = { version = "0.13.0", path = "../state-machine" }
 sp-tracing = { version = "6.0.0", path = "../../primitives/tracing" }

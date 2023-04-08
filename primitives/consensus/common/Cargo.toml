@@ -14,17 +14,17 @@ readme = "README.md"
 targets = ["x86_64-unknown-linux-gnu"]
 
 [dependencies]
-async-trait = "0.1.57"
-futures = { version = "0.3.21", features = ["thread-pool"] }
-log = "0.4.17"
-thiserror = "1.0.30"
-sp-core = { version = "7.0.0", path = "../../core" }
+async-trait = "0.1"
+futures = { version = "0.3", features = ["thread-pool"] }
+log = "0.4"
+thiserror = "1"
+sp-core = { version = "7", path = "../../core" }
 sp-inherents = { version = "4.0.0-dev", path = "../../inherents" }
-sp-runtime = { version = "7.0.0", path = "../../runtime" }
+sp-runtime = { version = "7", path = "../../runtime" }
 sp-state-machine = { version = "0.13.0", path = "../../state-machine" }
 
 [dev-dependencies]
-futures = "0.3.21"
+futures = "0.3"
 sp-test-primitives = { version = "2.0.0", path = "../../test-primitives" }
 
 [features]

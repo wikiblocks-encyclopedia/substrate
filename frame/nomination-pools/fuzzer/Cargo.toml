@@ -14,7 +14,7 @@ publish = false
 targets = ["x86_64-unknown-linux-gnu"]
 
 [dependencies]
-honggfuzz = "0.5.54"
+honggfuzz = "0.5.55"
 
 pallet-nomination-pools = { path = "..", features = ["fuzzing"] }
 
@@ -26,7 +26,7 @@ sp-io = { path = "../../../primitives/io" }
 sp-tracing = { path = "../../../primitives/tracing" }
 
 rand = { version = "0.8.5", features = ["small_rng"] }
-log = "0.4.17"
+log = "0.4"
 
 [[bin]]
 name = "call"
