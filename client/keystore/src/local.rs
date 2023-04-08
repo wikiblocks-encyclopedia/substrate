@@ -136,7 +136,7 @@ impl Keystore for LocalKeystore {
 		let sig = self.0.read().key_pair_by_type::<sr25519::Pair>(public, key_type)?.map(|pair| {
 			let transcript = make_transcript(transcript_data);
 			let (inout, proof, _) = pair.as_ref().vrf_sign(transcript);
-			VRFSignature { output: inout.to_output(), proof }
+			VRFSignature { output: inout.to_preout(), proof }
 		});
 		Ok(sig)
 	}

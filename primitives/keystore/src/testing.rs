@@ -133,7 +133,7 @@ impl Keystore for MemoryKeystore {
 		let sig = self.pair::<sr25519::Pair>(key_type, public).map(|pair| {
 			let transcript = make_transcript(transcript_data);
 			let (inout, proof, _) = pair.as_ref().vrf_sign(transcript);
-			VRFSignature { output: inout.to_output(), proof }
+			VRFSignature { output: inout.to_preout(), proof }
 		});
 		Ok(sig)
 	}

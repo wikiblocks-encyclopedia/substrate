@@ -79,7 +79,7 @@ pub trait Keystore: Send + Sync {
 	/// them to a private key that exists in the keystore.
 	///
 	/// Returns a result containing the signature data.
-	/// Namely, VRFOutput and VRFProof which are returned inside the `VRFSignature`
+	/// Namely, VRFPreOut and VRFProof which are returned inside the `VRFSignature`
 	/// container struct.
 	/// Returns `None` if the given `key_type` and `public` combination doesn't
 	/// exist in the keystore or an `Err` when something failed.

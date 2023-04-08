@@ -14,19 +14,19 @@ readme = "README.md"
 targets = ["x86_64-unknown-linux-gnu"]
 
 [dependencies]
-async-trait = "0.1.57"
+async-trait = "0.1"
 scale-info = { version = "2.1.1", features = ["derive"] }
 codec = { package = "parity-scale-codec", version = "3.2.2", features = ["derive"] }
-futures = "0.3.21"
-log = "0.4.17"
-merlin = "2.0"
-num-bigint = "0.4.3"
-num-rational = "0.4.1"
-num-traits = "0.2.8"
-parking_lot = "0.12.1"
-schnorrkel = { version = "0.9.1", features = ["preaudit_deprecated"] }
-thiserror = "1.0"
-fork-tree = { version = "3.0.0", path = "../../../utils/fork-tree" }
+futures = "0.3"
+log = "0.4"
+merlin = "3"
+num-bigint = "0.4"
+num-rational = "0.4"
+num-traits = "0.2"
+parking_lot = "0.12"
+schnorrkel = { version = "0.10", features = ["preaudit_deprecated"] }
+thiserror = "1"
+fork-tree = { version = "3", path = "../../../utils/fork-tree" }
 prometheus-endpoint = { package = "substrate-prometheus-endpoint", version = "0.10.0-dev", path = "../../../utils/prometheus" }
 sc-client-api = { version = "4.0.0-dev", path = "../../api" }
 sc-consensus = { version = "0.10.0-dev", path = "../../../client/consensus/common" }
@@ -35,20 +35,20 @@ sc-consensus-slots = { version = "0.10.0-dev", path = "../slots" }
 sc-keystore = { version = "4.0.0-dev", path = "../../keystore" }
 sc-telemetry = { version = "4.0.0-dev", path = "../../telemetry" }
 sp-api = { version = "4.0.0-dev", path = "../../../primitives/api" }
-sp-application-crypto = { version = "7.0.0", path = "../../../primitives/application-crypto" }
+sp-application-crypto = { version = "7", path = "../../../primitives/application-crypto" }
 sp-block-builder = { version = "4.0.0-dev", path = "../../../primitives/block-builder" }
 sp-blockchain = { version = "4.0.0-dev", path = "../../../primitives/blockchain" }
 sp-consensus = { version = "0.10.0-dev", path = "../../../primitives/consensus/common" }
 sp-consensus-babe = { version = "0.10.0-dev", path = "../../../primitives/consensus/babe" }
 sp-consensus-slots = { version = "0.10.0-dev", path = "../../../primitives/consensus/slots" }
 sp-consensus-vrf = { version = "0.10.0-dev", path = "../../../primitives/consensus/vrf" }
-sp-core = { version = "7.0.0", path = "../../../primitives/core" }
+sp-core = { version = "7", path = "../../../primitives/core" }
 sp-inherents = { version = "4.0.0-dev", path = "../../../primitives/inherents" }
-sp-keystore = { version = "0.13.0", path = "../../../primitives/keystore" }
-sp-runtime = { version = "7.0.0", path = "../../../primitives/runtime" }
+sp-keystore = { version = "0.13", path = "../../../primitives/keystore" }
+sp-runtime = { version = "7", path = "../../../primitives/runtime" }
 
 [dev-dependencies]
-rand_chacha = "0.2.2"
+rand_chacha = "0.3"
 sc-block-builder = { version = "0.10.0-dev", path = "../../block-builder" }
 sp-keyring = { version = "7.0.0", path = "../../../primitives/keyring" }
 sc-network = { version = "0.10.0-dev", path = "../../network" }
@@ -56,4 +56,4 @@ sc-network-test = { version = "0.8.0", path = "../../network/test" }
 sp-timestamp = { version = "4.0.0-dev", path = "../../../primitives/timestamp" }
 sp-tracing = { version = "6.0.0", path = "../../../primitives/tracing" }
 substrate-test-runtime-client = { version = "2.0.0", path = "../../../test-utils/runtime/client" }
-tokio = "1.22.0"
+tokio = "1"
