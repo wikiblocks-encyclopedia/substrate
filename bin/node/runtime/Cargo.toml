@@ -74,7 +74,6 @@ pallet-nis = { version = "4.0.0-dev", default-features = false, path = "../../..
 pallet-grandpa = { version = "4.0.0-dev", default-features = false, path = "../../../frame/grandpa" }
 pallet-im-online = { version = "4.0.0-dev", default-features = false, path = "../../../frame/im-online" }
 pallet-indices = { version = "4.0.0-dev", default-features = false, path = "../../../frame/indices" }
-pallet-lottery = { version = "4.0.0-dev", default-features = false, path = "../../../frame/lottery" }
 pallet-membership = { version = "4.0.0-dev", default-features = false, path = "../../../frame/membership" }
 pallet-message-queue = { version = "7.0.0-dev", default-features = false, path = "../../../frame/message-queue" }
 pallet-mmr = { version = "4.0.0-dev", default-features = false, path = "../../../frame/merkle-mountain-range" }
@@ -103,7 +102,6 @@ pallet-scheduler = { version = "4.0.0-dev", default-features = false, path = "..
 pallet-society = { version = "4.0.0-dev", default-features = false, path = "../../../frame/society" }
 pallet-sudo = { version = "4.0.0-dev", default-features = false, path = "../../../frame/sudo" }
 pallet-timestamp = { version = "4.0.0-dev", default-features = false, path = "../../../frame/timestamp" }
-pallet-tips = { version = "4.0.0-dev", default-features = false, path = "../../../frame/tips" }
 pallet-treasury = { version = "4.0.0-dev", default-features = false, path = "../../../frame/treasury" }
 pallet-utility = { version = "4.0.0-dev", default-features = false, path = "../../../frame/utility" }
 pallet-transaction-payment = { version = "4.0.0-dev", default-features = false, path = "../../../frame/transaction-payment" }
@@ -154,7 +152,6 @@ std = [
 	"pallet-im-online/std",
 	"pallet-indices/std",
 	"sp-inherents/std",
-	"pallet-lottery/std",
 	"pallet-membership/std",
 	"pallet-message-queue/std",
 	"pallet-mmr/std",
@@ -188,7 +185,6 @@ std = [
 	"frame-system/std",
 	"pallet-election-provider-multi-phase/std",
 	"pallet-timestamp/std",
-	"pallet-tips/std",
 	"pallet-transaction-payment-rpc-runtime-api/std",
 	"pallet-transaction-payment/std",
 	"pallet-transaction-storage/std",
@@ -236,7 +232,6 @@ runtime-benchmarks = [
 	"pallet-grandpa/runtime-benchmarks",
 	"pallet-im-online/runtime-benchmarks",
 	"pallet-indices/runtime-benchmarks",
-	"pallet-lottery/runtime-benchmarks",
 	"pallet-membership/runtime-benchmarks",
 	"pallet-message-queue/runtime-benchmarks",
 	"pallet-mmr/runtime-benchmarks",
@@ -254,7 +249,6 @@ runtime-benchmarks = [
 	"pallet-staking/runtime-benchmarks",
 	"pallet-state-trie-migration/runtime-benchmarks",
 	"pallet-timestamp/runtime-benchmarks",
-	"pallet-tips/runtime-benchmarks",
 	"pallet-transaction-storage/runtime-benchmarks",
 	"pallet-treasury/runtime-benchmarks",
 	"pallet-utility/runtime-benchmarks",
@@ -290,7 +284,6 @@ try-runtime = [
 	"pallet-grandpa/try-runtime",
 	"pallet-im-online/try-runtime",
 	"pallet-indices/try-runtime",
-	"pallet-lottery/try-runtime",
 	"pallet-membership/try-runtime",
 	"pallet-message-queue/try-runtime",
 	"pallet-mmr/try-runtime",
@@ -311,7 +304,6 @@ try-runtime = [
 	"pallet-society/try-runtime",
 	"pallet-sudo/try-runtime",
 	"pallet-timestamp/try-runtime",
-	"pallet-tips/try-runtime",
 	"pallet-treasury/try-runtime",
 	"pallet-utility/try-runtime",
 	"pallet-transaction-payment/try-runtime",

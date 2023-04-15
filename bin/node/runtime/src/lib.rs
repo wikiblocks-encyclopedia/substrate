@@ -35,8 +35,8 @@ use frame_support::{
 		fungible::ItemOf,
 		tokens::{nonfungibles_v2::Inspect, GetSalary, PayFromAccount},
 		AsEnsureOriginWithArg, ConstBool, ConstU128, ConstU16, ConstU32, Currency, EitherOfDiverse,
-		EqualPrivilegeOnly, Everything, Imbalance, InstanceFilter, KeyOwnerProofSystem,
-		LockIdentifier, Nothing, OnUnbalanced, U128CurrencyToVote, WithdrawReasons,
+		EqualPrivilegeOnly, Everything, Imbalance, KeyOwnerProofSystem, LockIdentifier, Nothing,
+		OnUnbalanced, U128CurrencyToVote, WithdrawReasons,
 	},
 	weights::{
 		constants::{
@@ -44,7 +44,7 @@ use frame_support::{
 		},
 		ConstantMultiplier, IdentityFee, Weight,
 	},
-	PalletId, RuntimeDebug,
+	PalletId,
 };
 use frame_system::{
 	limits::{BlockLength, BlockWeights},
@@ -1080,17 +1080,6 @@ impl pallet_child_bounties::Config for Runtime {
 	type WeightInfo = pallet_child_bounties::weights::SubstrateWeight<Runtime>;
 }
 
-impl pallet_tips::Config for Runtime {
-	type RuntimeEvent = RuntimeEvent;
-	type DataDepositPerByte = DataDepositPerByte;
-	type MaximumReasonLength = MaximumReasonLength;
-	type Tippers = Elections;
-	type TipCountdown = TipCountdown;
-	type TipFindersFee = TipFindersFee;
-	type TipReportDepositBase = TipReportDepositBase;
-	type WeightInfo = pallet_tips::weights::SubstrateWeight<Runtime>;
-}
-
 parameter_types! {
 	pub const DepositPerItem: Balance = deposit(1, 0);
 	pub const DepositPerByte: Balance = deposit(0, 1);
@@ -1296,25 +1285,6 @@ impl pallet_mmr::Config for Runtime {
 	type LeafData = pallet_mmr::ParentNumberAndHash<Self>;
 	type OnNewRoot = ();
 	type WeightInfo = ();
-}
-
-parameter_types! {
-	pub const LotteryPalletId: PalletId = PalletId(*b"py/lotto");
-	pub const MaxCalls: u32 = 10;
-	pub const MaxGenerateRandom: u32 = 10;
-}
-
-impl pallet_lottery::Config for Runtime {
-	type PalletId = LotteryPalletId;
-	type RuntimeCall = RuntimeCall;
-	type Currency = Balances;
-	type Randomness = RandomnessCollectiveFlip;
-	type RuntimeEvent = RuntimeEvent;
-	type ManagerOrigin = EnsureRoot<AccountId>;
-	type MaxCalls = MaxCalls;
-	type ValidateCall = Lottery;
-	type MaxGenerateRandom = MaxGenerateRandom;
-	type WeightInfo = pallet_lottery::weights::SubstrateWeight<Runtime>;
 }
 
 parameter_types! {
@@ -1595,10 +1565,8 @@ construct_runtime!(
 		Glutton: pallet_glutton,
 		Preimage: pallet_preimage,
 		Bounties: pallet_bounties,
-		Tips: pallet_tips,
 		Assets: pallet_assets,
 		Mmr: pallet_mmr,
-		Lottery: pallet_lottery,
 		Nis: pallet_nis,
 		Uniques: pallet_uniques,
 		Nfts: pallet_nfts,
@@ -1707,7 +1675,6 @@ mod benches {
 		[pallet_grandpa, Grandpa]
 		[pallet_im_online, ImOnline]
 		[pallet_indices, Indices]
-		[pallet_lottery, Lottery]
 		[pallet_membership, TechnicalMembership]
 		[pallet_message_queue, MessageQueue]
 		[pallet_mmr, Mmr]
@@ -1725,7 +1692,6 @@ mod benches {
 		[pallet_state_trie_migration, StateTrieMigration]
 		[frame_system, SystemBench::<Runtime>]
 		[pallet_timestamp, Timestamp]
-		[pallet_tips, Tips]
 		[pallet_transaction_storage, TransactionStorage]
 		[pallet_treasury, Treasury]
 		[pallet_uniques, Uniques]
