@@ -31,7 +31,7 @@ pallet-staking-reward-curve = { version = "4.0.0-dev", path = "../staking/reward
 
 sp-core = { version = "7", path = "../../primitives/core" }
 sp-io = { version = "7", default-features = false, path = "../../primitives/io" }
-sp-std = { version = "5.0.0", default-features = false, path = "../../primitives/std" }
+sp-std = { version = "5", default-features = false, path = "../../primitives/std" }
 
 frame-election-provider-support = { version = "4.0.0-dev", path = "../election-provider-support" }
 

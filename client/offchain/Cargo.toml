@@ -19,7 +19,7 @@ codec = { package = "parity-scale-codec", version = "3.4.0", features = ["derive
 fnv = "1.0.7"
 futures = "0.3"
 futures-timer = "3"
-hyper = { version = "0.14.25", features = ["stream", "http2"] }
+hyper = { version = "0.14.26", features = ["stream", "http2"] }
 hyper-rustls = { version = "0.23.2", features = ["http2"] }
 libp2p = "0.50"
 num_cpus = "1.15"
@@ -39,7 +39,7 @@ sp-offchain = { version = "4.0.0-dev", path = "../../primitives/offchain" }
 sp-runtime = { version = "7", path = "../../primitives/runtime" }
 
 [dev-dependencies]
-lazy_static = "1.4.0"
+lazy_static = "1"
 tokio = "1"
 sc-block-builder = { version = "0.10.0-dev", path = "../block-builder" }
 sc-client-db = { version = "0.10.0-dev", default-features = true, path = "../db" }

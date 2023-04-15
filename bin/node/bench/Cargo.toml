@@ -13,7 +13,7 @@ publish = false
 
 [dependencies]
 array-bytes = "4.2"
-clap = { version = "4.2.1", features = ["derive"] }
+clap = { version = "4", features = ["derive"] }
 log = "0.4"
 node-primitives = { version = "2.0.0", path = "../primitives" }
 node-testing = { version = "3.0.0-dev", path = "../testing" }
@@ -37,7 +37,7 @@ hash-db = "0.16.0"
 tempfile = "3"
 fs_extra = "1"
 rand = { version = "0.8.5", features = ["small_rng"] }
-lazy_static = "1.4.0"
+lazy_static = "1"
 parity-db = "0.4.6"
 sc-transaction-pool = { version = "4.0.0-dev", path = "../../../client/transaction-pool" }
 sc-transaction-pool-api = { version = "4.0.0-dev", path = "../../../client/transaction-pool/api" }

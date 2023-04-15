@@ -15,7 +15,7 @@ targets = ["x86_64-unknown-linux-gnu"]
 [dependencies]
 array-bytes = "4.2"
 chrono = "0.4"
-clap = { version = "4.2.1", features = ["derive", "string"] }
+clap = { version = "4", features = ["derive", "string"] }
 fdlimit = "0.2"
 futures = "0.3"
 libp2p = "0.50"
@@ -43,9 +43,9 @@ sp-blockchain = { version = "4.0.0-dev", path = "../../primitives/blockchain" }
 sp-core = { version = "7", path = "../../primitives/core" }
 sp-keyring = { version = "7", path = "../../primitives/keyring" }
 sp-keystore = { version = "0.13.0", path = "../../primitives/keystore" }
-sp-panic-handler = { version = "5.0.0", path = "../../primitives/panic-handler" }
+sp-panic-handler = { version = "5", path = "../../primitives/panic-handler" }
 sp-runtime = { version = "7", path = "../../primitives/runtime" }
-sp-version = { version = "5.0.0", path = "../../primitives/version" }
+sp-version = { version = "5", path = "../../primitives/version" }
 
 [dev-dependencies]
 tempfile = "3"

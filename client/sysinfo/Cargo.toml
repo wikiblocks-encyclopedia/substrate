@@ -25,7 +25,7 @@ serde_json = "1"
 sc-telemetry = { version = "4.0.0-dev", path = "../telemetry" }
 sp-core = { version = "7", path = "../../primitives/core" }
 sp-io = { version = "7", path = "../../primitives/io" }
-sp-std = { version = "5.0.0", path = "../../primitives/std" }
+sp-std = { version = "5", path = "../../primitives/std" }
 
 [dev-dependencies]
 sp-runtime = { version = "7", path = "../../primitives/runtime" }

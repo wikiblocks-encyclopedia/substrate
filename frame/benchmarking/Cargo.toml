@@ -28,7 +28,7 @@ sp-core = { version = "7", default-features = false, path = "../../primitives/co
 sp-io = { version = "7", default-features = false, path = "../../primitives/io" }
 sp-runtime = { version = "7", default-features = false, path = "../../primitives/runtime" }
 sp-runtime-interface = { version = "7", default-features = false, path = "../../primitives/runtime-interface" }
-sp-std = { version = "5.0.0", default-features = false, path = "../../primitives/std" }
+sp-std = { version = "5", default-features = false, path = "../../primitives/std" }
 sp-storage = { version = "7", default-features = false, path = "../../primitives/storage" }
 static_assertions = "1.1.0"
 

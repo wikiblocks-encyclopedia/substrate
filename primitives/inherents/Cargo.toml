@@ -21,7 +21,7 @@ impl-trait-for-tuples = "0.2.2"
 thiserror = { version = "1", optional = true }
 sp-core = { version = "7", default-features = false, path = "../core" }
 sp-runtime = { version = "7", optional = true, default-features = false, path = "../runtime" }
-sp-std = { version = "5.0.0", default-features = false, path = "../std" }
+sp-std = { version = "5", default-features = false, path = "../std" }
 
 [dev-dependencies]
 futures = "0.3"

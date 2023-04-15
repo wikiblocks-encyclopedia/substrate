@@ -22,7 +22,7 @@ sp-core = { version = "7", default-features = false, path = "../../primitives/co
 sp-io = { version = "7", default-features = false, path = "../../primitives/io" }
 sp-keyring = { version = "7", optional = true, path = "../../primitives/keyring" }
 sp-runtime = { version = "7", default-features = false, path = "../../primitives/runtime" }
-sp-std = { version = "5.0.0", default-features = false, path = "../../primitives/std" }
+sp-std = { version = "5", default-features = false, path = "../../primitives/std" }
 
 [dev-dependencies]
 pallet-balances = { version = "4.0.0-dev", path = "../balances" }

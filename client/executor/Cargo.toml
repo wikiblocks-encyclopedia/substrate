@@ -27,10 +27,10 @@ sp-api = { version = "4.0.0-dev", path = "../../primitives/api" }
 sp-core = { version = "7", path = "../../primitives/core" }
 sp-externalities = { version = "0.13.0", path = "../../primitives/externalities" }
 sp-io = { version = "7", path = "../../primitives/io" }
-sp-panic-handler = { version = "5.0.0", path = "../../primitives/panic-handler" }
+sp-panic-handler = { version = "5", path = "../../primitives/panic-handler" }
 sp-runtime-interface = { version = "7", path = "../../primitives/runtime-interface" }
 sp-trie = { version = "7", path = "../../primitives/trie" }
-sp-version = { version = "5.0.0", path = "../../primitives/version" }
+sp-version = { version = "5", path = "../../primitives/version" }
 sp-wasm-interface = { version = "7", path = "../../primitives/wasm-interface" }
 
 [dev-dependencies]

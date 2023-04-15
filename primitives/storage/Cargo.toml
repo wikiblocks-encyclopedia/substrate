@@ -18,8 +18,8 @@ codec = { package = "parity-scale-codec", version = "3.4.0", default-features = 
 impl-serde = { version = "0.4.0", optional = true }
 ref-cast = "1.0.16"
 serde = { version = "1", features = ["derive"], optional = true }
-sp-debug-derive = { version = "5.0.0", default-features = false, path = "../debug-derive" }
-sp-std = { version = "5.0.0", default-features = false, path = "../std" }
+sp-debug-derive = { version = "5", default-features = false, path = "../debug-derive" }
+sp-std = { version = "5", default-features = false, path = "../std" }
 
 [features]
 default = [ "std" ]
