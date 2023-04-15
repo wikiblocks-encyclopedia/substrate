@@ -167,10 +167,13 @@ impl<'a> fmt::Display for FmtLevel<'a> {
 		use anstyle::{AnsiColor, Reset};
 		if self.ansi {
 			match *self.level {
-				Level::TRACE => write!(f, "{}{}", AnsiColor::Magenta.on_default().render(), TRACE_STR)?,
-				Level::DEBUG => write!(f, "{}{}", AnsiColor::Blue.on_default().render(), DEBUG_STR)?,
+				Level::TRACE =>
+					write!(f, "{}{}", AnsiColor::Magenta.on_default().render(), TRACE_STR)?,
+				Level::DEBUG =>
+					write!(f, "{}{}", AnsiColor::Blue.on_default().render(), DEBUG_STR)?,
 				Level::INFO => write!(f, "{}{}", AnsiColor::Green.on_default().render(), INFO_STR)?,
-				Level::WARN => write!(f, "{}{}", AnsiColor::Yellow.on_default().render(), WARN_STR)?,
+				Level::WARN =>
+					write!(f, "{}{}", AnsiColor::Yellow.on_default().render(), WARN_STR)?,
 				Level::ERROR => write!(f, "{}{}", AnsiColor::Red.on_default().render(), ERROR_STR)?,
 			}
 			write!(f, "{}", Reset.render())
@@ -236,7 +239,7 @@ impl<'a> fmt::Display for FmtThreadName<'a> {
 //
 //       https://github.com/tokio-rs/tracing/blob/2f59b32/tracing-subscriber/src/fmt/time/mod.rs#L252
 mod time {
-	use anstyle::{Style, Reset};
+	use anstyle::{Reset, Style};
 	use std::fmt;
 	use tracing_subscriber::fmt::time::FormatTime;
 

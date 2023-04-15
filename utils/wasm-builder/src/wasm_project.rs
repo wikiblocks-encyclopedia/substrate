@@ -37,7 +37,12 @@ use walkdir::WalkDir;
 /// Returns the colorized message.
 fn colorize_info_message(message: &str) -> String {
 	if super::color_output_enabled() {
-		format!("{}{}{}", anstyle::AnsiColor::Yellow.on_default().bold().render(), message, anstyle::Reset.render())
+		format!(
+			"{}{}{}",
+			anstyle::AnsiColor::Yellow.on_default().bold().render(),
+			message,
+			anstyle::Reset.render()
+		)
 	} else {
 		message.into()
 	}

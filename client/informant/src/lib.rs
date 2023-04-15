@@ -117,11 +117,26 @@ where
 				match maybe_ancestor {
 					Ok(ref ancestor) if ancestor.hash != *last_hash => info!(
 						"♻️  Reorg on #{},{} to #{},{}, common ancestor #{},{}",
-						format!("{}{}{}", AnsiColor::Red.on_default().bold().render(), last_num, Reset.render()),
+						format!(
+							"{}{}{}",
+							AnsiColor::Red.on_default().bold().render(),
+							last_num,
+							Reset.render()
+						),
 						last_hash,
-						format!("{}{}{}", AnsiColor::Green.on_default().bold().render(), n.header.number(), Reset.render()),
+						format!(
+							"{}{}{}",
+							AnsiColor::Green.on_default().bold().render(),
+							n.header.number(),
+							Reset.render()
+						),
 						n.hash,
-						format!("{}{}{}", AnsiColor::White.on_default().bold().render(), ancestor.number, Reset.render()),
+						format!(
+							"{}{}{}",
+							AnsiColor::White.on_default().bold().render(),
+							ancestor.number,
+							Reset.render()
+						),
 						ancestor.hash,
 					),
 					Ok(_) => {},

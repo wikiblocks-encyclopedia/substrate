@@ -37,8 +37,9 @@ use secp256k1::Secp256k1;
 use secp256k1::SECP256K1;
 #[cfg(feature = "full_crypto")]
 use secp256k1::{
-	ffi::CPtr, constants::SECRET_KEY_SIZE,
+	constants::SECRET_KEY_SIZE,
 	ecdsa::{RecoverableSignature, RecoveryId},
+	ffi::CPtr,
 	Message, PublicKey, SecretKey,
 };
 #[cfg(feature = "std")]

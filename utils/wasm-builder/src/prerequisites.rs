@@ -168,10 +168,25 @@ fn check_wasm_toolchain_installed(
 				Ok(ref err) => Err(format!(
 					"{}\n\n{}\n{}\n{}{}\n",
 					err_msg,
-					format!("{}{}{}", AnsiColor::Yellow.on_default().bold().render(), "Further error information:", Reset.render()),
-					format!("{}{}{}", AnsiColor::Yellow.on_default().bold().render(), "-".repeat(60), Reset.render()),
+					format!(
+						"{}{}{}",
+						AnsiColor::Yellow.on_default().bold().render(),
+						"Further error information:",
+						Reset.render()
+					),
+					format!(
+						"{}{}{}",
+						AnsiColor::Yellow.on_default().bold().render(),
+						"-".repeat(60),
+						Reset.render()
+					),
 					err,
-					format!("{}{}{}", AnsiColor::Yellow.on_default().bold().render(), "-".repeat(60), Reset.render()),
+					format!(
+						"{}{}{}",
+						AnsiColor::Yellow.on_default().bold().render(),
+						"-".repeat(60),
+						Reset.render()
+					),
 				)),
 				Err(_) => Err(err_msg),
 			}

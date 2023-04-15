@@ -55,9 +55,7 @@ pub fn ferdie() -> AccountId {
 }
 
 /// Convert keyrings into `SessionKeys`.
-pub fn to_session_keys(
-	sr25519_keyring: &Sr25519Keyring,
-) -> SessionKeys {
+pub fn to_session_keys(sr25519_keyring: &Sr25519Keyring) -> SessionKeys {
 	SessionKeys {
 		grandpa: sr25519_keyring.to_owned().public().into(),
 		babe: sr25519_keyring.to_owned().public().into(),

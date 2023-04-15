@@ -44,7 +44,7 @@ pub const RUNTIME_LOG_TARGET: &str = "runtime::grandpa";
 pub const KEY_TYPE: sp_core::crypto::KeyTypeId = sp_application_crypto::key_types::GRANDPA;
 
 mod app {
-	use sp_application_crypto::{app_crypto, sr25519, key_types::GRANDPA};
+	use sp_application_crypto::{app_crypto, key_types::GRANDPA, sr25519};
 	app_crypto!(sr25519, GRANDPA);
 }
 

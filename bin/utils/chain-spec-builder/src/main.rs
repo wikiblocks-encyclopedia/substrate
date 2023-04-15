@@ -21,7 +21,7 @@ use std::{
 	path::{Path, PathBuf},
 };
 
-use anstyle::{Style, Reset};
+use anstyle::{Reset, Style};
 use clap::Parser;
 use rand::{distributions::Alphanumeric, rngs::OsRng, Rng};
 
@@ -204,13 +204,21 @@ fn print_seeds(
 	println!("{}{}{}", header.render(), "Authority seeds", Reset.render());
 
 	for (n, seed) in authority_seeds.iter().enumerate() {
-		println!("{} //{}", format!("{}{}{}", entry.render(), format!("auth-{}:", n), Reset.render()), seed);
+		println!(
+			"{} //{}",
+			format!("{}{}{}", entry.render(), format!("auth-{}:", n), Reset.render()),
+			seed
+		);
 	}
 
 	println!("{}{}{}", header.render(), "Nominator seeds", Reset.render());
 
 	for (n, seed) in nominator_seeds.iter().enumerate() {
-		println!("{} //{}", format!("{}{}{}", entry.render(), format!("nom-{}:", n), Reset.render()), seed);
+		println!(
+			"{} //{}",
+			format!("{}{}{}", entry.render(), format!("nom-{}:", n), Reset.render()),
+			seed
+		);
 	}
 
 	println!();
@@ -218,7 +226,11 @@ fn print_seeds(
 	if !endowed_seeds.is_empty() {
 		println!("{}{}{}", header.render(), "Endowed seeds", Reset.render());
 		for (n, seed) in endowed_seeds.iter().enumerate() {
-			println!("{} //{}", format!("{}{}{}", entry.render(), format!("endowed-{}:", n), Reset.render()), seed);
+			println!(
+				"{} //{}",
+				format!("{}{}{}", entry.render(), format!("endowed-{}:", n), Reset.render()),
+				seed
+			);
 		}
 
 		println!();
