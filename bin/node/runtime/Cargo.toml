@@ -89,7 +89,6 @@ pallet-offences = { version = "4.0.0-dev", default-features = false, path = "../
 pallet-offences-benchmarking = { version = "4.0.0-dev", path = "../../../frame/offences/benchmarking", default-features = false, optional = true }
 pallet-glutton = { version = "4.0.0-dev", default-features = false, path = "../../../frame/glutton" }
 pallet-preimage = { version = "4.0.0-dev", default-features = false, path = "../../../frame/preimage" }
-pallet-proxy = { version = "4.0.0-dev", default-features = false, path = "../../../frame/proxy" }
 pallet-insecure-randomness-collective-flip = { version = "4.0.0-dev", default-features = false, path = "../../../frame/insecure-randomness-collective-flip" }
 pallet-ranked-collective = { version = "4.0.0-dev", default-features = false, path = "../../../frame/ranked-collective" }
 pallet-referenda = { version = "4.0.0-dev", default-features = false, path = "../../../frame/referenda" }
@@ -171,7 +170,6 @@ std = [
 	"pallet-offences/std",
 	"pallet-glutton/std",
 	"pallet-preimage/std",
-	"pallet-proxy/std",
 	"sp-core/std",
 	"pallet-insecure-randomness-collective-flip/std",
 	"sp-std/std",
@@ -252,7 +250,6 @@ runtime-benchmarks = [
 	"pallet-offences-benchmarking/runtime-benchmarks",
 	"pallet-glutton/runtime-benchmarks",
 	"pallet-preimage/runtime-benchmarks",
-	"pallet-proxy/runtime-benchmarks",
 	"pallet-scheduler/runtime-benchmarks",
 	"pallet-ranked-collective/runtime-benchmarks",
 	"pallet-referenda/runtime-benchmarks",
@@ -309,7 +306,6 @@ try-runtime = [
 	"pallet-offences/try-runtime",
 	"pallet-glutton/try-runtime",
 	"pallet-preimage/try-runtime",
-	"pallet-proxy/try-runtime",
 	"pallet-insecure-randomness-collective-flip/try-runtime",
 	"pallet-ranked-collective/try-runtime",
 	"pallet-referenda/try-runtime",

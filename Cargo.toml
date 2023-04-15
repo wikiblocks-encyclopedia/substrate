@@ -118,7 +118,6 @@ members = [
 	"frame/offences",
 	"frame/offences/benchmarking",
 	"frame/preimage",
-	"frame/proxy",
 	"frame/message-queue",
 	"frame/nfts",
 	"frame/nfts/runtime-api",
