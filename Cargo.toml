@@ -159,7 +159,6 @@ members = [
 	"frame/treasury",
 	"frame/uniques",
 	"frame/utility",
-	"frame/vesting",
 	"frame/glutton",
 	"frame/whitelist",
 	"primitives/api",

@@ -3674,7 +3674,6 @@ dependencies = [
  "pallet-treasury",
  "pallet-uniques",
  "pallet-utility",
- "pallet-vesting",
  "pallet-whitelist",
  "parity-scale-codec",
  "scale-info",
@@ -6831,23 +6830,6 @@ dependencies = [
  "pallet-collective",
  "pallet-root-testing",
  "pallet-timestamp",
- "parity-scale-codec",
- "scale-info",
- "sp-core",
- "sp-io",
- "sp-runtime",
- "sp-std",
-]
-
-[[package]]
-name = "pallet-vesting"
-version = "4.0.0-dev"
-dependencies = [
- "frame-benchmarking",
- "frame-support",
- "frame-system",
- "log",
- "pallet-balances",
  "parity-scale-codec",
  "scale-info",
  "sp-core",
