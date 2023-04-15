@@ -21,7 +21,7 @@ use std::{
 	path::{Path, PathBuf},
 };
 
-use ansi_term::Style;
+use anstyle::{Style, Reset};
 use clap::Parser;
 use rand::{distributions::Alphanumeric, rngs::OsRng, Rng};
 
@@ -201,30 +201,30 @@ fn print_seeds(
 	let header = Style::new().bold().underline();
 	let entry = Style::new().bold();
 
-	println!("{}", header.paint("Authority seeds"));
+	println!("{}{}{}", header.render(), "Authority seeds", Reset.render());
 
 	for (n, seed) in authority_seeds.iter().enumerate() {
-		println!("{} //{}", entry.paint(format!("auth-{}:", n)), seed);
+		println!("{} //{}", format!("{}{}{}", entry.render(), format!("auth-{}:", n), Reset.render()), seed);
 	}
 
-	println!("{}", header.paint("Nominator seeds"));
+	println!("{}{}{}", header.render(), "Nominator seeds", Reset.render());
 
 	for (n, seed) in nominator_seeds.iter().enumerate() {
-		println!("{} //{}", entry.paint(format!("nom-{}:", n)), seed);
+		println!("{} //{}", format!("{}{}{}", entry.render(), format!("nom-{}:", n), Reset.render()), seed);
 	}
 
 	println!();
 
 	if !endowed_seeds.is_empty() {
-		println!("{}", header.paint("Endowed seeds"));
+		println!("{}{}{}", header.render(), "Endowed seeds", Reset.render());
 		for (n, seed) in endowed_seeds.iter().enumerate() {
-			println!("{} //{}", entry.paint(format!("endowed-{}:", n)), seed);
+			println!("{} //{}", format!("{}{}{}", entry.render(), format!("endowed-{}:", n), Reset.render()), seed);
 		}
 
 		println!();
 	}
 
-	println!("{}", header.paint("Sudo seed"));
+	println!("{}{}{}", header.render(), "Sudo seed", Reset.render());
 	println!("//{}", sudo_seed);
 }
 

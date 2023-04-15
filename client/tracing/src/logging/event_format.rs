@@ -17,7 +17,6 @@
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 use crate::logging::fast_local_time::FastLocalTime;
-use ansi_term::Colour;
 use regex::Regex;
 use std::fmt::{self, Write};
 use tracing::{Event, Level, Subscriber};
@@ -165,14 +164,16 @@ const ERROR_STR: &str = "ERROR";
 
 impl<'a> fmt::Display for FmtLevel<'a> {
 	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+		use anstyle::{AnsiColor, Reset};
 		if self.ansi {
 			match *self.level {
-				Level::TRACE => write!(f, "{}", Colour::Purple.paint(TRACE_STR)),
-				Level::DEBUG => write!(f, "{}", Colour::Blue.paint(DEBUG_STR)),
-				Level::INFO => write!(f, "{}", Colour::Green.paint(INFO_STR)),
-				Level::WARN => write!(f, "{}", Colour::Yellow.paint(WARN_STR)),
-				Level::ERROR => write!(f, "{}", Colour::Red.paint(ERROR_STR)),
+				Level::TRACE => write!(f, "{}{}", AnsiColor::Magenta.on_default().render(), TRACE_STR)?,
+				Level::DEBUG => write!(f, "{}{}", AnsiColor::Blue.on_default().render(), DEBUG_STR)?,
+				Level::INFO => write!(f, "{}{}", AnsiColor::Green.on_default().render(), INFO_STR)?,
+				Level::WARN => write!(f, "{}{}", AnsiColor::Yellow.on_default().render(), WARN_STR)?,
+				Level::ERROR => write!(f, "{}{}", AnsiColor::Red.on_default().render(), ERROR_STR)?,
 			}
+			write!(f, "{}", Reset.render())
 		} else {
 			match *self.level {
 				Level::TRACE => f.pad(TRACE_STR),
@@ -235,7 +236,7 @@ impl<'a> fmt::Display for FmtThreadName<'a> {
 //
 //       https://github.com/tokio-rs/tracing/blob/2f59b32/tracing-subscriber/src/fmt/time/mod.rs#L252
 mod time {
-	use ansi_term::Style;
+	use anstyle::{Style, Reset};
 	use std::fmt;
 	use tracing_subscriber::fmt::time::FormatTime;
 
@@ -244,10 +245,9 @@ mod time {
 		T: FormatTime,
 	{
 		if with_ansi {
-			let style = Style::new().dimmed();
-			write!(writer, "{}", style.prefix())?;
+			write!(writer, "{}", Style::new().dimmed().render())?;
 			timer.format_time(writer)?;
-			write!(writer, "{}", style.suffix())?;
+			write!(writer, "{}", Reset.render())?;
 		} else {
 			timer.format_time(writer)?;
 		}
