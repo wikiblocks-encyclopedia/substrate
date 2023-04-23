@@ -29,7 +29,7 @@ sc-network-sync = { version = "0.10.0-dev", path = "../../network/sync" }
 sc-utils = { version = "4.0.0-dev", path = "../../utils" }
 sp-api = { version = "4.0.0-dev", path = "../../../primitives/api" }
 sp-application-crypto = { version = "7", path = "../../../primitives/application-crypto" }
-sp-arithmetic = { version = "6.0.0", path = "../../../primitives/arithmetic" }
+sp-arithmetic = { version = "6", path = "../../../primitives/arithmetic" }
 sp-blockchain = { version = "4.0.0-dev", path = "../../../primitives/blockchain" }
 sp-consensus = { version = "0.10.0-dev", path = "../../../primitives/consensus/common" }
 sp-consensus-beefy = { version = "4.0.0-dev", path = "../../../primitives/consensus/beefy" }
@@ -46,5 +46,5 @@ sc-block-builder = { version = "0.10.0-dev", path = "../../block-builder" }
 sc-network-test = { version = "0.8.0", path = "../../network/test" }
 sp-consensus-grandpa = { version = "4.0.0-dev", path = "../../../primitives/consensus/grandpa" }
 sp-keyring = { version = "7", path = "../../../primitives/keyring" }
-sp-tracing = { version = "6.0.0", path = "../../../primitives/tracing" }
-substrate-test-runtime-client = { version = "2.0.0", path = "../../../test-utils/runtime/client" }
+sp-tracing = { version = "6", path = "../../../primitives/tracing" }
+substrate-test-runtime-client = { version = "2", path = "../../../test-utils/runtime/client" }

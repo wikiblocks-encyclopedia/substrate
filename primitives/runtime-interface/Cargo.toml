@@ -17,8 +17,8 @@ targets = ["x86_64-unknown-linux-gnu"]
 bytes = { version = "1", default-features = false }
 sp-wasm-interface = { version = "7", path = "../wasm-interface", default-features = false }
 sp-std = { version = "5", default-features = false, path = "../std" }
-sp-tracing = { version = "6.0.0", default-features = false, path = "../tracing" }
-sp-runtime-interface-proc-macro = { version = "6.0.0", path = "proc-macro" }
+sp-tracing = { version = "6", default-features = false, path = "../tracing" }
+sp-runtime-interface-proc-macro = { version = "6", path = "proc-macro" }
 sp-externalities = { version = "0.13.0", default-features = false, path = "../externalities" }
 codec = { package = "parity-scale-codec", version = "3.4.0", default-features = false, features = ["bytes"] }
 static_assertions = "1.1.0"
@@ -27,12 +27,12 @@ sp-storage = { version = "7", default-features = false, path = "../storage" }
 impl-trait-for-tuples = "0.2.2"
 
 [dev-dependencies]
-sp-runtime-interface-test-wasm = { version = "2.0.0", path = "test-wasm" }
-sp-state-machine = { version = "0.13.0", path = "../state-machine" }
+sp-runtime-interface-test-wasm = { version = "2", path = "test-wasm" }
+sp-state-machine = { version = "0.13", path = "../state-machine" }
 sp-core = { version = "7", path = "../core" }
 sp-io = { version = "7", path = "../io" }
-rustversion = "1.0.12"
-trybuild = "1.0.80"
+rustversion = "1"
+trybuild = "1"
 
 [features]
 default = [ "std" ]

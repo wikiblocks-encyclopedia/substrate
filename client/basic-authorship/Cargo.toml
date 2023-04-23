@@ -33,4 +33,4 @@ sp-runtime = { version = "7", path = "../../primitives/runtime" }
 [dev-dependencies]
 parking_lot = "0.12.1"
 sc-transaction-pool = { version = "4.0.0-dev", path = "../transaction-pool" }
-substrate-test-runtime-client = { version = "2.0.0", path = "../../test-utils/runtime/client" }
+substrate-test-runtime-client = { version = "2", path = "../../test-utils/runtime/client" }

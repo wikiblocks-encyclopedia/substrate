@@ -40,7 +40,7 @@ sc-telemetry = { version = "4.0.0-dev", path = "../../telemetry" }
 sc-utils = { version = "4.0.0-dev", path = "../../utils" }
 sp-api = { version = "4.0.0-dev", path = "../../../primitives/api" }
 sp-application-crypto = { version = "7", path = "../../../primitives/application-crypto" }
-sp-arithmetic = { version = "6.0.0", path = "../../../primitives/arithmetic" }
+sp-arithmetic = { version = "6", path = "../../../primitives/arithmetic" }
 sp-blockchain = { version = "4.0.0-dev", path = "../../../primitives/blockchain" }
 sp-consensus = { version = "0.10.0-dev", path = "../../../primitives/consensus/common" }
 sp-core = { version = "7", path = "../../../primitives/core" }
@@ -56,5 +56,5 @@ tokio = "1"
 sc-network = { version = "0.10.0-dev", path = "../../network" }
 sc-network-test = { version = "0.8.0", path = "../../network/test" }
 sp-keyring = { version = "7", path = "../../../primitives/keyring" }
-sp-tracing = { version = "6.0.0", path = "../../../primitives/tracing" }
-substrate-test-runtime-client = { version = "2.0.0", path = "../../../test-utils/runtime/client" }
+sp-tracing = { version = "6", path = "../../../primitives/tracing" }
+substrate-test-runtime-client = { version = "2", path = "../../../test-utils/runtime/client" }

@@ -20,7 +20,7 @@ honggfuzz = "0.5.55"
 num-bigint = "0.4.3"
 num-traits = "0.2.15"
 primitive-types = "0.12.1"
-sp-arithmetic = { version = "6.0.0", path = ".." }
+sp-arithmetic = { version = "6", path = ".." }
 
 [[bin]]
 name = "biguint"

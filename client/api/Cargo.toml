@@ -38,5 +38,5 @@ sp-storage = { version = "7", path = "../../primitives/storage" }
 
 [dev-dependencies]
 thiserror = "1"
-sp-test-primitives = { version = "2.0.0", path = "../../primitives/test-primitives" }
-substrate-test-runtime = { version = "2.0.0", path = "../../test-utils/runtime" }
+sp-test-primitives = { version = "2", path = "../../primitives/test-primitives" }
+substrate-test-runtime = { version = "2", path = "../../test-utils/runtime" }

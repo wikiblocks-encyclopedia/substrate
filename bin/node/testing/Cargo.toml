@@ -20,7 +20,7 @@ log = "0.4"
 tempfile = "3"
 frame-system = { version = "4.0.0-dev", path = "../../../frame/system" }
 node-executor = { version = "3.0.0-dev", path = "../executor" }
-node-primitives = { version = "2.0.0", path = "../primitives" }
+node-primitives = { version = "2", path = "../primitives" }
 kitchensink-runtime = { version = "3.0.0-dev", path = "../runtime" }
 pallet-assets = { version = "4.0.0-dev", path = "../../../frame/assets" }
 pallet-asset-tx-payment = { version = "4.0.0-dev", path = "../../../frame/transaction-payment/asset-tx-payment" }
@@ -44,4 +44,4 @@ sp-io = { version = "7", path = "../../../primitives/io" }
 sp-keyring = { version = "7", path = "../../../primitives/keyring" }
 sp-runtime = { version = "7", path = "../../../primitives/runtime" }
 sp-timestamp = { version = "4.0.0-dev", default-features = false, path = "../../../primitives/timestamp" }
-substrate-test-client = { version = "2.0.0", path = "../../../test-utils/client" }
+substrate-test-client = { version = "2", path = "../../../test-utils/client" }

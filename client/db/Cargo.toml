@@ -27,7 +27,7 @@ parking_lot = "0.12.1"
 sc-client-api = { version = "4.0.0-dev", path = "../api" }
 sc-state-db = { version = "0.10.0-dev", path = "../state-db" }
 schnellru = "0.2.1"
-sp-arithmetic = { version = "6.0.0", path = "../../primitives/arithmetic" }
+sp-arithmetic = { version = "6", path = "../../primitives/arithmetic" }
 sp-blockchain = { version = "4.0.0-dev", path = "../../primitives/blockchain" }
 sp-core = { version = "7", path = "../../primitives/core" }
 sp-database = { version = "4.0.0-dev", path = "../../primitives/database" }
@@ -42,8 +42,8 @@ rand = "0.8.5"
 tempfile = "3"
 quickcheck = { version = "1.0.3", default-features = false }
 kitchensink-runtime = { path = "../../bin/node/runtime" }
-sp-tracing = { version = "6.0.0", path = "../../primitives/tracing" }
-substrate-test-runtime-client = { version = "2.0.0", path = "../../test-utils/runtime/client" }
+sp-tracing = { version = "6", path = "../../primitives/tracing" }
+substrate-test-runtime-client = { version = "2", path = "../../test-utils/runtime/client" }
 array-bytes = "4.2"
 
 [features]

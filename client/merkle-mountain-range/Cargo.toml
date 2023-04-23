@@ -27,6 +27,6 @@ sp-runtime = { version = "7", path = "../../primitives/runtime" }
 [dev-dependencies]
 parking_lot = "0.12.1"
 sc-block-builder = { version = "0.10.0-dev", path = "../block-builder" }
-sp-tracing = { version = "6.0.0", path = "../../primitives/tracing" }
-substrate-test-runtime-client = { version = "2.0.0", path = "../../test-utils/runtime/client" }
+sp-tracing = { version = "6", path = "../../primitives/tracing" }
+substrate-test-runtime-client = { version = "2", path = "../../test-utils/runtime/client" }
 tokio = "1"

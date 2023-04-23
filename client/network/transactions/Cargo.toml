@@ -13,12 +13,12 @@ documentation = "https://docs.rs/sc-network-transactions"
 targets = ["x86_64-unknown-linux-gnu"]
 
 [dependencies]
-array-bytes = "4.2"
+array-bytes = "4"
 codec = { package = "parity-scale-codec", version = "3.4.0", features = ["derive"] }
 futures = "0.3"
 libp2p = "0.50"
 log = "0.4"
-pin-project = "1.0.12"
+pin-project = "1"
 prometheus-endpoint = { package = "substrate-prometheus-endpoint", version = "0.10.0-dev", path = "../../../utils/prometheus" }
 sc-network = { version = "0.10.0-dev", path = "../" }
 sc-network-common = { version = "0.10.0-dev", path = "../common" }

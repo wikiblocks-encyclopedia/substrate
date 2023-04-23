@@ -26,7 +26,7 @@ futures = "0.3"
 [dev-dependencies]
 frame-support = { version = "4.0.0-dev", path = "../../../frame/support" }
 pallet-elections-phragmen = { version = "5.0.0-dev", path = "../../../frame/elections-phragmen" }
-tracing-subscriber = { version = "0.3.16", features = ["env-filter"] }
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 
 [features]
 remote-test = ["frame-support"]

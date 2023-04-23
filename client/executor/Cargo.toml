@@ -37,16 +37,16 @@ sp-wasm-interface = { version = "7", path = "../../primitives/wasm-interface" }
 array-bytes = "4.2"
 assert_matches = "1.5.0"
 wat = "1.0"
-sc-runtime-test = { version = "2.0.0", path = "runtime-test" }
-substrate-test-runtime = { version = "2.0.0", path = "../../test-utils/runtime" }
+sc-runtime-test = { version = "2", path = "runtime-test" }
+substrate-test-runtime = { version = "2", path = "../../test-utils/runtime" }
 sp-state-machine = { version = "0.13.0", path = "../../primitives/state-machine" }
 sp-runtime = { version = "7", path = "../../primitives/runtime" }
 sp-maybe-compressed-blob = { version = "4.1.0-dev", path = "../../primitives/maybe-compressed-blob" }
 sc-tracing = { version = "4.0.0-dev", path = "../tracing" }
-sp-tracing = { version = "6.0.0", path = "../../primitives/tracing" }
+sp-tracing = { version = "6", path = "../../primitives/tracing" }
 tracing-subscriber = "0.2.25"
 paste = "1.0"
-regex = "1.7.3"
+regex = "1.8.1"
 criterion = "0.4.0"
 env_logger = "0.10"
 num_cpus = "1.15.0"

@@ -33,4 +33,4 @@ sp-runtime = { version = "7", path = "../../../primitives/runtime" }
 sp-state-machine = { version = "0.13.0", path = "../../../primitives/state-machine" }
 
 [dev-dependencies]
-sp-test-primitives = { version = "2.0.0", path = "../../../primitives/test-primitives" }
+sp-test-primitives = { version = "2", path = "../../../primitives/test-primitives" }

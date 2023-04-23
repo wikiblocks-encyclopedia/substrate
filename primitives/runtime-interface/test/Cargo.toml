@@ -19,6 +19,6 @@ sc-executor-common = { version = "0.10.0-dev", path = "../../../client/executor/
 sp-io = { version = "7", path = "../../io" }
 sp-runtime = { version = "7", path = "../../runtime" }
 sp-runtime-interface = { version = "7", path = "../" }
-sp-runtime-interface-test-wasm = { version = "2.0.0", path = "../test-wasm" }
-sp-runtime-interface-test-wasm-deprecated = { version = "2.0.0", path = "../test-wasm-deprecated" }
+sp-runtime-interface-test-wasm = { version = "2", path = "../test-wasm" }
+sp-runtime-interface-test-wasm-deprecated = { version = "2", path = "../test-wasm-deprecated" }
 sp-state-machine = { version = "0.13.0", path = "../../state-machine" }

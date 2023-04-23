@@ -17,11 +17,11 @@ anstyle = "1"
 atty = "0.2.14"
 chrono = "0.4.24"
 lazy_static = "1"
-libc = "0.2.141"
+libc = "0.2.142"
 log = { version = "0.4" }
 once_cell = "1.17.1"
 parking_lot = "0.12.1"
-regex = "1.7.3"
+regex = "1.8.1"
 rustc-hash = "1.1.0"
 serde = "1"
 thiserror = "1"
@@ -34,9 +34,9 @@ sc-tracing-proc-macro = { version = "4.0.0-dev", path = "./proc-macro" }
 sp-api = { version = "4.0.0-dev", path = "../../primitives/api" }
 sp-blockchain = { version = "4.0.0-dev", path = "../../primitives/blockchain" }
 sp-core = { version = "7", path = "../../primitives/core" }
-sp-rpc = { version = "6.0.0", path = "../../primitives/rpc" }
+sp-rpc = { version = "6", path = "../../primitives/rpc" }
 sp-runtime = { version = "7", path = "../../primitives/runtime" }
-sp-tracing = { version = "6.0.0", path = "../../primitives/tracing" }
+sp-tracing = { version = "6", path = "../../primitives/tracing" }
 
 [dev-dependencies]
 criterion = "0.4.0"

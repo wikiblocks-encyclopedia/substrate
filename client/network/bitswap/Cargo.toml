@@ -35,5 +35,5 @@ sc-block-builder = { version = "0.10.0-dev", path = "../../block-builder" }
 sc-consensus = { version = "0.10.0-dev", path = "../../consensus/common" }
 sp-core = { version = "7", path = "../../../primitives/core" }
 sp-consensus = { version = "0.10.0-dev", path = "../../../primitives/consensus/common" }
-substrate-test-runtime = { version = "2.0.0", path = "../../../test-utils/runtime" }
-substrate-test-runtime-client = { version = "2.0.0", path = "../../../test-utils/runtime/client" }
+substrate-test-runtime = { version = "2", path = "../../../test-utils/runtime" }
+substrate-test-runtime-client = { version = "2", path = "../../../test-utils/runtime/client" }

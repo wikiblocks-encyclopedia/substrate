@@ -30,7 +30,7 @@ sp-consensus-babe = { version = "0.10.0-dev", default-features = false, path = "
 sp-consensus-grandpa = { version = "4.0.0-dev", default-features = false, path = "../../../primitives/consensus/grandpa" }
 sp-block-builder = { path = "../../../primitives/block-builder", default-features = false, version = "4.0.0-dev" }
 sp-inherents = { version = "4.0.0-dev", default-features = false, path = "../../../primitives/inherents" }
-node-primitives = { version = "2.0.0", default-features = false, path = "../primitives" }
+node-primitives = { version = "2", default-features = false, path = "../primitives" }
 sp-offchain = { version = "4.0.0-dev", default-features = false, path = "../../../primitives/offchain" }
 sp-core = { version = "7", default-features = false, path = "../../../primitives/core" }
 sp-std = { version = "5", default-features = false, path = "../../../primitives/std" }
