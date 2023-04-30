@@ -21,8 +21,8 @@
 use crate::keyring::*;
 use kitchensink_runtime::{
 	constants::currency::*, wasm_binary_unwrap, AccountId, AssetsConfig, BabeConfig,
-	BalancesConfig, GenesisConfig, GrandpaConfig, IndicesConfig, SessionConfig, SocietyConfig,
-	StakerStatus, StakingConfig, SystemConfig, BABE_GENESIS_EPOCH_CONFIG,
+	BalancesConfig, GenesisConfig, GrandpaConfig, IndicesConfig, SessionConfig, StakerStatus,
+	StakingConfig, SystemConfig, BABE_GENESIS_EPOCH_CONFIG,
 };
 use sp_keyring::Sr25519Keyring;
 use sp_runtime::Perbill;
@@ -75,14 +75,11 @@ pub fn config_endowed(code: Option<&[u8]>, extra_endowed: Vec<AccountId>) -> Gen
 		grandpa: GrandpaConfig { authorities: vec![] },
 		im_online: Default::default(),
 		authority_discovery: Default::default(),
-		democracy: Default::default(),
 		council: Default::default(),
 		technical_committee: Default::default(),
 		technical_membership: Default::default(),
 		elections: Default::default(),
 		sudo: Default::default(),
-		treasury: Default::default(),
-		society: SocietyConfig { members: vec![alice(), bob()], pot: 0, max_members: 999 },
 		assets: AssetsConfig { assets: vec![(9, alice(), true, 1)], ..Default::default() },
 		transaction_storage: Default::default(),
 		transaction_payment: Default::default(),

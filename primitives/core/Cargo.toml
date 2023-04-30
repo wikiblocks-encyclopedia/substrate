@@ -48,7 +48,7 @@ blake2 = { version = "0.10", default-features = false, optional = true }
 libsecp256k1 = { version = "0.7", default-features = false, features = ["static-context"], optional = true }
 schnorrkel = { version = "0.10", features = ["preaudit_deprecated", "u64_backend"], default-features = false }
 merlin = { version = "3", default-features = false }
-secp256k1 = { version = "0.24", default-features = false, features = ["recovery", "alloc"], optional = true }
+secp256k1 = { version = "0.27", default-features = false, features = ["recovery", "alloc"], optional = true }
 ss58-registry = { version = "1", default-features = false }
 sp-core-hashing = { version = "5", path = "./hashing", default-features = false, optional = true }
 sp-runtime-interface = { version = "7", default-features = false, path = "../runtime-interface" }

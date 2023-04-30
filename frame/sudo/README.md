@@ -65,13 +65,3 @@ pub mod pallet {
 
 The Sudo module depends on the [`GenesisConfig`](https://docs.rs/pallet-sudo/latest/pallet_sudo/struct.GenesisConfig.html).
 You need to set an initial superuser account as the sudo `key`.
-
-## Related Modules
-
-* [Democracy](https://docs.rs/pallet-democracy/latest/pallet_democracy/)
-
-[`Call`]: ./enum.Call.html
-[`Config`]: ./trait.Config.html
-[`Origin`]: https://docs.substrate.io/main-docs/build/origins/
-
-License: Apache-2.0

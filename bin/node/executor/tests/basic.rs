@@ -30,7 +30,7 @@ use sp_runtime::{
 use kitchensink_runtime::{
 	constants::{currency::*, time::SLOT_DURATION},
 	Balances, CheckedExtrinsic, Header, Runtime, RuntimeCall, RuntimeEvent, System,
-	TransactionPayment, Treasury, UncheckedExtrinsic,
+	TransactionPayment, UncheckedExtrinsic,
 };
 use node_primitives::{Balance, Hash};
 use node_testing::keyring::*;
@@ -374,21 +374,6 @@ fn full_native_block_import_works() {
 			},
 			EventRecord {
 				phase: Phase::ApplyExtrinsic(1),
-				event: RuntimeEvent::Balances(pallet_balances::Event::Deposit {
-					who: pallet_treasury::Pallet::<Runtime>::account_id(),
-					amount: fees * 8 / 10,
-				}),
-				topics: vec![],
-			},
-			EventRecord {
-				phase: Phase::ApplyExtrinsic(1),
-				event: RuntimeEvent::Treasury(pallet_treasury::Event::Deposit {
-					value: fees * 8 / 10,
-				}),
-				topics: vec![],
-			},
-			EventRecord {
-				phase: Phase::ApplyExtrinsic(1),
 				event: RuntimeEvent::TransactionPayment(
 					pallet_transaction_payment::Event::TransactionFeePaid {
 						who: alice().into(),
@@ -410,7 +395,6 @@ fn full_native_block_import_works() {
 	});
 
 	fees = t.execute_with(|| transfer_fee(&xt()));
-	let pot = t.execute_with(|| Treasury::pot());
 
 	executor_call(&mut t, "Core_execute_block", &block2.0, true).0.unwrap();
 
@@ -421,14 +405,6 @@ fn full_native_block_import_works() {
 		);
 		assert_eq!(Balances::total_balance(&bob()), 179 * DOLLARS - fees);
 		let events = vec![
-			EventRecord {
-				phase: Phase::Initialization,
-				event: RuntimeEvent::Treasury(pallet_treasury::Event::UpdatedInactive {
-					reactivated: 0,
-					deactivated: pot,
-				}),
-				topics: vec![],
-			},
 			EventRecord {
 				phase: Phase::ApplyExtrinsic(0),
 				event: RuntimeEvent::System(frame_system::Event::ExtrinsicSuccess {
@@ -454,21 +430,6 @@ fn full_native_block_import_works() {
 					from: bob().into(),
 					to: alice().into(),
 					amount: 5 * DOLLARS,
-				}),
-				topics: vec![],
-			},
-			EventRecord {
-				phase: Phase::ApplyExtrinsic(1),
-				event: RuntimeEvent::Balances(pallet_balances::Event::Deposit {
-					who: pallet_treasury::Pallet::<Runtime>::account_id(),
-					amount: fees * 8 / 10,
-				}),
-				topics: vec![],
-			},
-			EventRecord {
-				phase: Phase::ApplyExtrinsic(1),
-				event: RuntimeEvent::Treasury(pallet_treasury::Event::Deposit {
-					value: fees * 8 / 10,
 				}),
 				topics: vec![],
 			},
@@ -504,21 +465,6 @@ fn full_native_block_import_works() {
 					from: alice().into(),
 					to: bob().into(),
 					amount: 15 * DOLLARS,
-				}),
-				topics: vec![],
-			},
-			EventRecord {
-				phase: Phase::ApplyExtrinsic(2),
-				event: RuntimeEvent::Balances(pallet_balances::Event::Deposit {
-					who: pallet_treasury::Pallet::<Runtime>::account_id(),
-					amount: fees * 8 / 10,
-				}),
-				topics: vec![],
-			},
-			EventRecord {
-				phase: Phase::ApplyExtrinsic(2),
-				event: RuntimeEvent::Treasury(pallet_treasury::Event::Deposit {
-					value: fees * 8 / 10,
 				}),
 				topics: vec![],
 			},

@@ -38,7 +38,6 @@ pallet-im-online = { version = "4.0.0-dev", path = "../../../frame/im-online" }
 pallet-glutton = { version = "4.0.0-dev", path = "../../../frame/glutton" }
 pallet-sudo = { version = "4.0.0-dev", path = "../../../frame/sudo" }
 pallet-timestamp = { version = "4.0.0-dev", path = "../../../frame/timestamp" }
-pallet-treasury = { version = "4.0.0-dev", path = "../../../frame/treasury" }
 pallet-transaction-payment = { version = "4.0.0-dev", path = "../../../frame/transaction-payment" }
 sp-application-crypto = { version = "7", path = "../../../primitives/application-crypto" }
 pallet-root-testing = { version = "1.0.0-dev", path = "../../../frame/root-testing" }
