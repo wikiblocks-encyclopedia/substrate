@@ -24,12 +24,12 @@ hash-db = { version = "0.16", default-features = false }
 hash256-std-hasher = { version = "0.15", default-features = false }
 bs58 = { version = "0.4", default-features = false, optional = true }
 rand = { version = "0.8", features = ["small_rng"],  optional = true }
-substrate-bip39 = { git = "https://github.com/serai-dex/substrate-bip39", version = "0.4", optional = true }
+substrate-bip39 = { version = "0.4", optional = true, git = "https://github.com/serai-dex/substrate-bip39" }
 tiny-bip39 = { version = "1", optional = true }
-regex = { version = "1", optional = true }
-zeroize = { version = "1", default-features = false }
+regex = { version = "1.6", optional = true }
+zeroize = { version = "1.4", default-features = false }
 secrecy = { version = "0.8", default-features = false }
-lazy_static = { version = "1", default-features = false, optional = true }
+lazy_static = { version = "1.4", default-features = false, optional = true }
 parking_lot = { version = "0.12", optional = true }
 sp-std = { version = "5", default-features = false, path = "../std" }
 sp-debug-derive = { version = "5", default-features = false, path = "../debug-derive" }
@@ -39,15 +39,16 @@ futures = { version = "0.3", optional = true }
 dyn-clonable = { version = "0.9", optional = true }
 thiserror = { version = "1", optional = true }
 bitflags = "1"
+paste = "1"
 
 # full crypto
 array-bytes = { version = "4", optional = true }
 ed25519-zebra = { version = "3", default-features = false, optional = true }
 blake2 = { version = "0.10", default-features = false, optional = true }
-schnorrkel = { version = "0.10", features = ["preaudit_deprecated", "u64_backend"], default-features = false, optional = true }
 libsecp256k1 = { version = "0.7", default-features = false, features = ["static-context"], optional = true }
-merlin = { version = "3", default-features = false, optional = true }
-secp256k1 = { version = "0.27", default-features = false, features = ["recovery", "alloc"], optional = true }
+schnorrkel = { version = "0.10", features = ["preaudit_deprecated", "u64_backend"], default-features = false }
+merlin = { version = "3", default-features = false }
+secp256k1 = { version = "0.24", default-features = false, features = ["recovery", "alloc"], optional = true }
 ss58-registry = { version = "1", default-features = false }
 sp-core-hashing = { version = "5", path = "./hashing", default-features = false, optional = true }
 sp-runtime-interface = { version = "7", default-features = false, path = "../runtime-interface" }
@@ -69,7 +70,7 @@ bench = false
 [features]
 default = ["std"]
 std = [
-	"merlin?/std",
+	"merlin/std",
 	"full_crypto",
 	"log/std",
 	"thiserror",
@@ -119,10 +120,8 @@ full_crypto = [
 	"array-bytes",
 	"ed25519-zebra",
 	"blake2",
-	"schnorrkel",
 	"libsecp256k1",
 	"secp256k1",
 	"sp-core-hashing",
 	"sp-runtime-interface/disable_target_static_assertions",
-	"merlin",
 ]

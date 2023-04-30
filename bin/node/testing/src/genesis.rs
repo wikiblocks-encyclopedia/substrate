@@ -86,6 +86,7 @@ pub fn config_endowed(code: Option<&[u8]>, extra_endowed: Vec<AccountId>) -> Gen
 		assets: AssetsConfig { assets: vec![(9, alice(), true, 1)], ..Default::default() },
 		transaction_storage: Default::default(),
 		transaction_payment: Default::default(),
+		alliance_motion: Default::default(),
 		nomination_pools: Default::default(),
 	}
 }

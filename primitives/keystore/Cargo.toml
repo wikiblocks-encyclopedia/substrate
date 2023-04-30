@@ -15,9 +15,7 @@ targets = ["x86_64-unknown-linux-gnu"]
 [dependencies]
 codec = { package = "parity-scale-codec", version = "3.4.0", default-features = false, features = ["derive"] }
 futures = "0.3"
-merlin = { version = "3", default-features = false }
 parking_lot = { version = "0.12", default-features = false }
-schnorrkel = { version = "0.10", default-features = false, features = ["preaudit_deprecated", "u64_backend"] }
 serde = { version = "1", optional = true }
 thiserror = "1"
 sp-core = { version = "7", default-features = false, path = "../core" }
@@ -31,8 +29,6 @@ rand_chacha = "0.3"
 default = ["std"]
 std = [
 	"codec/std",
-	"merlin/std",
-	"schnorrkel/std",
 	"serde",
 	"sp-core/std",
 	"sp-externalities/std",

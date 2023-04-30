@@ -12,6 +12,7 @@ description = "An externalities provided environment that can load itself from r
 targets = ["x86_64-unknown-linux-gnu"]
 
 [dependencies]
+jsonrpsee = { version = "0.16", features = ["http-client"] }
 codec = { package = "parity-scale-codec", version = "3.4.0" }
 log = "0.4"
 serde = "1"
@@ -22,6 +23,7 @@ sp-runtime = { version = "7", path = "../../../primitives/runtime" }
 tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
 substrate-rpc-client = { path = "../rpc/client" }
 futures = "0.3"
+async-recursion = "1.0.4"
 
 [dev-dependencies]
 frame-support = { version = "4.0.0-dev", path = "../../../frame/support" }

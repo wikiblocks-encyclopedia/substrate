@@ -21,10 +21,15 @@ cfg-expr = "0.15"
 itertools = "0.10"
 proc-macro2 = "1"
 quote = "1"
-syn = { version = "1", features = ["full"] }
+syn = { version = "2", features = ["full"] }
 frame-support-procedural-tools = { version = "4.0.0-dev", path = "./tools" }
+proc-macro-warning = { version = "0.3.0", default-features = false }
 
 [features]
 default = ["std"]
 std = []
 no-metadata-docs = []
+# Generate impl-trait for tuples with the given number of tuples. Will be needed as the number of
+# pallets in a runtime grows. Does increase the compile time!
+tuples-96 = []
+tuples-128 = []
