@@ -20,9 +20,8 @@ use std::time::Duration;
 
 use criterion::{criterion_group, criterion_main, BatchSize, Criterion, Throughput};
 use futures::{future, StreamExt};
-use kitchensink_runtime::{constants::currency::*, BalancesCall, SudoCall};
-use node_cli::service::{create_extrinsic, fetch_nonce, FullClient, TransactionPool};
-use node_primitives::AccountId;
+use kitchensink_runtime::{constants::currency::*, BalancesCall};
+use node_cli::service::{create_extrinsic, FullClient, TransactionPool};
 use sc_client_api::execution_extensions::ExecutionStrategies;
 use sc_service::{
 	config::{
@@ -123,9 +122,10 @@ fn create_accounts(num: usize) -> Vec<sr25519::Pair> {
 ///
 /// `start_nonce` is the current nonce of Alice.
 fn create_account_extrinsics(
-	client: &FullClient,
-	accounts: &[sr25519::Pair],
+	_client: &FullClient,
+	_accounts: &[sr25519::Pair],
 ) -> Vec<OpaqueExtrinsic> {
+	/* TODO
 	let start_nonce = fetch_nonce(client, Sr25519Keyring::Alice.pair());
 
 	accounts
@@ -167,6 +167,9 @@ fn create_account_extrinsics(
 		})
 		.map(OpaqueExtrinsic::from)
 		.collect()
+	*/
+
+	todo!()
 }
 
 fn create_benchmark_extrinsics(

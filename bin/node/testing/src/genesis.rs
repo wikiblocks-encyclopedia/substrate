@@ -79,7 +79,6 @@ pub fn config_endowed(code: Option<&[u8]>, extra_endowed: Vec<AccountId>) -> Gen
 		technical_committee: Default::default(),
 		technical_membership: Default::default(),
 		elections: Default::default(),
-		sudo: Default::default(),
 		assets: AssetsConfig { assets: vec![(9, alice(), true, 1)], ..Default::default() },
 		transaction_storage: Default::default(),
 		transaction_payment: Default::default(),

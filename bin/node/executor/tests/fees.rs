@@ -57,6 +57,7 @@ fn fee_multiplier_increases_and_decreases_on_big_weight() {
 				signed: None,
 				function: RuntimeCall::Timestamp(pallet_timestamp::Call::set { now: time1 }),
 			},
+			/* TODO
 			CheckedExtrinsic {
 				signed: Some((charlie(), signed_extra(0, 0))),
 				function: RuntimeCall::Sudo(pallet_sudo::Call::sudo {
@@ -65,9 +66,14 @@ fn fee_multiplier_increases_and_decreases_on_big_weight() {
 					)),
 				}),
 			},
+			*/
 		],
 		(time1 / SLOT_DURATION).into(),
 	);
+
+	if true {
+		todo!()
+	}
 
 	let time2 = 52 * 1000;
 	// small one in terms of weight.

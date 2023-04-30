@@ -23,7 +23,7 @@ use kitchensink_runtime::{
 	constants::currency::*, wasm_binary_unwrap, AuthorityDiscoveryConfig, BabeConfig,
 	BalancesConfig, Block, CouncilConfig, ElectionsConfig, GrandpaConfig, ImOnlineConfig,
 	IndicesConfig, MaxNominations, NominationPoolsConfig, SessionConfig, SessionKeys, StakerStatus,
-	StakingConfig, SudoConfig, SystemConfig, TechnicalCommitteeConfig,
+	StakingConfig, SystemConfig, TechnicalCommitteeConfig,
 };
 use pallet_im_online::sr25519::AuthorityId as ImOnlineId;
 use sc_chain_spec::ChainSpecExtension;
@@ -174,9 +174,9 @@ fn staging_testnet_config_genesis() -> GenesisConfig {
 		"9ee5e5bdc0ec239eb164f865ecc345ce4c88e76ee002e0f7e318097347471809",
 	);
 
-	let endowed_accounts: Vec<AccountId> = vec![root_key.clone()];
+	let endowed_accounts: Vec<AccountId> = vec![root_key];
 
-	testnet_genesis(initial_authorities, vec![], root_key, Some(endowed_accounts))
+	testnet_genesis(initial_authorities, vec![], Some(endowed_accounts))
 }
 
 /// Staging testnet config.
@@ -239,7 +239,6 @@ pub fn testnet_genesis(
 		AuthorityDiscoveryId,
 	)>,
 	initial_nominators: Vec<AccountId>,
-	root_key: AccountId,
 	endowed_accounts: Option<Vec<AccountId>>,
 ) -> GenesisConfig {
 	let mut endowed_accounts: Vec<AccountId> = endowed_accounts.unwrap_or_else(|| {
@@ -336,7 +335,6 @@ pub fn testnet_genesis(
 				.collect(),
 			phantom: Default::default(),
 		},
-		sudo: SudoConfig { key: Some(root_key) },
 		babe: BabeConfig {
 			authorities: vec![],
 			epoch_config: Some(kitchensink_runtime::BABE_GENESIS_EPOCH_CONFIG),
@@ -362,12 +360,7 @@ pub fn testnet_genesis(
 }
 
 fn development_config_genesis() -> GenesisConfig {
-	testnet_genesis(
-		vec![authority_keys_from_seed("Alice")],
-		vec![],
-		get_account_id_from_seed::<sr25519::Public>("Alice"),
-		None,
-	)
+	testnet_genesis(vec![authority_keys_from_seed("Alice")], vec![], None)
 }
 
 /// Development config (single validator Alice)
@@ -390,7 +383,6 @@ fn local_testnet_genesis() -> GenesisConfig {
 	testnet_genesis(
 		vec![authority_keys_from_seed("Alice"), authority_keys_from_seed("Bob")],
 		vec![],
-		get_account_id_from_seed::<sr25519::Public>("Alice"),
 		None,
 	)
 }
@@ -419,12 +411,7 @@ pub(crate) mod tests {
 	use sp_runtime::BuildStorage;
 
 	fn local_testnet_genesis_instant_single() -> GenesisConfig {
-		testnet_genesis(
-			vec![authority_keys_from_seed("Alice")],
-			vec![],
-			get_account_id_from_seed::<sr25519::Public>("Alice"),
-			None,
-		)
+		testnet_genesis(vec![authority_keys_from_seed("Alice")], vec![], None)
 	}
 
 	/// Local testnet config (single validator - Alice)
