@@ -27,7 +27,8 @@ Inflector = "0.11"
 [dev-dependencies]
 assert_matches = "1"
 
-# Required for the doc tests
 [features]
+# Required for the doc tests
 default = ["std"]
 std = []
+no-metadata-docs = []

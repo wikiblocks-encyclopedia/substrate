@@ -24,8 +24,8 @@ sp-state-machine = { version = "0.13.0", path = "../../../primitives/state-machi
 serde = "1"
 serde_json = "1"
 derive_more = { version = "0.99.17", default-features = false, features = ["display"] }
-kvdb = "0.13.0"
-kvdb-rocksdb = "0.18.0"
+kvdb = "0.13"
+kvdb-rocksdb = "0.19.0"
 sp-trie = { version = "7", path = "../../../primitives/trie" }
 sp-core = { version = "7", path = "../../../primitives/core" }
 sp-consensus = { version = "0.10.0-dev", path = "../../../primitives/consensus/common" }

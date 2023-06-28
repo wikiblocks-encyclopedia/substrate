@@ -61,9 +61,9 @@ pub fn config_endowed(code: Option<&[u8]>, extra_endowed: Vec<AccountId>) -> Gen
 		},
 		staking: StakingConfig {
 			stakers: vec![
-				(dave(), alice(), 111 * DOLLARS, StakerStatus::Validator),
-				(eve(), bob(), 100 * DOLLARS, StakerStatus::Validator),
-				(ferdie(), charlie(), 100 * DOLLARS, StakerStatus::Validator),
+				(dave(), dave(), 111 * DOLLARS, StakerStatus::Validator),
+				(eve(), eve(), 100 * DOLLARS, StakerStatus::Validator),
+				(ferdie(), ferdie(), 100 * DOLLARS, StakerStatus::Validator),
 			],
 			validator_count: 3,
 			minimum_validator_count: 0,
@@ -85,5 +85,10 @@ pub fn config_endowed(code: Option<&[u8]>, extra_endowed: Vec<AccountId>) -> Gen
 		transaction_payment: Default::default(),
 		alliance_motion: Default::default(),
 		nomination_pools: Default::default(),
+		glutton: GluttonConfig {
+			compute: Default::default(),
+			storage: Default::default(),
+			trash_data_count: Default::default(),
+		},
 	}
 }

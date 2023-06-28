@@ -19,7 +19,7 @@ codec = { package = "parity-scale-codec", version = "3.4.0", features = [
 hash-db = "0.16"
 kvdb = "0.13"
 kvdb-memorydb = "0.13.0"
-kvdb-rocksdb = { version = "0.18.0", optional = true }
+kvdb-rocksdb = { version = "0.19.0", optional = true }
 linked-hash-map = "0.5"
 log = "0.4"
 parity-db = "0.4"
@@ -37,7 +37,7 @@ sp-trie = { version = "7", path = "../../primitives/trie" }
 
 [dev-dependencies]
 criterion = "0.4"
-kvdb-rocksdb = "0.18"
+kvdb-rocksdb = "0.19"
 rand = "0.8"
 tempfile = "3"
 quickcheck = { version = "1", default-features = false }

@@ -13,12 +13,12 @@ readme = "README.md"
 targets = ["x86_64-unknown-linux-gnu"]
 
 [dependencies]
-array-bytes = "4.2"
+array-bytes = "4"
 chrono = "0.4"
 clap = { version = "4", features = ["derive", "string"] }
 fdlimit = "0.2"
 futures = "0.3"
-libp2p = "0.50"
+libp2p-identity = { version = "0.1", features = ["peerid", "ed25519"]}
 log = "0.4"
 names = { version = "0.14", default-features = false }
 parity-scale-codec = "3.4.0"

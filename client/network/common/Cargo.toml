@@ -16,11 +16,18 @@ targets = ["x86_64-unknown-linux-gnu"]
 prost-build = "0.11"
 
 [dependencies]
+array-bytes = "4"
 async-trait = "0.1"
 bitflags = "1"
-codec = { package = "parity-scale-codec", version = "3.4.0", features = ["derive"] }
+bytes = "1"
+codec = { package = "parity-scale-codec", version = "3.4.0", features = [
+	"derive",
+] }
 futures = "0.3"
-libp2p = { version = "0.50", features = ["request-response", "kad"] }
+futures-timer = "3"
+libp2p-identity = { version = "0.1", features = ["peerid"] }
+prometheus-endpoint = { package = "substrate-prometheus-endpoint", version = "0.10.0-dev", path = "../../../utils/prometheus" }
+smallvec = "1"
 sc-consensus = { version = "0.10.0-dev", path = "../../consensus/common" }
 sc-peerset = { version = "4.0.0-dev", path = "../../peerset" }
 sp-consensus = { version = "0.10.0-dev", path = "../../../primitives/consensus/common" }
