@@ -60,6 +60,7 @@ Development chains:
 
 - Maintain state in a `tmp` folder while the node is running.
 - Use the **Alice** and **Bob** accounts as default validator authorities.
+- Use the **Alice** account as the default `sudo` account.
 - Are preconfigured with a genesis state (`/node/src/chain_spec.rs`) that includes several prefunded development accounts.
 
 

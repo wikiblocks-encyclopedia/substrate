@@ -32,9 +32,10 @@ use frame_support::{
 	pallet_prelude::Get,
 	parameter_types,
 	traits::{
-		tokens::nonfungibles_v2::Inspect, AsEnsureOriginWithArg, ConstBool, ConstU128, ConstU16,
-		ConstU32, Currency, EitherOfDiverse, EqualPrivilegeOnly, Everything, Imbalance,
-		KeyOwnerProofSystem, LockIdentifier, Nothing, OnUnbalanced, U128CurrencyToVote,
+		tokens::nonfungibles_v2::Inspect,
+		AsEnsureOriginWithArg, ConstBool, ConstU128, ConstU16, ConstU32, Currency, EitherOfDiverse,
+		EqualPrivilegeOnly, Everything, Imbalance, KeyOwnerProofSystem, LockIdentifier, Nothing,
+		OnUnbalanced, U128CurrencyToVote,
 	},
 	weights::{
 		constants::{
@@ -85,6 +86,8 @@ pub use frame_system::Call as SystemCall;
 pub use pallet_balances::Call as BalancesCall;
 #[cfg(any(feature = "std", test))]
 pub use pallet_staking::StakerStatus;
+#[cfg(any(feature = "std", test))]
+pub use pallet_sudo::Call as SudoCall;
 #[cfg(any(feature = "std", test))]
 pub use sp_runtime::BuildStorage;
 
@@ -747,42 +750,20 @@ pallet_referenda::impl_tracksinfo_get!(TracksInfo, Balance, BlockNumber);
 
 #[derive(Encode, Decode, Clone, PartialEq, Eq, sp_core::RuntimeDebug, TypeInfo, MaxEncodedLen)]
 pub struct TodoVoteTally;
-impl frame_support::traits::VoteTally<u64, pallet_referenda::TrackIdOf<Runtime, ()>>
-	for TodoVoteTally
-{
-	fn new(_class: pallet_referenda::TrackIdOf<Runtime, ()>) -> Self {
-		todo!()
-	}
-	fn ayes(&self, _class: pallet_referenda::TrackIdOf<Runtime, ()>) -> u64 {
-		todo!()
-	}
-	fn support(&self, _class: pallet_referenda::TrackIdOf<Runtime, ()>) -> Perbill {
-		todo!()
-	}
-	fn approval(&self, _class: pallet_referenda::TrackIdOf<Runtime, ()>) -> Perbill {
-		todo!()
-	}
+impl frame_support::traits::VoteTally<u64, pallet_referenda::TrackIdOf<Runtime, ()>> for TodoVoteTally {
+  fn new(_class: pallet_referenda::TrackIdOf<Runtime, ()>) -> Self { todo!() }
+  fn ayes(&self, _class: pallet_referenda::TrackIdOf<Runtime, ()>) -> u64 { todo!() }
+  fn support(&self, _class: pallet_referenda::TrackIdOf<Runtime, ()>) -> Perbill { todo!() }
+  fn approval(&self, _class: pallet_referenda::TrackIdOf<Runtime, ()>) -> Perbill { todo!() }
 
-	#[cfg(feature = "runtime-benchmarks")]
-	fn unanimity(_: pallet_referenda::TrackIdOf<Runtime, ()>) -> Self {
-		todo!()
-	}
-	#[cfg(feature = "runtime-benchmarks")]
-	fn rejection(_: pallet_referenda::TrackIdOf<Runtime, ()>) -> Self {
-		todo!()
-	}
-	#[cfg(feature = "runtime-benchmarks")]
-	fn from_requirements(
-		_: Perbill,
-		_: Perbill,
-		_: pallet_referenda::TrackIdOf<Runtime, ()>,
-	) -> Self {
-		todo!()
-	}
-	#[cfg(feature = "runtime-benchmarks")]
-	fn setup(_: pallet_referenda::TrackIdOf<Runtime, ()>, _: Perbill) {
-		todo!()
-	}
+  #[cfg(feature = "runtime-benchmarks")]
+  fn unanimity(_: pallet_referenda::TrackIdOf<Runtime, ()>) -> Self { todo!() }
+  #[cfg(feature = "runtime-benchmarks")]
+  fn rejection(_: pallet_referenda::TrackIdOf<Runtime, ()>) -> Self { todo!() }
+  #[cfg(feature = "runtime-benchmarks")]
+  fn from_requirements(_: Perbill, _: Perbill, _: pallet_referenda::TrackIdOf<Runtime, ()>) -> Self { todo!() }
+  #[cfg(feature = "runtime-benchmarks")]
+  fn setup(_: pallet_referenda::TrackIdOf<Runtime, ()>, _: Perbill) { todo!() }
 }
 
 impl pallet_referenda::Config for Runtime {
@@ -982,6 +963,11 @@ impl pallet_contracts::Config for Runtime {
 	type MaxStorageKeyLen = ConstU32<128>;
 	type UnsafeUnstableInterface = ConstBool<false>;
 	type MaxDebugBufferLen = ConstU32<{ 2 * 1024 * 1024 }>;
+}
+
+impl pallet_sudo::Config for Runtime {
+	type RuntimeEvent = RuntimeEvent;
+	type RuntimeCall = RuntimeCall;
 }
 
 parameter_types! {
@@ -1286,6 +1272,7 @@ construct_runtime!(
 		TechnicalMembership: pallet_membership::<Instance1>,
 		Grandpa: pallet_grandpa,
 		Contracts: pallet_contracts,
+		Sudo: pallet_sudo,
 		ImOnline: pallet_im_online,
 		AuthorityDiscovery: pallet_authority_discovery,
 		Offences: pallet_offences,

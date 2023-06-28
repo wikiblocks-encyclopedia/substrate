@@ -91,6 +91,7 @@ pallet-staking-reward-curve = { version = "4.0.0-dev", default-features = false,
 pallet-staking-runtime-api = { version = "4.0.0-dev", default-features = false, path = "../../../frame/staking/runtime-api" }
 pallet-state-trie-migration = { version = "4.0.0-dev", default-features = false, path = "../../../frame/state-trie-migration" }
 pallet-scheduler = { version = "4.0.0-dev", default-features = false, path = "../../../frame/scheduler" }
+pallet-sudo = { version = "4.0.0-dev", default-features = false, path = "../../../frame/sudo" }
 pallet-timestamp = { version = "4.0.0-dev", default-features = false, path = "../../../frame/timestamp" }
 pallet-utility = { version = "4.0.0-dev", default-features = false, path = "../../../frame/utility" }
 pallet-transaction-payment = { version = "4.0.0-dev", default-features = false, path = "../../../frame/transaction-payment" }
@@ -159,6 +160,7 @@ std = [
 	"pallet-staking-runtime-api/std",
 	"pallet-state-trie-migration/std",
 	"sp-session/std",
+	"pallet-sudo/std",
 	"frame-support/std",
 	"frame-benchmarking/std",
 	"frame-benchmarking-pallet-pov/std",
@@ -258,6 +260,7 @@ try-runtime = [
 	"pallet-staking/try-runtime",
 	"pallet-state-trie-migration/try-runtime",
 	"pallet-scheduler/try-runtime",
+	"pallet-sudo/try-runtime",
 	"pallet-timestamp/try-runtime",
 	"pallet-utility/try-runtime",
 	"pallet-transaction-payment/try-runtime",
