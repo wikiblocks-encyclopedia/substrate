@@ -710,11 +710,11 @@ pub mod vrf {
 
 			let proof = self.0.dleq_proove(extra, &inout, true).0;
 
-			VrfSignature { output: VrfOutput(inout.to_output()), proof: VrfProof(proof) }
+			VrfSignature { output: VrfOutput(inout.to_preout()), proof: VrfProof(proof) }
 		}
 
 		fn vrf_output(&self, input: &Self::VrfInput) -> Self::VrfOutput {
-			let output = self.0.vrf_create_hash(input.0.clone()).to_output();
+			let output = self.0.vrf_create_hash(input.0.clone()).to_preout();
 			VrfOutput(output)
 		}
 	}
@@ -1132,7 +1132,7 @@ mod tests {
 			})
 			.unwrap();
 		let signature2 =
-			VrfSignature { output: VrfOutput(inout.to_output()), proof: VrfProof(proof) };
+			VrfSignature { output: VrfOutput(inout.to_preout()), proof: VrfProof(proof) };
 
 		assert!(public.vrf_verify(&data, &signature2));
 		assert_eq!(signature.output, signature2.output);
