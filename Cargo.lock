@@ -9567,9 +9567,9 @@ name = "sc-tracing"
 version = "4.0.0-dev"
 dependencies = [
  "anstyle",
- "atty",
  "chrono",
  "criterion",
+ "is-terminal",
  "lazy_static",
  "libc",
  "log",
