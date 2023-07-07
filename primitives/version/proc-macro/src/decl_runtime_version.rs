@@ -58,7 +58,6 @@ fn decl_runtime_version_impl_inner(item: ItemConst) -> Result<TokenStream> {
 struct RuntimeVersion {
 	spec_name: String,
 	impl_name: String,
-	authoring_version: u32,
 	spec_version: u32,
 	impl_version: u32,
 	apis: u8,
@@ -70,7 +69,6 @@ struct RuntimeVersion {
 struct ParseRuntimeVersion {
 	spec_name: Option<String>,
 	impl_name: Option<String>,
-	authoring_version: Option<u32>,
 	spec_version: Option<u32>,
 	impl_version: Option<u32>,
 	transaction_version: Option<u32>,
@@ -116,8 +114,6 @@ impl ParseRuntimeVersion {
 			parse_once(&mut self.spec_name, field_value, Self::parse_str_literal)?;
 		} else if field_name == "impl_name" {
 			parse_once(&mut self.impl_name, field_value, Self::parse_str_literal)?;
-		} else if field_name == "authoring_version" {
-			parse_once(&mut self.authoring_version, field_value, Self::parse_num_literal)?;
 		} else if field_name == "spec_version" {
 			parse_once(&mut self.spec_version, field_value, Self::parse_num_literal)?;
 		} else if field_name == "impl_version" {
@@ -194,7 +190,6 @@ impl ParseRuntimeVersion {
 		let Self {
 			spec_name,
 			impl_name,
-			authoring_version,
 			spec_version,
 			impl_version,
 			transaction_version,
@@ -204,7 +199,6 @@ impl ParseRuntimeVersion {
 		Ok(RuntimeVersion {
 			spec_name: required!(spec_name),
 			impl_name: required!(impl_name),
-			authoring_version: required!(authoring_version),
 			spec_version: required!(spec_version),
 			impl_version: required!(impl_version),
 			transaction_version: required!(transaction_version),
@@ -235,7 +229,6 @@ mod tests {
 		let version_bytes = RuntimeVersion {
 			spec_name: "hello".to_string(),
 			impl_name: "world".to_string(),
-			authoring_version: 10,
 			spec_version: 265,
 			impl_version: 1,
 			apis: 0,
@@ -250,7 +243,6 @@ mod tests {
 			sp_version::RuntimeVersion {
 				spec_name: "hello".into(),
 				impl_name: "world".into(),
-				authoring_version: 10,
 				spec_version: 265,
 				impl_version: 1,
 				apis: Cow::Owned(vec![]),

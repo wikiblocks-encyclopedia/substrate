@@ -32,10 +32,9 @@ use frame_support::{
 	pallet_prelude::Get,
 	parameter_types,
 	traits::{
-		tokens::nonfungibles_v2::Inspect,
-		AsEnsureOriginWithArg, ConstBool, ConstU128, ConstU16, ConstU32, Currency, EitherOfDiverse,
-		EqualPrivilegeOnly, Everything, Imbalance, KeyOwnerProofSystem, LockIdentifier, Nothing,
-		OnUnbalanced, U128CurrencyToVote,
+		tokens::nonfungibles_v2::Inspect, AsEnsureOriginWithArg, ConstBool, ConstU128, ConstU16,
+		ConstU32, Currency, EitherOfDiverse, EqualPrivilegeOnly, Everything, Imbalance,
+		KeyOwnerProofSystem, LockIdentifier, Nothing, OnUnbalanced, U128CurrencyToVote,
 	},
 	weights::{
 		constants::{
@@ -130,7 +129,6 @@ pub fn wasm_binary_unwrap() -> &'static [u8] {
 pub const VERSION: RuntimeVersion = RuntimeVersion {
 	spec_name: create_runtime_str!("node"),
 	impl_name: create_runtime_str!("substrate-node"),
-	authoring_version: 10,
 	// Per convention: if the runtime behavior changes, increment spec_version
 	// and set impl_version to 0. If only runtime
 	// implementation changes and behavior does not, then leave spec_version as
@@ -760,20 +758,42 @@ pallet_referenda::impl_tracksinfo_get!(TracksInfo, Balance, BlockNumber);
 
 #[derive(Encode, Decode, Clone, PartialEq, Eq, sp_core::RuntimeDebug, TypeInfo, MaxEncodedLen)]
 pub struct TodoVoteTally;
-impl frame_support::traits::VoteTally<u64, pallet_referenda::TrackIdOf<Runtime, ()>> for TodoVoteTally {
-  fn new(_class: pallet_referenda::TrackIdOf<Runtime, ()>) -> Self { todo!() }
-  fn ayes(&self, _class: pallet_referenda::TrackIdOf<Runtime, ()>) -> u64 { todo!() }
-  fn support(&self, _class: pallet_referenda::TrackIdOf<Runtime, ()>) -> Perbill { todo!() }
-  fn approval(&self, _class: pallet_referenda::TrackIdOf<Runtime, ()>) -> Perbill { todo!() }
+impl frame_support::traits::VoteTally<u64, pallet_referenda::TrackIdOf<Runtime, ()>>
+	for TodoVoteTally
+{
+	fn new(_class: pallet_referenda::TrackIdOf<Runtime, ()>) -> Self {
+		todo!()
+	}
+	fn ayes(&self, _class: pallet_referenda::TrackIdOf<Runtime, ()>) -> u64 {
+		todo!()
+	}
+	fn support(&self, _class: pallet_referenda::TrackIdOf<Runtime, ()>) -> Perbill {
+		todo!()
+	}
+	fn approval(&self, _class: pallet_referenda::TrackIdOf<Runtime, ()>) -> Perbill {
+		todo!()
+	}
 
-  #[cfg(feature = "runtime-benchmarks")]
-  fn unanimity(_: pallet_referenda::TrackIdOf<Runtime, ()>) -> Self { todo!() }
-  #[cfg(feature = "runtime-benchmarks")]
-  fn rejection(_: pallet_referenda::TrackIdOf<Runtime, ()>) -> Self { todo!() }
-  #[cfg(feature = "runtime-benchmarks")]
-  fn from_requirements(_: Perbill, _: Perbill, _: pallet_referenda::TrackIdOf<Runtime, ()>) -> Self { todo!() }
-  #[cfg(feature = "runtime-benchmarks")]
-  fn setup(_: pallet_referenda::TrackIdOf<Runtime, ()>, _: Perbill) { todo!() }
+	#[cfg(feature = "runtime-benchmarks")]
+	fn unanimity(_: pallet_referenda::TrackIdOf<Runtime, ()>) -> Self {
+		todo!()
+	}
+	#[cfg(feature = "runtime-benchmarks")]
+	fn rejection(_: pallet_referenda::TrackIdOf<Runtime, ()>) -> Self {
+		todo!()
+	}
+	#[cfg(feature = "runtime-benchmarks")]
+	fn from_requirements(
+		_: Perbill,
+		_: Perbill,
+		_: pallet_referenda::TrackIdOf<Runtime, ()>,
+	) -> Self {
+		todo!()
+	}
+	#[cfg(feature = "runtime-benchmarks")]
+	fn setup(_: pallet_referenda::TrackIdOf<Runtime, ()>, _: Perbill) {
+		todo!()
+	}
 }
 
 impl pallet_referenda::Config for Runtime {

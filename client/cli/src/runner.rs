@@ -244,7 +244,6 @@ mod tests {
 			const VERSION: sp_version::RuntimeVersion = sp_version::RuntimeVersion {
 				spec_name: create_runtime_str!("spec"),
 				impl_name: create_runtime_str!("name"),
-				authoring_version: 0,
 				spec_version: 0,
 				impl_version: 0,
 				apis: create_apis_vec!([]),

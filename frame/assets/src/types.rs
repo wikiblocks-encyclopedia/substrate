@@ -184,11 +184,13 @@ pub struct AssetAccount<Balance, DepositBalance, Extra, AccountId> {
 	pub extra: Extra,
 }
 
-impl<Balance: Copy, DepositBalance, Extra, AccountId> AssetAccount<Balance, DepositBalance, Extra, AccountId> {
-  /// Directly access the underlying balance of an account, irrelevant of status.
-  pub fn balance(&self) -> Balance {
-	self.balance
-  }
+impl<Balance: Copy, DepositBalance, Extra, AccountId>
+	AssetAccount<Balance, DepositBalance, Extra, AccountId>
+{
+	/// Directly access the underlying balance of an account, irrelevant of status.
+	pub fn balance(&self) -> Balance {
+		self.balance
+	}
 }
 
 #[derive(Clone, Encode, Decode, Eq, PartialEq, Default, RuntimeDebug, MaxEncodedLen, TypeInfo)]
