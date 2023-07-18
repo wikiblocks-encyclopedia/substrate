@@ -21,9 +21,9 @@ proc-macro2 = "1"
 proc-macro-crate = "1"
 
 [dev-dependencies]
-parity-scale-codec = "3.4.0"
-scale-info = "2.5.0"
-sp-arithmetic = { version = "6", path = "../../../primitives/arithmetic" }
+parity-scale-codec = "3"
+scale-info = "2"
+sp-arithmetic = { version = "16", path = "../../../primitives/arithmetic" }
 # used by generate_solution_type:
 frame-election-provider-support = { version = "4.0.0-dev", path = ".." }
 frame-support = { version = "4.0.0-dev", path = "../../support" }

@@ -4,7 +4,7 @@ version = "3.0.0-dev"
 authors = ["Parity Technologies <admin@parity.io>"]
 description = "Substrate node implementation in Rust."
 edition = "2021"
-license = "Apache-2.0"
+license = "Apache-2"
 homepage = "https://substrate.io"
 repository = "https://github.com/paritytech/substrate/"
 publish = false
@@ -13,23 +13,23 @@ publish = false
 targets = ["x86_64-unknown-linux-gnu"]
 
 [dependencies]
-codec = { package = "parity-scale-codec", version = "3.4.0" }
-scale-info = { version = "2.5.0", features = ["derive"] }
+codec = { package = "parity-scale-codec", version = "3" }
+scale-info = { version = "2.5", features = ["derive"] }
 frame-benchmarking = { version = "4.0.0-dev", path = "../../../frame/benchmarking" }
 node-primitives = { version = "2", path = "../primitives" }
 kitchensink-runtime = { version = "3.0.0-dev", path = "../runtime" }
 sc-executor = { version = "0.10.0-dev", path = "../../../client/executor" }
-sp-core = { version = "7", path = "../../../primitives/core" }
-sp-keystore = { version = "0.13.0", path = "../../../primitives/keystore" }
-sp-state-machine = { version = "0.13.0", path = "../../../primitives/state-machine" }
-sp-tracing = { version = "6", path = "../../../primitives/tracing" }
-sp-trie = { version = "7", path = "../../../primitives/trie" }
+sp-core = { version = "21", path = "../../../primitives/core" }
+sp-keystore = { version = "0.27", path = "../../../primitives/keystore" }
+sp-state-machine = { version = "0.28", path = "../../../primitives/state-machine" }
+sp-tracing = { version = "10", path = "../../../primitives/tracing" }
+sp-trie = { version = "22", path = "../../../primitives/trie" }
 sp-statement-store = { version = "4.0.0-dev", path = "../../../primitives/statement-store" }
 
 [dev-dependencies]
-criterion = "0.4.0"
+criterion = "0.4"
 futures = "0.3"
-wat = "1.0"
+wat = "1"
 frame-support = { version = "4.0.0-dev", path = "../../../frame/support" }
 frame-system = { version = "4.0.0-dev", path = "../../../frame/system" }
 node-testing = { version = "3.0.0-dev", path = "../testing" }
@@ -40,12 +40,12 @@ pallet-glutton = { version = "4.0.0-dev", path = "../../../frame/glutton" }
 pallet-sudo = { version = "4.0.0-dev", path = "../../../frame/sudo" }
 pallet-timestamp = { version = "4.0.0-dev", path = "../../../frame/timestamp" }
 pallet-transaction-payment = { version = "4.0.0-dev", path = "../../../frame/transaction-payment" }
-sp-application-crypto = { version = "7", path = "../../../primitives/application-crypto" }
+sp-application-crypto = { version = "23", path = "../../../primitives/application-crypto" }
 pallet-root-testing = { version = "1.0.0-dev", path = "../../../frame/root-testing" }
 sp-consensus-babe = { version = "0.10.0-dev", path = "../../../primitives/consensus/babe" }
-sp-externalities = { version = "0.13.0", path = "../../../primitives/externalities" }
-sp-keyring = { version = "7", path = "../../../primitives/keyring" }
-sp-runtime = { version = "7", path = "../../../primitives/runtime" }
+sp-externalities = { version = "0.19", path = "../../../primitives/externalities" }
+sp-keyring = { version = "24", path = "../../../primitives/keyring" }
+sp-runtime = { version = "24", path = "../../../primitives/runtime" }
 
 [features]
 stress-test = []

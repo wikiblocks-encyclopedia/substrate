@@ -1,6 +1,6 @@
 [package]
 name = "sp-core"
-version = "7.0.0"
+version = "21.0.0"
 authors = ["Parity Technologies <admin@parity.io>"]
 edition = "2021"
 license = "Apache-2.0"
@@ -13,8 +13,8 @@ documentation = "https://docs.rs/sp-core"
 targets = ["x86_64-unknown-linux-gnu"]
 
 [dependencies]
-codec = { package = "parity-scale-codec", version = "3.4.0", default-features = false, features = ["derive","max-encoded-len"] }
-scale-info = { version = "2.5.0", default-features = false, features = ["derive"] }
+codec = { package = "parity-scale-codec", version = "3", default-features = false, features = ["derive","max-encoded-len"] }
+scale-info = { version = "2", default-features = false, features = ["derive"] }
 log = { version = "0.4", default-features = false }
 serde = { version = "1", optional = true,  default-features = false, features = ["derive", "alloc"] }
 bounded-collections = { version = "0.1", default-features = false }
@@ -26,32 +26,33 @@ bs58 = { version = "0.4", default-features = false, optional = true }
 rand = { version = "0.8", features = ["small_rng"],  optional = true }
 substrate-bip39 = { version = "0.4", git = "https://github.com/serai-dex/substrate-bip39", optional = true }
 tiny-bip39 = { version = "1", optional = true }
-regex = { version = "1.6", optional = true }
-zeroize = { version = "1.4", default-features = false }
+regex = { version = "1", optional = true }
+zeroize = { version = "1", default-features = false }
 secrecy = { version = "0.8", default-features = false }
-lazy_static = { version = "1.4", default-features = false, optional = true }
+lazy_static = { version = "1", default-features = false, optional = true }
 parking_lot = { version = "0.12", optional = true }
 ss58-registry = { version = "1.34", default-features = false }
-sp-std = { version = "5", default-features = false, path = "../std" }
-sp-debug-derive = { version = "5", default-features = false, path = "../debug-derive" }
-sp-storage = { version = "7", default-features = false, path = "../storage" }
-sp-externalities = { version = "0.13", optional = true, path = "../externalities" }
+sp-std = { version = "8", default-features = false, path = "../std" }
+sp-debug-derive = { version = "8", default-features = false, path = "../debug-derive" }
+sp-storage = { version = "13", default-features = false, path = "../storage" }
+sp-externalities = { version = "0.19", optional = true, path = "../externalities" }
 futures = { version = "0.3", optional = true }
 dyn-clonable = { version = "0.9", optional = true }
 thiserror = { version = "1", optional = true }
+tracing = { version = "0.1", optional = true }
 bitflags = "1"
 paste = "1"
 
 # full crypto
-array-bytes = { version = "4", optional = true }
+array-bytes = { version = "6", optional = true }
 ed25519-zebra = { version = "3", default-features = false, optional = true }
 blake2 = { version = "0.10", default-features = false, optional = true }
 libsecp256k1 = { version = "0.7", default-features = false, features = ["static-context"], optional = true }
 schnorrkel = { version = "0.10", features = ["preaudit_deprecated", "u64_backend"], default-features = false }
 merlin = { version = "3", default-features = false }
 secp256k1 = { version = "0.27", default-features = false, features = ["recovery", "alloc"], optional = true }
-sp-core-hashing = { version = "5", path = "./hashing", default-features = false, optional = true }
-sp-runtime-interface = { version = "7", default-features = false, path = "../runtime-interface" }
+sp-core-hashing = { version = "9", path = "./hashing", default-features = false, optional = true }
+sp-runtime-interface = { version = "17", default-features = false, path = "../runtime-interface" }
 # bls crypto
 w3f-bls = { version = "0.1", default-features = false, optional = true}
 
@@ -59,7 +60,7 @@ w3f-bls = { version = "0.1", default-features = false, optional = true}
 rand = "0.8"
 criterion = "0.4"
 serde_json = "1"
-sp-core-hashing-proc-macro = { version = "5", path = "./hashing/proc-macro" }
+sp-core-hashing-proc-macro = { version = "9", path = "./hashing/proc-macro" }
 hex-literal = "0.3"
 
 [[bench]]
@@ -113,6 +114,7 @@ std = [
 	"futures/thread-pool",
 	"libsecp256k1/std",
 	"dyn-clonable",
+	"tracing",
 ]
 
 # Serde support without relying on std features.
@@ -120,6 +122,7 @@ serde = [
 	"dep:serde",
 	"array-bytes",
 	"blake2",
+	"bounded-collections/serde",
 	"bs58/alloc",
 	"scale-info/serde",
 	"secrecy/alloc",

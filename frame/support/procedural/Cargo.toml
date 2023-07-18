@@ -23,7 +23,9 @@ proc-macro2 = "1"
 quote = "1"
 syn = { version = "2", features = ["full"] }
 frame-support-procedural-tools = { version = "4.0.0-dev", path = "./tools" }
-proc-macro-warning = { version = "0.3.0", default-features = false }
+proc-macro-warning = { version = "0.4.1", default-features = false }
+macro_magic = { version = "0.4.1", features = ["proc_support"] }
+expander = "2.0.0"
 
 [features]
 default = ["std"]

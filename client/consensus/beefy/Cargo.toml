@@ -9,10 +9,10 @@ description = "BEEFY Client gadget for substrate"
 homepage = "https://substrate.io"
 
 [dependencies]
-array-bytes = "4.2"
+array-bytes = "6"
 async-channel = "1"
 async-trait = "0.1"
-codec = { package = "parity-scale-codec", version = "3.4.0", features = ["derive"] }
+codec = { package = "parity-scale-codec", version = "3", features = ["derive"] }
 fnv = "1"
 futures = "0.3"
 log = "0.4"
@@ -23,28 +23,27 @@ prometheus = { package = "substrate-prometheus-endpoint", version = "0.10.0-dev"
 sc-client-api = { version = "4.0.0-dev", path = "../../api" }
 sc-consensus = { version = "0.10.0-dev", path = "../../consensus/common" }
 sc-network = { version = "0.10.0-dev", path = "../../network" }
-sc-network-common = { version = "0.10.0-dev", path = "../../network/common" }
 sc-network-gossip = { version = "0.10.0-dev", path = "../../network-gossip" }
 sc-network-sync = { version = "0.10.0-dev", path = "../../network/sync" }
 sc-utils = { version = "4.0.0-dev", path = "../../utils" }
 sp-api = { version = "4.0.0-dev", path = "../../../primitives/api" }
-sp-application-crypto = { version = "7", path = "../../../primitives/application-crypto" }
-sp-arithmetic = { version = "6", path = "../../../primitives/arithmetic" }
+sp-application-crypto = { version = "23", path = "../../../primitives/application-crypto" }
+sp-arithmetic = { version = "16", path = "../../../primitives/arithmetic" }
 sp-blockchain = { version = "4.0.0-dev", path = "../../../primitives/blockchain" }
 sp-consensus = { version = "0.10.0-dev", path = "../../../primitives/consensus/common" }
 sp-consensus-beefy = { version = "4.0.0-dev", path = "../../../primitives/consensus/beefy" }
-sp-core = { version = "7", path = "../../../primitives/core" }
-sp-keystore = { version = "0.13.0", path = "../../../primitives/keystore" }
+sp-core = { version = "21", path = "../../../primitives/core" }
+sp-keystore = { version = "0.27", path = "../../../primitives/keystore" }
 sp-mmr-primitives = { version = "4.0.0-dev", path = "../../../primitives/merkle-mountain-range" }
-sp-runtime = { version = "7", path = "../../../primitives/runtime" }
+sp-runtime = { version = "24", path = "../../../primitives/runtime" }
 
 [dev-dependencies]
 serde = "1"
 tempfile = "3"
 tokio = "1"
 sc-block-builder = { version = "0.10.0-dev", path = "../../block-builder" }
-sc-network-test = { version = "0.8.0", path = "../../network/test" }
+sc-network-test = { version = "0.8", path = "../../network/test" }
 sp-consensus-grandpa = { version = "4.0.0-dev", path = "../../../primitives/consensus/grandpa" }
-sp-keyring = { version = "7", path = "../../../primitives/keyring" }
-sp-tracing = { version = "6", path = "../../../primitives/tracing" }
+sp-keyring = { version = "24", path = "../../../primitives/keyring" }
+sp-tracing = { version = "10", path = "../../../primitives/tracing" }
 substrate-test-runtime-client = { version = "2", path = "../../../test-utils/runtime/client" }

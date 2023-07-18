@@ -10,14 +10,14 @@ description = "I/O for Substrate runtimes"
 readme = "README.md"
 
 [dependencies]
-async-channel = "1.8.0"
+async-channel = "1"
 futures = "0.3"
 futures-timer = "3"
 lazy_static = "1"
 log = "0.4"
-parking_lot = "0.12.1"
-prometheus = { version = "0.13.3", default-features = false }
-sp-arithmetic = { version = "6", default-features = false, path = "../../primitives/arithmetic" }
+parking_lot = "0.12"
+prometheus = { version = "0.13", default-features = false }
+sp-arithmetic = { version = "16", default-features = false, path = "../../primitives/arithmetic" }
 
 [features]
 default = ["metered"]

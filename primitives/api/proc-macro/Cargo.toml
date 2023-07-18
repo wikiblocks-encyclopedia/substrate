@@ -21,7 +21,7 @@ syn = { version = "2", features = ["full", "fold", "extra-traits", "visit"] }
 proc-macro2 = "1"
 blake2 = { version = "0.10", default-features = false }
 proc-macro-crate = "1"
-expander = "1"
+expander = "2"
 Inflector = "0.11"
 
 [dev-dependencies]
@@ -32,3 +32,4 @@ assert_matches = "1"
 default = ["std"]
 std = []
 no-metadata-docs = []
+frame-metadata = []

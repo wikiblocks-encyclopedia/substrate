@@ -359,15 +359,26 @@ pub trait Hooks<BlockNumber> {
 	fn integrity_test() {}
 }
 
+/// A trait to define the build function of a genesis config for both runtime and pallets.
+///
+/// Replaces deprecated [`GenesisBuild<T,I>`].
+pub trait BuildGenesisConfig: Default + sp_runtime::traits::MaybeSerializeDeserialize {
+	/// The build function puts initial `GenesisConfig` keys/values pairs into the storage.
+	fn build(&self);
+}
+
 /// A trait to define the build function of a genesis config, T and I are placeholder for pallet
 /// trait and pallet instance.
-#[cfg(feature = "std")]
+#[deprecated(
+	note = "GenesisBuild is planned to be removed in December 2023. Use BuildGenesisConfig instead of it."
+)]
 pub trait GenesisBuild<T, I = ()>: Default + sp_runtime::traits::MaybeSerializeDeserialize {
 	/// The build function is called within an externalities allowing storage APIs.
 	/// Thus one can write to storage using regular pallet storages.
 	fn build(&self);
 
 	/// Build the storage using `build` inside default storage.
+	#[cfg(feature = "std")]
 	fn build_storage(&self) -> Result<sp_runtime::Storage, String> {
 		let mut storage = Default::default();
 		self.assimilate_storage(&mut storage)?;
@@ -375,6 +386,7 @@ pub trait GenesisBuild<T, I = ()>: Default + sp_runtime::traits::MaybeSerializeD
 	}
 
 	/// Assimilate the storage for this module into pre-existing overlays.
+	#[cfg(feature = "std")]
 	fn assimilate_storage(&self, storage: &mut sp_runtime::Storage) -> Result<(), String> {
 		sp_state_machine::BasicExternalities::execute_with_storage(storage, || {
 			self.build();

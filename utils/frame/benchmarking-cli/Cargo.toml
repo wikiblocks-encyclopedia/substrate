@@ -13,11 +13,11 @@ readme = "README.md"
 targets = ["x86_64-unknown-linux-gnu"]
 
 [dependencies]
-array-bytes = "4"
+array-bytes = "6"
 chrono = "0.4"
 clap = { version = "4", features = ["derive"] }
-codec = { package = "parity-scale-codec", version = "3.4.0" }
-comfy-table = { version = "6", default-features = false }
+codec = { package = "parity-scale-codec", version = "3" }
+comfy-table = { version = "7", default-features = false }
 handlebars = "4"
 Inflector = "0.11"
 itertools = "0.10"
@@ -42,16 +42,17 @@ sc-service = { version = "0.10.0-dev", default-features = false, path = "../../.
 sc-sysinfo = { version = "6.0.0-dev", path = "../../../client/sysinfo" }
 sp-api = { version = "4.0.0-dev", path = "../../../primitives/api" }
 sp-blockchain = { version = "4.0.0-dev", path = "../../../primitives/blockchain" }
-sp-core = { version = "7", path = "../../../primitives/core" }
+sp-core = { version = "21", path = "../../../primitives/core" }
 sp-database = { version = "4.0.0-dev", path = "../../../primitives/database" }
-sp-externalities = { version = "0.13.0", path = "../../../primitives/externalities" }
+sp-externalities = { version = "0.19", path = "../../../primitives/externalities" }
 sp-inherents = { version = "4.0.0-dev", path = "../../../primitives/inherents" }
-sp-keystore = { version = "0.13.0", path = "../../../primitives/keystore" }
-sp-runtime = { version = "7", path = "../../../primitives/runtime" }
-sp-state-machine = { version = "0.13.0", path = "../../../primitives/state-machine" }
-sp-std = { version = "5", path = "../../../primitives/std" }
-sp-storage = { version = "7", path = "../../../primitives/storage" }
-sp-trie = { version = "7", path = "../../../primitives/trie" }
+sp-keystore = { version = "0.27", path = "../../../primitives/keystore" }
+sp-runtime = { version = "24", path = "../../../primitives/runtime" }
+sp-state-machine = { version = "0.28", path = "../../../primitives/state-machine" }
+sp-storage = { version = "13", path = "../../../primitives/storage" }
+sp-trie = { version = "22", path = "../../../primitives/trie" }
+sp-io = { version = "23", path = "../../../primitives/io" }
+sp-wasm-interface = { version = "14", path = "../../../primitives/wasm-interface" }
 gethostname = "0.4"
 
 [features]

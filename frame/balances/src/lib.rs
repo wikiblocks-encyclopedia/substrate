@@ -120,7 +120,7 @@
 //! use frame_support::traits::{WithdrawReasons, LockableCurrency};
 //! use sp_runtime::traits::Bounded;
 //! pub trait Config: frame_system::Config {
-//! 	type Currency: LockableCurrency<Self::AccountId, Moment=Self::BlockNumber>;
+//! 	type Currency: LockableCurrency<Self::AccountId, Moment=frame_system::pallet_prelude::BlockNumberFor<Self>>;
 //! }
 //! # struct StakingLedger<T: Config> {
 //! # 	stash: <T as frame_system::Config>::AccountId,
@@ -166,8 +166,6 @@ mod types;
 pub mod weights;
 
 use codec::{Codec, MaxEncodedLen};
-#[cfg(feature = "std")]
-use frame_support::traits::GenesisBuild;
 use frame_support::{
 	ensure,
 	pallet_prelude::DispatchResult,
@@ -193,7 +191,9 @@ use sp_runtime::{
 	ArithmeticError, DispatchError, FixedPointOperand, Perbill, RuntimeDebug, TokenError,
 };
 use sp_std::{cmp, fmt::Debug, mem, prelude::*, result};
-pub use types::{AccountData, BalanceLock, DustCleaner, IdAmount, Reasons, ReserveData};
+pub use types::{
+	AccountData, BalanceLock, DustCleaner, ExtraFlags, IdAmount, Reasons, ReserveData,
+};
 pub use weights::WeightInfo;
 
 pub use pallet::*;
@@ -257,8 +257,8 @@ pub mod pallet {
 		/// Use of reserves is deprecated in favour of holds. See `https://github.com/paritytech/substrate/pull/12951/`
 		type ReserveIdentifier: Parameter + Member + MaxEncodedLen + Ord + Copy;
 
-		/// The ID type for holds.
-		type HoldIdentifier: Parameter + Member + MaxEncodedLen + Ord + Copy;
+		/// The overarching hold reason.
+		type RuntimeHoldReason: Parameter + Member + MaxEncodedLen + Ord + Copy;
 
 		/// The ID type for freezes.
 		type FreezeIdentifier: Parameter + Member + MaxEncodedLen + Ord + Copy;
@@ -437,7 +437,7 @@ pub mod pallet {
 		_,
 		Blake2_128Concat,
 		T::AccountId,
-		BoundedVec<IdAmount<T::HoldIdentifier, T::Balance>, T::MaxHolds>,
+		BoundedVec<IdAmount<T::RuntimeHoldReason, T::Balance>, T::MaxHolds>,
 		ValueQuery,
 	>;
 
@@ -463,7 +463,7 @@ pub mod pallet {
 	}
 
 	#[pallet::genesis_build]
-	impl<T: Config<I>, I: 'static> GenesisBuild<T, I> for GenesisConfig<T, I> {
+	impl<T: Config<I>, I: 'static> BuildGenesisConfig for GenesisConfig<T, I> {
 		fn build(&self) {
 			let total = self.balances.iter().fold(Zero::zero(), |acc: T::Balance, &(_, n)| acc + n);
 
@@ -497,25 +497,8 @@ pub mod pallet {
 		}
 	}
 
-	#[cfg(feature = "std")]
-	impl<T: Config<I>, I: 'static> GenesisConfig<T, I> {
-		/// Direct implementation of `GenesisBuild::build_storage`.
-		///
-		/// Kept in order not to break dependency.
-		pub fn build_storage(&self) -> Result<sp_runtime::Storage, String> {
-			<Self as GenesisBuild<T, I>>::build_storage(self)
-		}
-
-		/// Direct implementation of `GenesisBuild::assimilate_storage`.
-		///
-		/// Kept in order not to break dependency.
-		pub fn assimilate_storage(&self, storage: &mut sp_runtime::Storage) -> Result<(), String> {
-			<Self as GenesisBuild<T, I>>::assimilate_storage(self, storage)
-		}
-	}
-
 	#[pallet::hooks]
-	impl<T: Config<I>, I: 'static> Hooks<T::BlockNumber> for Pallet<T, I> {
+	impl<T: Config<I>, I: 'static> Hooks<BlockNumberFor<T>> for Pallet<T, I> {
 		#[cfg(not(feature = "insecure_zero_ed"))]
 		fn integrity_test() {
 			assert!(

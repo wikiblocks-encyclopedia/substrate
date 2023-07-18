@@ -44,7 +44,6 @@ pub const VERSION: RuntimeVersion = RuntimeVersion {
 pub type Signature = sr25519::Signature;
 pub type AccountId = <Signature as Verify>::Signer;
 pub type BlockNumber = u64;
-pub type Index = u64;
 
 parameter_types! {
 	pub const Version: RuntimeVersion = VERSION;
@@ -54,16 +53,15 @@ impl frame_system::Config for Runtime {
 	type BaseCallFilter = Everything;
 	type BlockWeights = ();
 	type BlockLength = ();
-	type Index = u128;
+	type Nonce = u128;
 	type Hash = H256;
 	type Hashing = BlakeTwo256;
-	type Header = Header;
+	type Block = Block;
 	type Lookup = IdentityLookup<Self::AccountId>;
 	type BlockHashCount = ConstU64<2400>;
 	type Version = Version;
 	type AccountData = ();
 	type RuntimeOrigin = RuntimeOrigin;
-	type BlockNumber = BlockNumber;
 	type AccountId = AccountId;
 	type RuntimeEvent = RuntimeEvent;
 	type PalletInfo = PalletInfo;
@@ -82,12 +80,7 @@ pub type Block = generic::Block<Header, UncheckedExtrinsic>;
 pub type UncheckedExtrinsic = generic::UncheckedExtrinsic<u32, RuntimeCall, Signature, ()>;
 
 construct_runtime!(
-	pub struct Runtime
-	where
-		Block = Block,
-		NodeBlock = Block,
-		UncheckedExtrinsic = UncheckedExtrinsic,
-	{
+	pub struct Runtime {
 		System: frame_system,
 	}
 );

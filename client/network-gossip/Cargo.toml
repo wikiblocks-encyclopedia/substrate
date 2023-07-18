@@ -19,13 +19,12 @@ futures = "0.3"
 futures-timer = "3"
 libp2p = "0.51"
 log = "0.4"
-lru = "0.9"
+schnellru = "0.2"
 tracing = "0.1"
 prometheus-endpoint = { package = "substrate-prometheus-endpoint", version = "0.10.0-dev", path = "../../utils/prometheus" }
 sc-network = { version = "0.10.0-dev", path = "../network/" }
 sc-network-common = { version = "0.10.0-dev", path = "../network/common" }
-sc-peerset = { version = "4.0.0-dev", path = "../peerset" }
-sp-runtime = { version = "7", path = "../../primitives/runtime" }
+sp-runtime = { version = "24", path = "../../primitives/runtime" }
 
 [dev-dependencies]
 tokio = "1"

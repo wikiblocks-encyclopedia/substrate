@@ -13,13 +13,13 @@ targets = ["x86_64-unknown-linux-gnu"]
 
 [dependencies]
 jsonrpsee = { version = "0.16", features = ["http-client"] }
-codec = { package = "parity-scale-codec", version = "3.4.0" }
+codec = { package = "parity-scale-codec", version = "3" }
 log = "0.4"
 serde = "1"
 frame-support = { version = "4.0.0-dev", optional = true, path = "../../../frame/support" }
-sp-core = { version = "7", path = "../../../primitives/core" }
-sp-io = { version = "7", path = "../../../primitives/io" }
-sp-runtime = { version = "7", path = "../../../primitives/runtime" }
+sp-core = { version = "21", path = "../../../primitives/core" }
+sp-io = { version = "23", path = "../../../primitives/io" }
+sp-runtime = { version = "24", path = "../../../primitives/runtime" }
 tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
 substrate-rpc-client = { path = "../rpc/client" }
 futures = "0.3"

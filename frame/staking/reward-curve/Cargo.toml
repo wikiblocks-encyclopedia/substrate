@@ -21,4 +21,4 @@ quote = "1"
 syn = { version = "2", features = ["full", "visit"] }
 
 [dev-dependencies]
-sp-runtime = { version = "7", path = "../../../primitives/runtime" }
+sp-runtime = { version = "24", path = "../../../primitives/runtime" }

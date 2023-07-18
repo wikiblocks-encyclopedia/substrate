@@ -12,19 +12,20 @@ repository = "https://github.com/paritytech/substrate/"
 targets = ["x86_64-unknown-linux-gnu"]
 
 [dependencies]
+static_assertions = "1"
 serde = { version = "1", default-features = false, features = ["derive"] }
-codec = { package = "parity-scale-codec", version = "3.2.2", default-features = false, features = ["derive"] }
-scale-info = { version = "2.5.0", default-features = false, features = ["derive"] }
+codec = { package = "parity-scale-codec", version = "3", default-features = false, features = ["derive"] }
+scale-info = { version = "2", default-features = false, features = ["derive"] }
 sp-api = { version = "4.0.0-dev", default-features = false, path = "../../../primitives/api" }
-sp-arithmetic = { version = "6", default-features = false, path = "../../../primitives/arithmetic" }
-sp-io = { version = "7", path = "../../../primitives/io", default-features = false }
-sp-state-machine = { version = "0.13", optional = true, path = "../../../primitives/state-machine" }
+sp-arithmetic = { version = "16", default-features = false, path = "../../../primitives/arithmetic" }
+sp-io = { version = "23", path = "../../../primitives/io", default-features = false }
+sp-state-machine = { version = "0.28", optional = true, path = "../../../primitives/state-machine" }
 frame-support = { version = "4.0.0-dev", default-features = false, path = "../" }
 frame-benchmarking = { version = "4.0.0-dev", default-features = false, path = "../../benchmarking" }
-sp-runtime = { version = "7", default-features = false, path = "../../../primitives/runtime" }
-sp-core = { version = "7", default-features = false, path = "../../../primitives/core" }
-sp-std = { version = "5", default-features = false, path = "../../../primitives/std" }
-sp-version = { version = "5", default-features = false, path = "../../../primitives/version" }
+sp-runtime = { version = "24", default-features = false, path = "../../../primitives/runtime" }
+sp-core = { version = "21", default-features = false, path = "../../../primitives/core" }
+sp-std = { version = "8", default-features = false, path = "../../../primitives/std" }
+sp-version = { version = "22", default-features = false, path = "../../../primitives/version" }
 trybuild = { version = "1", features = [ "diff" ] }
 pretty_assertions = "1"
 rustversion = "1"
@@ -36,22 +37,24 @@ test-pallet = { package = "frame-support-test-pallet", default-features = false,
 [features]
 default = ["std"]
 std = [
-	"serde/std",
 	"codec/std",
-	"scale-info/std",
 	"frame-benchmarking/std",
 	"frame-executive/std",
 	"frame-support/std",
 	"frame-system/std",
+	"scale-info/std",
+	"serde/std",
+	"sp-api/std",
+	"sp-arithmetic/std",
 	"sp-core/std",
-	"sp-std/std",
 	"sp-io/std",
 	"sp-runtime/std",
 	"sp-state-machine",
-	"sp-arithmetic/std",
+	"sp-std/std",
 	"sp-version/std",
-	"sp-api/std",
+	"test-pallet/std",
 ]
+experimental = ["frame-support/experimental"]
 try-runtime = [
 	"frame-support/try-runtime",
 	"frame-system/try-runtime",

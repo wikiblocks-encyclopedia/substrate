@@ -16,4 +16,4 @@ proc-macro-crate = "1"
 proc-macro2 = "1"
 quote = "1"
 syn = { version = "2", features = ["full", "visit", "extra-traits"] }
-frame-support-procedural-tools-derive = { version = "3.0.0", path = "./derive" }
+frame-support-procedural-tools-derive = { version = "3", path = "./derive" }

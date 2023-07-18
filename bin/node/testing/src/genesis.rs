@@ -21,20 +21,20 @@
 use crate::keyring::*;
 use kitchensink_runtime::{
 	constants::currency::*, wasm_binary_unwrap, AccountId, AssetsConfig, BabeConfig,
-	BalancesConfig, GenesisConfig, GrandpaConfig, IndicesConfig, SessionConfig, StakerStatus,
-	StakingConfig, SystemConfig, BABE_GENESIS_EPOCH_CONFIG,
+	BalancesConfig, GluttonConfig, GrandpaConfig, IndicesConfig, RuntimeGenesisConfig,
+	SessionConfig, StakerStatus, StakingConfig, SystemConfig, BABE_GENESIS_EPOCH_CONFIG,
 };
 use sp_keyring::Sr25519Keyring;
 use sp_runtime::Perbill;
 
 /// Create genesis runtime configuration for tests.
-pub fn config(code: Option<&[u8]>) -> GenesisConfig {
+pub fn config(code: Option<&[u8]>) -> RuntimeGenesisConfig {
 	config_endowed(code, Default::default())
 }
 
 /// Create genesis runtime configuration for tests with some extra
 /// endowed accounts.
-pub fn config_endowed(code: Option<&[u8]>, extra_endowed: Vec<AccountId>) -> GenesisConfig {
+pub fn config_endowed(code: Option<&[u8]>, extra_endowed: Vec<AccountId>) -> RuntimeGenesisConfig {
 	let mut endowed = vec![
 		(alice(), 111 * DOLLARS),
 		(bob(), 100 * DOLLARS),
@@ -46,9 +46,10 @@ pub fn config_endowed(code: Option<&[u8]>, extra_endowed: Vec<AccountId>) -> Gen
 
 	endowed.extend(extra_endowed.into_iter().map(|endowed| (endowed, 100 * DOLLARS)));
 
-	GenesisConfig {
+	RuntimeGenesisConfig {
 		system: SystemConfig {
 			code: code.map(|x| x.to_vec()).unwrap_or_else(|| wasm_binary_unwrap().to_vec()),
+			..Default::default()
 		},
 		indices: IndicesConfig { indices: vec![] },
 		balances: BalancesConfig { balances: endowed },
@@ -71,8 +72,12 @@ pub fn config_endowed(code: Option<&[u8]>, extra_endowed: Vec<AccountId>) -> Gen
 			invulnerables: vec![alice(), bob(), charlie()],
 			..Default::default()
 		},
-		babe: BabeConfig { authorities: vec![], epoch_config: Some(BABE_GENESIS_EPOCH_CONFIG) },
-		grandpa: GrandpaConfig { authorities: vec![] },
+		babe: BabeConfig {
+			authorities: vec![],
+			epoch_config: Some(BABE_GENESIS_EPOCH_CONFIG),
+			..Default::default()
+		},
+		grandpa: GrandpaConfig { authorities: vec![], _config: Default::default() },
 		im_online: Default::default(),
 		authority_discovery: Default::default(),
 		council: Default::default(),
@@ -81,6 +86,7 @@ pub fn config_endowed(code: Option<&[u8]>, extra_endowed: Vec<AccountId>) -> Gen
 		elections: Default::default(),
 		sudo: Default::default(),
 		assets: AssetsConfig { assets: vec![(9, alice(), true, 1)], ..Default::default() },
+		pool_assets: Default::default(),
 		transaction_storage: Default::default(),
 		transaction_payment: Default::default(),
 		alliance_motion: Default::default(),
@@ -89,6 +95,7 @@ pub fn config_endowed(code: Option<&[u8]>, extra_endowed: Vec<AccountId>) -> Gen
 			compute: Default::default(),
 			storage: Default::default(),
 			trash_data_count: Default::default(),
+			..Default::default()
 		},
 	}
 }
