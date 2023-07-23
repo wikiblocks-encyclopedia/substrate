@@ -24,7 +24,7 @@ hash-db = { version = "0.16", default-features = false }
 hash256-std-hasher = { version = "0.15", default-features = false }
 bs58 = { version = "0.5", default-features = false, optional = true }
 rand = { version = "0.8", features = ["small_rng"],  optional = true }
-substrate-bip39 = { version = "0.4", git = "https://github.com/serai-dex/substrate-bip39", optional = true }
+substrate-bip39 = { version = "0.4", git = "https://github.com/serai-dex/substrate-bip39", branch = "dalek-4.0", optional = true }
 tiny-bip39 = { version = "1", optional = true }
 regex = { version = "1", optional = true }
 zeroize = { version = "1", default-features = false }
@@ -47,7 +47,7 @@ paste = "1"
 array-bytes = { version = "6", optional = true }
 ed25519-zebra = { version = "3", default-features = false, optional = true }
 blake2 = { version = "0.10", default-features = false, optional = true }
-schnorrkel = { version = "0.10", features = ["preaudit_deprecated", "u64_backend"], default-features = false }
+schnorrkel = { version = "0.11", git = "https://github.com/serai-dex/schnorrkel", features = ["preaudit_deprecated"], default-features = false }
 merlin = { version = "3", default-features = false }
 sp-core-hashing = { version = "9", path = "./hashing", default-features = false, optional = true }
 sp-runtime-interface = { version = "17", default-features = false, path = "../runtime-interface" }
