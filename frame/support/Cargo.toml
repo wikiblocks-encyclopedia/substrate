@@ -31,14 +31,14 @@ sp-debug-derive = { default-features = false, path = "../../primitives/debug-der
 tt-call = "1"
 macro_magic = "0.4"
 frame-support-procedural = { version = "4.0.0-dev", default-features = false, path = "./procedural" }
-paste = "1"
-sp-state-machine = { version = "0.28", default-features = false, optional = true, path = "../../primitives/state-machine" }
-bitflags = "1"
-impl-trait-for-tuples = "0.2"
-smallvec = "1"
-log = { version = "0.4", default-features = false }
-sp-core-hashing-proc-macro = { version = "9", path = "../../primitives/core/hashing/proc-macro" }
-k256 = { version = "0.13", default-features = false, features = ["ecdsa"] }
+paste = "1.0"
+sp-state-machine = { version = "0.28.0", default-features = false, optional = true, path = "../../primitives/state-machine" }
+bitflags = "1.3"
+impl-trait-for-tuples = "0.2.2"
+smallvec = "1.11.0"
+log = { version = "0.4.17", default-features = false }
+sp-core-hashing-proc-macro = { version = "9.0.0", path = "../../primitives/core/hashing/proc-macro" }
+k256 = { version = "0.13.1", default-features = false, features = ["ecdsa"] }
 environmental = { version = "1.1.4", default-features = false }
 
 [dev-dependencies]
