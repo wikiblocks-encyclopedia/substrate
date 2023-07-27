@@ -92,6 +92,8 @@ std = [
 	"blake2/std",
 	"array-bytes",
 	"ed25519-zebra/std",
+	"k256/std",
+	"ecdsa/std",
 	"bs58/std",
 	"substrate-bip39",
 	"tiny-bip39",
