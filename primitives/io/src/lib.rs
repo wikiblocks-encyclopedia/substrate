@@ -66,12 +66,6 @@ use sp_runtime_interface::{
 use codec::{Decode, Encode};
 
 #[cfg(feature = "std")]
-use secp256k1::{
-	ecdsa::{RecoverableSignature, RecoveryId},
-	Message, SECP256K1,
-};
-
-#[cfg(feature = "std")]
 use sp_externalities::{Externalities, ExternalitiesExt};
 
 pub use sp_externalities::MultiRemovalResults;
@@ -992,16 +986,6 @@ pub trait Crypto {
 	/// Verify `ecdsa` signature.
 	///
 	/// Returns `true` when the verification was successful.
-	/// This version is able to handle, non-standard, overflowing signatures.
-	fn ecdsa_verify(sig: &ecdsa::Signature, msg: &[u8], pub_key: &ecdsa::Public) -> bool {
-		#[allow(deprecated)]
-		ecdsa::Pair::verify_deprecated(sig, msg, pub_key)
-	}
-
-	/// Verify `ecdsa` signature.
-	///
-	/// Returns `true` when the verification was successful.
-	#[version(2)]
 	fn ecdsa_verify(sig: &ecdsa::Signature, msg: &[u8], pub_key: &ecdsa::Public) -> bool {
 		ecdsa::Pair::verify(sig, msg, pub_key)
 	}
@@ -1053,47 +1037,20 @@ pub trait Crypto {
 	///
 	/// Returns `Err` if the signature is bad, otherwise the 64-byte pubkey
 	/// (doesn't include the 0x04 prefix).
-	/// This version is able to handle, non-standard, overflowing signatures.
 	fn secp256k1_ecdsa_recover(
 		sig: &[u8; 65],
 		msg: &[u8; 32],
 	) -> Result<[u8; 64], EcdsaVerifyError> {
-		let rid = libsecp256k1::RecoveryId::parse(
-			if sig[64] > 26 { sig[64] - 27 } else { sig[64] } as u8,
-		)
-		.map_err(|_| EcdsaVerifyError::BadV)?;
-		let sig = libsecp256k1::Signature::parse_overflowing_slice(&sig[..64])
+		let rid = ::ecdsa::RecoveryId::from_byte(if sig[64] > 26 { sig[64] - 27 } else { sig[64] })
+			.ok_or(EcdsaVerifyError::BadV)?;
+		let sig = ::ecdsa::Signature::<k256::Secp256k1>::from_slice(&sig[..64])
 			.map_err(|_| EcdsaVerifyError::BadRS)?;
-		let msg = libsecp256k1::Message::parse(msg);
-		let pubkey =
-			libsecp256k1::recover(&msg, &sig, &rid).map_err(|_| EcdsaVerifyError::BadSignature)?;
-		let mut res = [0u8; 64];
-		res.copy_from_slice(&pubkey.serialize()[1..65]);
-		Ok(res)
-	}
 
-	/// Verify and recover a SECP256k1 ECDSA signature.
-	///
-	/// - `sig` is passed in RSV format. V should be either `0/1` or `27/28`.
-	/// - `msg` is the blake2-256 hash of the message.
-	///
-	/// Returns `Err` if the signature is bad, otherwise the 64-byte pubkey
-	/// (doesn't include the 0x04 prefix).
-	#[version(2)]
-	fn secp256k1_ecdsa_recover(
-		sig: &[u8; 65],
-		msg: &[u8; 32],
-	) -> Result<[u8; 64], EcdsaVerifyError> {
-		let rid = RecoveryId::from_i32(if sig[64] > 26 { sig[64] - 27 } else { sig[64] } as i32)
-			.map_err(|_| EcdsaVerifyError::BadV)?;
-		let sig = RecoverableSignature::from_compact(&sig[..64], rid)
-			.map_err(|_| EcdsaVerifyError::BadRS)?;
-		let msg = Message::from_slice(msg).expect("Message is 32 bytes; qed");
-		let pubkey = SECP256K1
-			.recover_ecdsa(&msg, &sig)
+		let key = ::ecdsa::VerifyingKey::<k256::Secp256k1>::recover_from_prehash(msg, &sig, rid)
 			.map_err(|_| EcdsaVerifyError::BadSignature)?;
-		let mut res = [0u8; 64];
-		res.copy_from_slice(&pubkey.serialize_uncompressed()[1..]);
+
+		let mut res = [0; 64];
+		res.copy_from_slice(&key.to_encoded_point(false).as_bytes()[1..]);
 		Ok(res)
 	}
 
@@ -1107,38 +1064,17 @@ pub trait Crypto {
 		sig: &[u8; 65],
 		msg: &[u8; 32],
 	) -> Result<[u8; 33], EcdsaVerifyError> {
-		let rid = libsecp256k1::RecoveryId::parse(
-			if sig[64] > 26 { sig[64] - 27 } else { sig[64] } as u8,
-		)
-		.map_err(|_| EcdsaVerifyError::BadV)?;
-		let sig = libsecp256k1::Signature::parse_overflowing_slice(&sig[0..64])
+		let rid = ::ecdsa::RecoveryId::from_byte(if sig[64] > 26 { sig[64] - 27 } else { sig[64] })
+			.ok_or(EcdsaVerifyError::BadV)?;
+		let sig = ::ecdsa::Signature::<k256::Secp256k1>::from_slice(&sig[..64])
 			.map_err(|_| EcdsaVerifyError::BadRS)?;
-		let msg = libsecp256k1::Message::parse(msg);
-		let pubkey =
-			libsecp256k1::recover(&msg, &sig, &rid).map_err(|_| EcdsaVerifyError::BadSignature)?;
-		Ok(pubkey.serialize_compressed())
-	}
 
-	/// Verify and recover a SECP256k1 ECDSA signature.
-	///
-	/// - `sig` is passed in RSV format. V should be either `0/1` or `27/28`.
-	/// - `msg` is the blake2-256 hash of the message.
-	///
-	/// Returns `Err` if the signature is bad, otherwise the 33-byte compressed pubkey.
-	#[version(2)]
-	fn secp256k1_ecdsa_recover_compressed(
-		sig: &[u8; 65],
-		msg: &[u8; 32],
-	) -> Result<[u8; 33], EcdsaVerifyError> {
-		let rid = RecoveryId::from_i32(if sig[64] > 26 { sig[64] - 27 } else { sig[64] } as i32)
-			.map_err(|_| EcdsaVerifyError::BadV)?;
-		let sig = RecoverableSignature::from_compact(&sig[..64], rid)
-			.map_err(|_| EcdsaVerifyError::BadRS)?;
-		let msg = Message::from_slice(msg).expect("Message is 32 bytes; qed");
-		let pubkey = SECP256K1
-			.recover_ecdsa(&msg, &sig)
+		let key = ::ecdsa::VerifyingKey::<k256::Secp256k1>::recover_from_prehash(msg, &sig, rid)
 			.map_err(|_| EcdsaVerifyError::BadSignature)?;
-		Ok(pubkey.serialize())
+
+		let mut res = [0; 33];
+		res.copy_from_slice(key.to_encoded_point(true).as_bytes());
+		Ok(res)
 	}
 }
 
@@ -1820,7 +1756,7 @@ mod tests {
 	#[test]
 	fn use_dalek_ext_works() {
 		let mut ext = BasicExternalities::default();
-		ext.register_extension(UseDalekExt::default());
+		ext.register_extension(UseDalekExt);
 
 		// With dalek the zero signature should fail to verify.
 		ext.execute_with(|| {
@@ -1836,7 +1772,7 @@ mod tests {
 	#[test]
 	fn dalek_should_not_panic_on_invalid_signature() {
 		let mut ext = BasicExternalities::default();
-		ext.register_extension(UseDalekExt::default());
+		ext.register_extension(UseDalekExt);
 
 		ext.execute_with(|| {
 			let mut bytes = [0u8; 64];
