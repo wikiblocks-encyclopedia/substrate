@@ -22,7 +22,7 @@ sp-io = { version = "23", default-features = false, path = "../../io" }
 sp-mmr-primitives = { version = "4.0.0-dev", default-features = false, path = "../../merkle-mountain-range" }
 sp-runtime = { version = "24", default-features = false, path = "../../runtime" }
 sp-std = { version = "8", default-features = false, path = "../../std" }
-strum = { version = "0.24", features = ["derive"], default-features = false }
+strum = { version = "0.25", features = ["derive"], default-features = false }
 lazy_static = "1"
 
 [dev-dependencies]

@@ -22,7 +22,7 @@ primitive-types = { version = "0.12", default-features = false, features = ["cod
 impl-serde = { version = "0.4", default-features = false, optional = true }
 hash-db = { version = "0.16", default-features = false }
 hash256-std-hasher = { version = "0.15", default-features = false }
-bs58 = { version = "0.4", default-features = false, optional = true }
+bs58 = { version = "0.5", default-features = false, optional = true }
 rand = { version = "0.8", features = ["small_rng"],  optional = true }
 substrate-bip39 = { version = "0.4", git = "https://github.com/serai-dex/substrate-bip39", optional = true }
 tiny-bip39 = { version = "1", optional = true }
@@ -61,7 +61,7 @@ rand = "0.8"
 criterion = "0.4"
 serde_json = "1"
 sp-core-hashing-proc-macro = { version = "9", path = "./hashing/proc-macro" }
-hex-literal = "0.3"
+hex-literal = "0.4"
 
 [[bench]]
 name = "bench"

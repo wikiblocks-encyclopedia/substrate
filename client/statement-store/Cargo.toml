@@ -27,4 +27,4 @@ sc-client-api = { version = "4.0.0-dev", path = "../api" }
 
 [dev-dependencies]
 tempfile = "3"
-env_logger = "0.9"
+env_logger = "0.10"
