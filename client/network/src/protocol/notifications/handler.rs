@@ -202,7 +202,7 @@ enum State {
 	/// be emitted when transitionning to respectively [`State::Open`] or [`State::Closed`].
 	Opening {
 		/// Substream opened by the remote. If `Some`, has been accepted.
-		in_substream: Option<NotificationsInSubstream<NegotiatedSubstream>>,
+		in_substream: Option<NotificationsInSubstream<Stream>>,
 		/// Is the connection inbound.
 		inbound: bool,
 	},
