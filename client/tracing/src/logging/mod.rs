@@ -170,7 +170,7 @@ where
 		_ => true,
 	} || detailed_output;
 
-	use is_terminal::IsTerminal;
+	use std::io::IsTerminal;
 
 	let enable_color = force_colors.unwrap_or_else(|| std::io::stderr().is_terminal());
 	let timer = fast_local_time::FastLocalTime { with_fractional: detailed_output };

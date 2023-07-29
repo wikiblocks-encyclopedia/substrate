@@ -9137,7 +9137,6 @@ dependencies = [
  "anstyle",
  "chrono",
  "criterion",
- "is-terminal",
  "lazy_static",
  "libc",
  "log",
