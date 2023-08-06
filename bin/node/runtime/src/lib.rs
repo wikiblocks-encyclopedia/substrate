@@ -74,7 +74,7 @@ use sp_runtime::{
 		OpaqueKeys, SaturatedConversion, StaticLookup,
 	},
 	transaction_validity::{TransactionPriority, TransactionSource, TransactionValidity},
-	ApplyExtrinsicResult, FixedPointNumber, FixedU128, Perbill, Permill, Perquintill,
+	ApplyExtrinsicResult, FixedPointNumber, Perbill, Permill, Perquintill,
 };
 use sp_std::prelude::*;
 #[cfg(any(feature = "std", test))]
@@ -486,7 +486,7 @@ impl pallet_staking::Config for Runtime {
 	type TargetList = pallet_staking::UseValidatorsMap<Self>;
 	type MaxUnlockingChunks = ConstU32<32>;
 	type HistoryDepth = HistoryDepth;
-	type EventListeners = NominationPools;
+	type EventListeners = ();
 	type WeightInfo = pallet_staking::weights::SubstrateWeight<Runtime>;
 	type BenchmarkingConfig = StakingBenchmarkingConfig;
 }
@@ -658,12 +658,6 @@ impl pallet_bags_list::Config<VoterBagsListInstance> for Runtime {
 	type WeightInfo = pallet_bags_list::weights::SubstrateWeight<Runtime>;
 }
 
-parameter_types! {
-	pub const PostUnbondPoolsWindow: u32 = 4;
-	pub const NominationPoolsPalletId: PalletId = PalletId(*b"py/nopls");
-	pub const MaxPointsToBalance: u8 = 10;
-}
-
 use sp_runtime::traits::Convert;
 pub struct BalanceToU256;
 impl Convert<Balance, sp_core::U256> for BalanceToU256 {
@@ -676,21 +670,6 @@ impl Convert<sp_core::U256, Balance> for U256ToBalance {
 	fn convert(n: sp_core::U256) -> Balance {
 		n.try_into().unwrap_or(Balance::max_value())
 	}
-}
-
-impl pallet_nomination_pools::Config for Runtime {
-	type WeightInfo = ();
-	type RuntimeEvent = RuntimeEvent;
-	type Currency = Balances;
-	type RewardCounter = FixedU128;
-	type BalanceToU256 = BalanceToU256;
-	type U256ToBalance = U256ToBalance;
-	type Staking = Staking;
-	type PostUnbondingPoolsWindow = PostUnbondPoolsWindow;
-	type MaxMetadataLen = ConstU32<256>;
-	type MaxUnbonding = ConstU32<8>;
-	type PalletId = NominationPoolsPalletId;
-	type MaxPointsToBalance = MaxPointsToBalance;
 }
 
 parameter_types! {
@@ -1235,15 +1214,6 @@ impl pallet_nfts::Config for Runtime {
 	type Locker = ();
 }
 
-impl pallet_whitelist::Config for Runtime {
-	type RuntimeEvent = RuntimeEvent;
-	type RuntimeCall = RuntimeCall;
-	type WhitelistOrigin = EnsureRoot<AccountId>;
-	type DispatchWhitelistedOrigin = EnsureRoot<AccountId>;
-	type Preimages = Preimage;
-	type WeightInfo = pallet_whitelist::weights::SubstrateWeight<Runtime>;
-}
-
 parameter_types! {
 	pub const MigrationSignedDepositPerItem: Balance = 1 * CENTS;
 	pub const MigrationSignedDepositBase: Balance = 20 * DOLLARS;
@@ -1352,9 +1322,7 @@ construct_runtime!(
 		Referenda: pallet_referenda,
 		Remark: pallet_remark,
 		RootTesting: pallet_root_testing,
-		Whitelist: pallet_whitelist,
 		AllianceMotion: pallet_collective::<Instance3>,
-		NominationPools: pallet_nomination_pools,
 		RankedPolls: pallet_referenda::<Instance2>,
 		AssetConversion: pallet_asset_conversion,
 		MessageQueue: pallet_message_queue,
@@ -1408,7 +1376,7 @@ pub type Executive = frame_executive::Executive<
 
 // All migrations executed on runtime upgrade as a nested tuple of types implementing
 // `OnRuntimeUpgrade`.
-type Migrations = (pallet_nomination_pools::migration::v2::MigrateToV2<Runtime>,);
+type Migrations = ();
 
 #[cfg(feature = "runtime-benchmarks")]
 mod benches {
@@ -1429,7 +1397,6 @@ mod benches {
 		[pallet_indices, Indices]
 		[pallet_membership, TechnicalMembership]
 		[pallet_message_queue, MessageQueue]
-		[pallet_nomination_pools, NominationPoolsBench::<Runtime>]
 		[pallet_offences, OffencesBench::<Runtime>]
 		[pallet_preimage, Preimage]
 		[pallet_referenda, Referenda]
@@ -1446,7 +1413,6 @@ mod benches {
 		[pallet_nfts, Nfts]
 		[pallet_nft_fractionalization, NftFractionalization]
 		[pallet_utility, Utility]
-		[pallet_whitelist, Whitelist]
 	);
 }
 
@@ -1555,20 +1521,6 @@ impl_runtime_apis! {
 			Historical::prove((sp_consensus_grandpa::KEY_TYPE, authority_id))
 				.map(|p| p.encode())
 				.map(sp_consensus_grandpa::OpaqueKeyOwnershipProof::new)
-		}
-	}
-
-	impl pallet_nomination_pools_runtime_api::NominationPoolsApi<Block, AccountId, Balance> for Runtime {
-		fn pending_rewards(who: AccountId) -> Balance {
-			NominationPools::api_pending_rewards(who).unwrap_or_default()
-		}
-
-		fn points_to_balance(pool_id: pallet_nomination_pools::PoolId, points: Balance) -> Balance {
-			NominationPools::api_points_to_balance(pool_id, points)
-		}
-
-		fn balance_to_points(pool_id: pallet_nomination_pools::PoolId, new_funds: Balance) -> Balance {
-			NominationPools::api_balance_to_points(pool_id, new_funds)
 		}
 	}
 
@@ -1801,7 +1753,6 @@ impl_runtime_apis! {
 			use pallet_election_provider_support_benchmarking::Pallet as EPSBench;
 			use frame_system_benchmarking::Pallet as SystemBench;
 			use baseline::Pallet as BaselineBench;
-			use pallet_nomination_pools_benchmarking::Pallet as NominationPoolsBench;
 
 			let mut list = Vec::<BenchmarkList>::new();
 			list_benchmarks!(list, extra);
@@ -1824,14 +1775,12 @@ impl_runtime_apis! {
 			use pallet_election_provider_support_benchmarking::Pallet as EPSBench;
 			use frame_system_benchmarking::Pallet as SystemBench;
 			use baseline::Pallet as BaselineBench;
-			use pallet_nomination_pools_benchmarking::Pallet as NominationPoolsBench;
 
 			impl pallet_session_benchmarking::Config for Runtime {}
 			impl pallet_offences_benchmarking::Config for Runtime {}
 			impl pallet_election_provider_support_benchmarking::Config for Runtime {}
 			impl frame_system_benchmarking::Config for Runtime {}
 			impl baseline::Config for Runtime {}
-			impl pallet_nomination_pools_benchmarking::Config for Runtime {}
 
 			use frame_support::traits::WhitelistedStorageKeys;
 			let whitelist: Vec<TrackedStorageKey> = AllPalletsWithSystem::whitelisted_storage_keys();

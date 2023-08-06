@@ -353,11 +353,6 @@ pub fn testnet_genesis(
 		pool_assets: Default::default(),
 		transaction_payment: Default::default(),
 		alliance_motion: Default::default(),
-		nomination_pools: NominationPoolsConfig {
-			min_create_bond: 10 * DOLLARS,
-			min_join_bond: 1 * DOLLARS,
-			..Default::default()
-		},
 		glutton: Default::default(),
 	}
 }

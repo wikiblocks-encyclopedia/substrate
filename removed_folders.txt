@@ -22,6 +22,7 @@
 ./frame/nicks
 ./frame/nis
 ./frame/node-authorization
+./frame/nomination-pools
 ./frame/proxy
 ./frame/ranked-collective
 ./frame/recovery
@@ -33,6 +34,7 @@
 ./frame/transaction-storage
 ./frame/treasury
 ./frame/vesting
+./frame/whitelist
 ./primitives/consensus/beefy
 ./primitives/consensus/pow
 ./primitives/merkle-mountain-range
