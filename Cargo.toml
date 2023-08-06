@@ -80,7 +80,6 @@ members = [
 	"frame/benchmarking",
 	"frame/benchmarking/pov",
 	"frame/collective",
-	"frame/fast-unstake",
 	"frame/try-runtime",
 	"frame/elections-phragmen",
 	"frame/election-provider-multi-phase",

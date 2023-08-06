@@ -13,6 +13,7 @@
 ./frame/core-fellowship
 ./frame/democracy
 ./frame/examples
+./frame/fast-unstake
 ./frame/identity
 ./frame/insecure-randomness-collective-flip
 ./frame/lottery

@@ -1135,12 +1135,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "common-path"
-version = "1.0.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2382f75942f4b3be3690fe4f86365e9c853c1587d6ee58212cebf6e2a9ccd101"
-
-[[package]]
 name = "concurrent-queue"
 version = "2.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1685,32 +1679,6 @@ name = "doc-comment"
 version = "0.3.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "fea41bba32d969b513997752735605054bc0dfa92b4c56bf1189f2e174be7a10"
-
-[[package]]
-name = "docify"
-version = "0.1.16"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "af1b04e6ef3d21119d3eb7b032bca17f99fe041e9c072f30f32cc0e1a2b1f3c4"
-dependencies = [
- "docify_macros",
-]
-
-[[package]]
-name = "docify_macros"
-version = "0.1.16"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8b5610df7f2acf89a1bb5d1a66ae56b1c7fcdcfe3948856fb3ace3f644d70eb7"
-dependencies = [
- "common-path",
- "derive-syn-parse",
- "lazy_static",
- "proc-macro2",
- "quote",
- "regex",
- "syn 2.0.28",
- "termcolor",
- "walkdir",
-]
 
 [[package]]
 name = "downcast"
@@ -3380,7 +3348,6 @@ dependencies = [
  "pallet-election-provider-multi-phase",
  "pallet-election-provider-support-benchmarking",
  "pallet-elections-phragmen",
- "pallet-fast-unstake",
  "pallet-glutton",
  "pallet-grandpa",
  "pallet-im-online",
@@ -5367,31 +5334,6 @@ dependencies = [
  "sp-core",
  "sp-io",
  "sp-npos-elections",
- "sp-runtime",
- "sp-staking",
- "sp-std",
- "sp-tracing",
- "substrate-test-utils",
-]
-
-[[package]]
-name = "pallet-fast-unstake"
-version = "4.0.0-dev"
-dependencies = [
- "docify",
- "frame-benchmarking",
- "frame-election-provider-support",
- "frame-support",
- "frame-system",
- "log",
- "pallet-balances",
- "pallet-staking",
- "pallet-staking-reward-curve",
- "pallet-timestamp",
- "parity-scale-codec",
- "scale-info",
- "sp-core",
- "sp-io",
  "sp-runtime",
  "sp-staking",
  "sp-std",
