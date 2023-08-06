@@ -34,9 +34,9 @@ use frame_support::{
 	pallet_prelude::Get,
 	parameter_types,
 	traits::{
-		tokens::nonfungibles_v2::Inspect, AsEnsureOriginWithArg, ConstU128, ConstU16,
-		ConstU32, Currency, EitherOfDiverse, EqualPrivilegeOnly, Everything, Imbalance,
-		KeyOwnerProofSystem, LockIdentifier, OnUnbalanced,
+		tokens::nonfungibles_v2::Inspect, AsEnsureOriginWithArg, ConstU128, ConstU16, ConstU32,
+		Currency, EitherOfDiverse, EqualPrivilegeOnly, Everything, Imbalance, KeyOwnerProofSystem,
+		LockIdentifier, OnUnbalanced,
 	},
 	weights::{
 		constants::{
@@ -1431,9 +1431,7 @@ pub type Executive = frame_executive::Executive<
 
 // All migrations executed on runtime upgrade as a nested tuple of types implementing
 // `OnRuntimeUpgrade`.
-type Migrations = (
-	pallet_nomination_pools::migration::v2::MigrateToV2<Runtime>,
-);
+type Migrations = (pallet_nomination_pools::migration::v2::MigrateToV2<Runtime>,);
 
 /// MMR helper types.
 mod mmr {
