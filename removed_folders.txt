@@ -1,7 +1,11 @@
+./client/consensus/beefy
+./client/consensus/merkle-mountain-range
 ./client/consensus/pow
 ./frame/alliance
 ./frame/asset-rate
 ./frame/atomic-swap
+./frame/beefy
+./frame/beefy-mmr
 ./frame/bounties
 ./frame/child-bounties
 ./frame/contracts
@@ -12,6 +16,7 @@
 ./frame/identity
 ./frame/insecure-randomness-collective-flip
 ./frame/lottery
+./frame/merkle-mountain-range
 ./frame/multisig
 ./frame/nicks
 ./frame/nis
@@ -26,5 +31,7 @@
 ./frame/transaction-storage
 ./frame/treasury
 ./frame/vesting
+./primitives/consensus/beefy
 ./primitives/consensus/pow
+./primitives/merkle-mountain-range
 ./primitives/transaction-storage-proof
