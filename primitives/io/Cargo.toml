@@ -30,9 +30,6 @@ log = { version = "0.4", optional = true }
 tracing = { version = "0.1", default-features = false }
 tracing-core = { version = "0.1", default-features = false}
 
-# Required for backwards compatibility reason, but only used for verifying when `UseDalekExt` is set.
-ed25519-dalek = { version = "1", default-features = false, optional = true }
-# Force the usage of ed25519, this is being used in `ed25519-dalek`.
 ed25519 = { version = "1.5.3", optional = true }
 
 [build-dependencies]
@@ -54,7 +51,6 @@ std = [
 	"tracing/std",
 	"tracing-core/std",
 	"log",
-	"ed25519-dalek",
 	"ed25519",
 ]
 

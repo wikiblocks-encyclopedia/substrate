@@ -9184,7 +9184,6 @@ version = "23.0.0"
 dependencies = [
  "bytes",
  "ed25519",
- "ed25519-dalek",
  "log",
  "parity-scale-codec",
  "rustversion",
