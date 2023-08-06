@@ -4,12 +4,15 @@
 ./frame/atomic-swap
 ./frame/bounties
 ./frame/child-bounties
+./frame/contracts
 ./frame/conviction-voting
 ./frame/core-fellowship
 ./frame/democracy
 ./frame/identity
+./frame/insecure-randomness-collective-flip
 ./frame/lottery
 ./frame/multisig
+./frame/nicks
 ./frame/nis
 ./frame/proxy
 ./frame/ranked-collective
@@ -18,6 +21,8 @@
 ./frame/scored-pool
 ./frame/society
 ./frame/tips
+./frame/transaction-storage
 ./frame/treasury
 ./frame/vesting
 ./primitives/consensus/pow
+./primitives/transaction-storage-proof

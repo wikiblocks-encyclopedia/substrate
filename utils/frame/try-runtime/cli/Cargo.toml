@@ -26,7 +26,6 @@ sp-runtime = { version = "24", path = "../../../../primitives/runtime" }
 sp-rpc = { version = "6", path = "../../../../primitives/rpc" }
 sp-state-machine = { version = "0.28", path = "../../../../primitives/state-machine" }
 sp-timestamp = { path = "../../../../primitives/timestamp" }
-sp-transaction-storage-proof = { path = "../../../../primitives/transaction-storage-proof" }
 sp-version = { version = "22", path = "../../../../primitives/version" }
 sp-debug-derive = { path = "../../../../primitives/debug-derive" }
 sp-api = { path = "../../../../primitives/api" }

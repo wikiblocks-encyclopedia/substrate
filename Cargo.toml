@@ -86,9 +86,6 @@ members = [
 	"frame/benchmarking",
 	"frame/benchmarking/pov",
 	"frame/collective",
-	"frame/contracts",
-	"frame/contracts/proc-macro",
-	"frame/contracts/primitives",
 	"frame/fast-unstake",
 	"frame/try-runtime",
 	"frame/elections-phragmen",
@@ -111,7 +108,6 @@ members = [
 	"frame/indices",
 	"frame/membership",
 	"frame/merkle-mountain-range",
-	"frame/nicks",
 	"frame/node-authorization",
 	"frame/offences",
 	"frame/offences/benchmarking",
@@ -125,7 +121,6 @@ members = [
 	"frame/nomination-pools/benchmarking",
 	"frame/nomination-pools/test-staking",
 	"frame/nomination-pools/runtime-api",
-	"frame/insecure-randomness-collective-flip",
 	"frame/referenda",
 	"frame/remark",
 	"frame/scheduler",
@@ -156,7 +151,6 @@ members = [
 	"frame/transaction-payment/asset-tx-payment",
 	"frame/transaction-payment/rpc",
 	"frame/transaction-payment/rpc/runtime-api",
-	"frame/transaction-storage",
 	"frame/uniques",
 	"frame/utility",
 	"frame/glutton",
@@ -213,7 +207,6 @@ members = [
 	"primitives/timestamp",
 	"primitives/tracing",
 	"primitives/transaction-pool",
-	"primitives/transaction-storage-proof",
 	"primitives/trie",
 	"primitives/version",
 	"primitives/version/proc-macro",
@@ -268,7 +261,6 @@ cranelift-codegen = { opt-level = 3 }
 cranelift-wasm = { opt-level = 3 }
 crc32fast = { opt-level = 3 }
 crossbeam-deque = { opt-level = 3 }
-crypto-mac = { opt-level = 3 }
 curve25519-dalek = { opt-level = 3 }
 ed25519-zebra = { opt-level = 3 }
 flate2 = { opt-level = 3 }
@@ -282,7 +274,6 @@ k256 = { opt-level = 3 }
 keccak = { opt-level = 3 }
 libm = { opt-level = 3 }
 librocksdb-sys = { opt-level = 3 }
-libsecp256k1 = { opt-level = 3 }
 libz-sys = { opt-level = 3 }
 mio = { opt-level = 3 }
 nalgebra = { opt-level = 3 }
@@ -293,14 +284,12 @@ percent-encoding = { opt-level = 3 }
 primitive-types = { opt-level = 3 }
 ring = { opt-level = 3 }
 rustls = { opt-level = 3 }
-secp256k1 = { opt-level = 3 }
 sha2 = { opt-level = 3 }
 sha3 = { opt-level = 3 }
 smallvec = { opt-level = 3 }
 snow = { opt-level = 3 }
 twox-hash = { opt-level = 3 }
 uint = { opt-level = 3 }
-wasmi = { opt-level = 3 }
 x25519-dalek = { opt-level = 3 }
 yamux = { opt-level = 3 }
 zeroize = { opt-level = 3 }

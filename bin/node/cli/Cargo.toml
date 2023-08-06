@@ -56,7 +56,6 @@ sp-inherents = { version = "4.0.0-dev", path = "../../../primitives/inherents" }
 sp-keyring = { version = "24", path = "../../../primitives/keyring" }
 sp-keystore = { version = "0.27", path = "../../../primitives/keystore" }
 sp-consensus = { version = "0.10.0-dev", path = "../../../primitives/consensus/common" }
-sp-transaction-storage-proof = { version = "4.0.0-dev", path = "../../../primitives/transaction-storage-proof" }
 sp-io = { path = "../../../primitives/io" }
 sp-statement-store = { path = "../../../primitives/statement-store" }
 

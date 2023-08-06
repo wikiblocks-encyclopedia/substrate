@@ -351,7 +351,6 @@ pub fn testnet_genesis(
 			..Default::default()
 		},
 		pool_assets: Default::default(),
-		transaction_storage: Default::default(),
 		transaction_payment: Default::default(),
 		alliance_motion: Default::default(),
 		nomination_pools: NominationPoolsConfig {

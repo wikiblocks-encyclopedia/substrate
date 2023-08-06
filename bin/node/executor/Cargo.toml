@@ -34,7 +34,6 @@ frame-support = { version = "4.0.0-dev", path = "../../../frame/support" }
 frame-system = { version = "4.0.0-dev", path = "../../../frame/system" }
 node-testing = { version = "3.0.0-dev", path = "../testing" }
 pallet-balances = { version = "4.0.0-dev", path = "../../../frame/balances" }
-pallet-contracts = { version = "4.0.0-dev", path = "../../../frame/contracts" }
 pallet-im-online = { version = "4.0.0-dev", path = "../../../frame/im-online" }
 pallet-glutton = { version = "4.0.0-dev", path = "../../../frame/glutton" }
 pallet-sudo = { version = "4.0.0-dev", path = "../../../frame/sudo" }

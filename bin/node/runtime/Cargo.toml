@@ -64,8 +64,6 @@ pallet-babe = { version = "4.0.0-dev", default-features = false, path = "../../.
 pallet-bags-list = { version = "4.0.0-dev", default-features = false, path = "../../../frame/bags-list" }
 pallet-balances = { version = "4.0.0-dev", default-features = false, path = "../../../frame/balances" }
 pallet-collective = { version = "4.0.0-dev", default-features = false, path = "../../../frame/collective" }
-pallet-contracts = { version = "4.0.0-dev", default-features = false, path = "../../../frame/contracts" }
-pallet-contracts-primitives = { version = "24", default-features = false, path = "../../../frame/contracts/primitives/" }
 pallet-election-provider-multi-phase = { version = "4.0.0-dev", default-features = false, path = "../../../frame/election-provider-multi-phase" }
 pallet-election-provider-support-benchmarking = { version = "4.0.0-dev", default-features = false, path = "../../../frame/election-provider-support/benchmarking", optional = true }
 pallet-elections-phragmen = { version = "5.0.0-dev", default-features = false, path = "../../../frame/elections-phragmen" }
@@ -86,7 +84,6 @@ pallet-offences = { version = "4.0.0-dev", default-features = false, path = "../
 pallet-offences-benchmarking = { version = "4.0.0-dev", path = "../../../frame/offences/benchmarking", default-features = false, optional = true }
 pallet-glutton = { version = "4.0.0-dev", default-features = false, path = "../../../frame/glutton" }
 pallet-preimage = { version = "4.0.0-dev", default-features = false, path = "../../../frame/preimage" }
-pallet-insecure-randomness-collective-flip = { version = "4.0.0-dev", default-features = false, path = "../../../frame/insecure-randomness-collective-flip" }
 pallet-referenda = { version = "4.0.0-dev", default-features = false, path = "../../../frame/referenda" }
 pallet-remark = { version = "4.0.0-dev", default-features = false, path = "../../../frame/remark" }
 pallet-root-testing = { version = "1.0.0-dev", default-features = false, path = "../../../frame/root-testing" }
@@ -105,7 +102,6 @@ pallet-transaction-payment = { version = "4.0.0-dev", default-features = false, 
 pallet-transaction-payment-rpc-runtime-api = { version = "4.0.0-dev", default-features = false, path = "../../../frame/transaction-payment/rpc/runtime-api/" }
 pallet-asset-conversion-tx-payment = { version = "4.0.0-dev", default-features = false, path = "../../../frame/transaction-payment/asset-conversion-tx-payment" }
 pallet-asset-tx-payment = { version = "4.0.0-dev", default-features = false, path = "../../../frame/transaction-payment/asset-tx-payment" }
-pallet-transaction-storage = { version = "4.0.0-dev", default-features = false, path = "../../../frame/transaction-storage" }
 pallet-uniques = { version = "4.0.0-dev", default-features = false, path = "../../../frame/uniques" }
 pallet-whitelist = { version = "4.0.0-dev", default-features = false, path = "../../../frame/whitelist" }
 
@@ -137,8 +133,6 @@ std = [
 	"codec/std",
 	"scale-info/std",
 	"pallet-collective/std",
-	"pallet-contracts/std",
-	"pallet-contracts-primitives/std",
 	"pallet-elections-phragmen/std",
 	"pallet-fast-unstake/std",
 	"frame-executive/std",
@@ -159,7 +153,6 @@ std = [
 	"pallet-glutton/std",
 	"pallet-preimage/std",
 	"sp-core/std",
-	"pallet-insecure-randomness-collective-flip/std",
 	"sp-std/std",
 	"pallet-session/std",
 	"pallet-session-benchmarking?/std",
@@ -181,7 +174,6 @@ std = [
 	"pallet-timestamp/std",
 	"pallet-transaction-payment-rpc-runtime-api/std",
 	"pallet-transaction-payment/std",
-	"pallet-transaction-storage/std",
 	"sp-transaction-pool/std",
 	"sp-statement-store/std",
 	"pallet-utility/std",
@@ -210,7 +202,6 @@ runtime-benchmarks = [
 	"pallet-bags-list/runtime-benchmarks",
 	"pallet-balances/runtime-benchmarks",
 	"pallet-collective/runtime-benchmarks",
-	"pallet-contracts/runtime-benchmarks",
 	"pallet-election-provider-multi-phase/runtime-benchmarks",
 	"pallet-election-provider-support-benchmarking/runtime-benchmarks",
 	"pallet-elections-phragmen/runtime-benchmarks",
@@ -233,7 +224,6 @@ runtime-benchmarks = [
 	"pallet-state-trie-migration/runtime-benchmarks",
 	"pallet-sudo/runtime-benchmarks",
 	"pallet-timestamp/runtime-benchmarks",
-	"pallet-transaction-storage/runtime-benchmarks",
 	"pallet-utility/runtime-benchmarks",
 	"pallet-uniques/runtime-benchmarks",
 	"pallet-nfts/runtime-benchmarks",
@@ -255,7 +245,6 @@ try-runtime = [
 	"pallet-bags-list/try-runtime",
 	"pallet-balances/try-runtime",
 	"pallet-collective/try-runtime",
-	"pallet-contracts/try-runtime",
 	"pallet-election-provider-multi-phase/try-runtime",
 	"pallet-elections-phragmen/try-runtime",
 	"pallet-fast-unstake/try-runtime",
@@ -269,7 +258,6 @@ try-runtime = [
 	"pallet-offences/try-runtime",
 	"pallet-glutton/try-runtime",
 	"pallet-preimage/try-runtime",
-	"pallet-insecure-randomness-collective-flip/try-runtime",
 	"pallet-referenda/try-runtime",
 	"pallet-remark/try-runtime",
 	"pallet-root-testing/try-runtime",
@@ -284,7 +272,6 @@ try-runtime = [
 	"pallet-transaction-payment/try-runtime",
 	"pallet-asset-conversion-tx-payment/try-runtime",
 	"pallet-asset-tx-payment/try-runtime",
-	"pallet-transaction-storage/try-runtime",
 	"pallet-uniques/try-runtime",
 	"pallet-nfts/try-runtime",
 	"pallet-nft-fractionalization/try-runtime",
