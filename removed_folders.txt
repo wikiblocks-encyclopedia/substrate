@@ -20,6 +20,7 @@
 ./frame/multisig
 ./frame/nicks
 ./frame/nis
+./frame/node-authorization
 ./frame/proxy
 ./frame/ranked-collective
 ./frame/recovery

@@ -94,7 +94,6 @@ members = [
 	"frame/im-online",
 	"frame/indices",
 	"frame/membership",
-	"frame/node-authorization",
 	"frame/offences",
 	"frame/offences/benchmarking",
 	"frame/preimage",
