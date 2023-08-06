@@ -69,14 +69,6 @@ mod ed25519 {
 	pub type Public = app_ed25519::Public;
 }
 
-mod ecdsa {
-	mod app_ecdsa {
-		use sp_application_crypto::{app_crypto, ecdsa, key_types::STATEMENT};
-		app_crypto!(ecdsa, STATEMENT);
-	}
-	pub type Public = app_ecdsa::Public;
-}
-
 /// Returns blake2-256 hash for the encoded statement.
 #[cfg(feature = "std")]
 pub fn hash_encoded(data: &[u8]) -> [u8; 32] {
@@ -100,13 +92,6 @@ pub enum Proof {
 		/// Public key.
 		signer: [u8; 32],
 	},
-	/// Secp256k1 Signature.
-	Secp256k1Ecdsa {
-		/// Signature.
-		signature: [u8; 65],
-		/// Public key.
-		signer: [u8; 33],
-	},
 	/// On-chain event proof.
 	OnChain {
 		/// Account identifier associated with the event.
@@ -124,8 +109,6 @@ impl Proof {
 		match self {
 			Proof::Sr25519 { signer, .. } => *signer,
 			Proof::Ed25519 { signer, .. } => *signer,
-			Proof::Secp256k1Ecdsa { signer, .. } =>
-				<sp_runtime::traits::BlakeTwo256 as sp_core::Hasher>::hash(signer).into(),
 			Proof::OnChain { who, .. } => *who,
 		}
 	}
@@ -291,38 +274,6 @@ impl Statement {
 		self.set_proof(proof);
 	}
 
-	/// Sign with a key that matches given public key in the keystore.
-	///
-	/// Returns `true` if signing worked (private key present etc).
-	///
-	/// NOTE: This can only be called from the runtime.
-	///
-	/// Returns `true` if signing worked (private key present etc).
-	///
-	/// NOTE: This can only be called from the runtime.
-	pub fn sign_ecdsa_public(&mut self, key: &ecdsa::Public) -> bool {
-		let to_sign = self.signature_material();
-		if let Some(signature) = key.sign(&to_sign) {
-			let proof = Proof::Secp256k1Ecdsa {
-				signature: signature.into_inner().into(),
-				signer: key.clone().into_inner().0,
-			};
-			self.set_proof(proof);
-			true
-		} else {
-			false
-		}
-	}
-
-	/// Sign with a given private key and add the signature proof field.
-	#[cfg(feature = "std")]
-	pub fn sign_ecdsa_private(&mut self, key: &sp_core::ecdsa::Pair) {
-		let to_sign = self.signature_material();
-		let proof =
-			Proof::Secp256k1Ecdsa { signature: key.sign(&to_sign).into(), signer: key.public().0 };
-		self.set_proof(proof);
-	}
-
 	/// Check proof signature, if any.
 	pub fn verify_signature(&self) -> SignatureVerificationResult {
 		use sp_runtime::traits::Verify;
@@ -345,18 +296,6 @@ impl Statement {
 				let public = sp_core::ed25519::Public(*signer);
 				if signature.verify(to_sign.as_slice(), &public) {
 					SignatureVerificationResult::Valid(*signer)
-				} else {
-					SignatureVerificationResult::Invalid
-				}
-			},
-			Some(Proof::Secp256k1Ecdsa { signature, signer }) => {
-				let to_sign = self.signature_material();
-				let signature = sp_core::ecdsa::Signature(*signature);
-				let public = sp_core::ecdsa::Public(*signer);
-				if signature.verify(to_sign.as_slice(), &public) {
-					let sender_hash =
-						<sp_runtime::traits::BlakeTwo256 as sp_core::Hasher>::hash(signer);
-					SignatureVerificationResult::Valid(sender_hash.into())
 				} else {
 					SignatureVerificationResult::Invalid
 				}
@@ -586,7 +525,6 @@ mod test {
 
 		let sr25519_kp = sp_core::sr25519::Pair::from_string("//Alice", None).unwrap();
 		let ed25519_kp = sp_core::ed25519::Pair::from_string("//Alice", None).unwrap();
-		let secp256k1_kp = sp_core::ecdsa::Pair::from_string("//Alice", None).unwrap();
 
 		statement.sign_sr25519_private(&sr25519_kp);
 		assert_eq!(
@@ -598,14 +536,6 @@ mod test {
 		assert_eq!(
 			statement.verify_signature(),
 			SignatureVerificationResult::Valid(ed25519_kp.public().0)
-		);
-
-		statement.sign_ecdsa_private(&secp256k1_kp);
-		assert_eq!(
-			statement.verify_signature(),
-			SignatureVerificationResult::Valid(sp_core::hashing::blake2_256(
-				&secp256k1_kp.public().0
-			))
 		);
 
 		// set an invalid signature

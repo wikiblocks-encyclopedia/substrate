@@ -89,13 +89,6 @@ impl IdentifyAccount for sp_core::sr25519::Public {
 	}
 }
 
-impl IdentifyAccount for sp_core::ecdsa::Public {
-	type AccountId = Self;
-	fn into_account(self) -> Self {
-		self
-	}
-}
-
 /// Means of signature verification.
 pub trait Verify {
 	/// Type of the signer.
@@ -123,19 +116,6 @@ impl Verify for sp_core::sr25519::Signature {
 
 	fn verify<L: Lazy<[u8]>>(&self, mut msg: L, signer: &sp_core::sr25519::Public) -> bool {
 		sp_io::crypto::sr25519_verify(self, msg.get(), signer)
-	}
-}
-
-impl Verify for sp_core::ecdsa::Signature {
-	type Signer = sp_core::ecdsa::Public;
-	fn verify<L: Lazy<[u8]>>(&self, mut msg: L, signer: &sp_core::ecdsa::Public) -> bool {
-		match sp_io::crypto::secp256k1_ecdsa_recover_compressed(
-			self.as_ref(),
-			&sp_io::hashing::blake2_256(msg.get()),
-		) {
-			Ok(pubkey) => signer.as_ref() == &pubkey[..],
-			_ => false,
-		}
 	}
 }
 
@@ -2299,10 +2279,7 @@ pub trait BlockNumberProvider {
 mod tests {
 	use super::*;
 	use crate::codec::{Decode, Encode, Input};
-	use sp_core::{
-		crypto::{Pair, UncheckedFrom},
-		ecdsa,
-	};
+	use sp_core::crypto::{Pair, UncheckedFrom};
 
 	mod t {
 		use sp_application_crypto::{app_crypto, sr25519};
@@ -2411,17 +2388,5 @@ mod tests {
 		assert_eq!(t.read(&mut buffer), Ok(()));
 		assert_eq!(t.remaining_len(), Ok(None));
 		assert_eq!(buffer, [0, 0]);
-	}
-
-	#[test]
-	fn ecdsa_verify_works() {
-		let msg = &b"test-message"[..];
-		let (pair, _) = ecdsa::Pair::generate();
-
-		let signature = pair.sign(&msg);
-		assert!(ecdsa::Pair::verify(&signature, msg, &pair.public()));
-
-		assert!(signature.verify(msg, &pair.public()));
-		assert!(signature.verify(msg, &pair.public()));
 	}
 }

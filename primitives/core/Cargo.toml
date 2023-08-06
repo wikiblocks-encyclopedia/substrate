@@ -49,8 +49,6 @@ ed25519-zebra = { version = "3", default-features = false, optional = true }
 blake2 = { version = "0.10", default-features = false, optional = true }
 schnorrkel = { version = "0.10", features = ["preaudit_deprecated", "u64_backend"], default-features = false }
 merlin = { version = "3", default-features = false }
-k256 = { version = "0.13", default-features = false, optional = true }
-ecdsa = { version = "0.16", default-features = false, optional = true }
 sp-core-hashing = { version = "9", path = "./hashing", default-features = false, optional = true }
 sp-runtime-interface = { version = "17", default-features = false, path = "../runtime-interface" }
 # bls crypto
@@ -94,8 +92,6 @@ std = [
 	"blake2/std",
 	"array-bytes",
 	"ed25519-zebra/std",
-	"k256/std",
-	"ecdsa/std",
 	"bs58/std",
 	"substrate-bip39",
 	"tiny-bip39",
@@ -138,10 +134,6 @@ full_crypto = [
 	"array-bytes",
 	"ed25519-zebra",
 	"blake2",
-	"k256/arithmetic",
-	"k256/ecdsa",
-	"ecdsa/signing",
-	"ecdsa/verifying",
 	"sp-core-hashing",
 	"sp-runtime-interface/disable_target_static_assertions",
 ]

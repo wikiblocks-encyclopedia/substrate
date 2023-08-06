@@ -27,8 +27,6 @@ sp-trie = { version = "22", default-features = false, optional = true, path = ".
 sp-externalities = { version = "0.19", default-features = false, path = "../externalities" }
 sp-tracing = { version = "10", default-features = false, path = "../tracing" }
 log = { version = "0.4", optional = true }
-k256 = { version = "0.13", features = ["arithmetic"], optional = true }
-ecdsa = { version = "0.16", features = ["signing", "verifying"], optional = true }
 tracing = { version = "0.1", default-features = false }
 tracing-core = { version = "0.1", default-features = false}
 
@@ -51,8 +49,6 @@ std = [
 	"sp-std/std",
 	"sp-trie/std",
 	"sp-state-machine/std",
-	"k256",
-	"ecdsa",
 	"sp-runtime-interface/std",
 	"sp-tracing/std",
 	"tracing/std",

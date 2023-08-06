@@ -48,15 +48,6 @@ fn sign_and_validate_no_balance() {
 			Ok(ValidStatement { max_count: MIN_ALLOWED_STATEMENTS, max_size: MIN_ALLOWED_BYTES }),
 			result
 		);
-
-		let pair = sp_core::ecdsa::Pair::from_string("//Bob", None).unwrap();
-		let mut statement = Statement::new();
-		statement.sign_ecdsa_private(&pair);
-		let result = Pallet::<Test>::validate_statement(StatementSource::Chain, statement);
-		assert_eq!(
-			Ok(ValidStatement { max_count: MIN_ALLOWED_STATEMENTS, max_size: MIN_ALLOWED_BYTES }),
-			result
-		);
 	});
 }
 
