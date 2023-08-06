@@ -2206,7 +2206,6 @@ dependencies = [
  "indicatif",
  "jsonrpsee",
  "log",
- "pallet-elections-phragmen",
  "parity-scale-codec",
  "serde",
  "sp-core",
@@ -3344,15 +3343,12 @@ dependencies = [
  "pallet-babe",
  "pallet-bags-list",
  "pallet-balances",
- "pallet-collective",
  "pallet-election-provider-multi-phase",
  "pallet-election-provider-support-benchmarking",
- "pallet-elections-phragmen",
  "pallet-glutton",
  "pallet-grandpa",
  "pallet-im-online",
  "pallet-indices",
- "pallet-membership",
  "pallet-message-queue",
  "pallet-nft-fractionalization",
  "pallet-nfts",
@@ -5239,22 +5235,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "pallet-collective"
-version = "4.0.0-dev"
-dependencies = [
- "frame-benchmarking",
- "frame-support",
- "frame-system",
- "log",
- "parity-scale-codec",
- "scale-info",
- "sp-core",
- "sp-io",
- "sp-runtime",
- "sp-std",
-]
-
-[[package]]
 name = "pallet-election-provider-e2e-test"
 version = "1.0.0"
 dependencies = [
@@ -5314,27 +5294,6 @@ dependencies = [
  "parity-scale-codec",
  "sp-npos-elections",
  "sp-runtime",
-]
-
-[[package]]
-name = "pallet-elections-phragmen"
-version = "5.0.0-dev"
-dependencies = [
- "frame-benchmarking",
- "frame-support",
- "frame-system",
- "log",
- "pallet-balances",
- "parity-scale-codec",
- "scale-info",
- "sp-core",
- "sp-io",
- "sp-npos-elections",
- "sp-runtime",
- "sp-staking",
- "sp-std",
- "sp-tracing",
- "substrate-test-utils",
 ]
 
 [[package]]
@@ -5418,22 +5377,6 @@ dependencies = [
  "sp-core",
  "sp-io",
  "sp-keyring",
- "sp-runtime",
- "sp-std",
-]
-
-[[package]]
-name = "pallet-membership"
-version = "4.0.0-dev"
-dependencies = [
- "frame-benchmarking",
- "frame-support",
- "frame-system",
- "log",
- "parity-scale-codec",
- "scale-info",
- "sp-core",
- "sp-io",
  "sp-runtime",
  "sp-std",
 ]
@@ -5898,7 +5841,6 @@ dependencies = [
  "frame-support",
  "frame-system",
  "pallet-balances",
- "pallet-collective",
  "pallet-root-testing",
  "pallet-timestamp",
  "parity-scale-codec",

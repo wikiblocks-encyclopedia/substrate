@@ -63,14 +63,11 @@ pallet-authorship = { version = "4.0.0-dev", default-features = false, path = ".
 pallet-babe = { version = "4.0.0-dev", default-features = false, path = "../../../frame/babe" }
 pallet-bags-list = { version = "4.0.0-dev", default-features = false, path = "../../../frame/bags-list" }
 pallet-balances = { version = "4.0.0-dev", default-features = false, path = "../../../frame/balances" }
-pallet-collective = { version = "4.0.0-dev", default-features = false, path = "../../../frame/collective" }
 pallet-election-provider-multi-phase = { version = "4.0.0-dev", default-features = false, path = "../../../frame/election-provider-multi-phase" }
 pallet-election-provider-support-benchmarking = { version = "4.0.0-dev", default-features = false, path = "../../../frame/election-provider-support/benchmarking", optional = true }
-pallet-elections-phragmen = { version = "5.0.0-dev", default-features = false, path = "../../../frame/elections-phragmen" }
 pallet-grandpa = { version = "4.0.0-dev", default-features = false, path = "../../../frame/grandpa" }
 pallet-im-online = { version = "4.0.0-dev", default-features = false, path = "../../../frame/im-online" }
 pallet-indices = { version = "4.0.0-dev", default-features = false, path = "../../../frame/indices" }
-pallet-membership = { version = "4.0.0-dev", default-features = false, path = "../../../frame/membership" }
 pallet-message-queue = { version = "7.0.0-dev", default-features = false, path = "../../../frame/message-queue" }
 pallet-nfts = { version = "4.0.0-dev", default-features = false, path = "../../../frame/nfts" }
 pallet-nfts-runtime-api = { version = "4.0.0-dev", default-features = false, path = "../../../frame/nfts/runtime-api" }
@@ -125,14 +122,11 @@ std = [
 	"sp-block-builder/std",
 	"codec/std",
 	"scale-info/std",
-	"pallet-collective/std",
-	"pallet-elections-phragmen/std",
 	"frame-executive/std",
 	"pallet-grandpa/std",
 	"pallet-im-online/std",
 	"pallet-indices/std",
 	"sp-inherents/std",
-	"pallet-membership/std",
 	"pallet-message-queue/std",
 	"pallet-scheduler/std",
 	"node-primitives/std",
@@ -189,14 +183,11 @@ runtime-benchmarks = [
 	"pallet-babe/runtime-benchmarks",
 	"pallet-bags-list/runtime-benchmarks",
 	"pallet-balances/runtime-benchmarks",
-	"pallet-collective/runtime-benchmarks",
 	"pallet-election-provider-multi-phase/runtime-benchmarks",
 	"pallet-election-provider-support-benchmarking/runtime-benchmarks",
-	"pallet-elections-phragmen/runtime-benchmarks",
 	"pallet-grandpa/runtime-benchmarks",
 	"pallet-im-online/runtime-benchmarks",
 	"pallet-indices/runtime-benchmarks",
-	"pallet-membership/runtime-benchmarks",
 	"pallet-message-queue/runtime-benchmarks",
 	"pallet-offences-benchmarking/runtime-benchmarks",
 	"pallet-glutton/runtime-benchmarks",
@@ -228,13 +219,10 @@ try-runtime = [
 	"pallet-babe/try-runtime",
 	"pallet-bags-list/try-runtime",
 	"pallet-balances/try-runtime",
-	"pallet-collective/try-runtime",
 	"pallet-election-provider-multi-phase/try-runtime",
-	"pallet-elections-phragmen/try-runtime",
 	"pallet-grandpa/try-runtime",
 	"pallet-im-online/try-runtime",
 	"pallet-indices/try-runtime",
-	"pallet-membership/try-runtime",
 	"pallet-message-queue/try-runtime",
 	"pallet-offences/try-runtime",
 	"pallet-glutton/try-runtime",
