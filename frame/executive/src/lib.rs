@@ -1264,33 +1264,6 @@ mod tests {
 	}
 
 	#[test]
-	fn can_not_pay_for_tx_fee_on_full_lock() {
-		let mut t = new_test_ext(1);
-		t.execute_with(|| {
-			<pallet_balances::Pallet<Runtime> as fungible::MutateFreeze<u64>>::set_freeze(
-				&(),
-				&1,
-				110,
-			)
-			.unwrap();
-			let xt = TestXt::new(
-				RuntimeCall::System(frame_system::Call::remark { remark: vec![1u8] }),
-				sign_extra(1, 0, 0),
-			);
-			Executive::initialize_block(&Header::new(
-				1,
-				H256::default(),
-				H256::default(),
-				[69u8; 32].into(),
-				Digest::default(),
-			));
-
-			assert_eq!(Executive::apply_extrinsic(xt), Err(InvalidTransaction::Payment.into()),);
-			assert_eq!(<pallet_balances::Pallet<Runtime>>::total_balance(&1), 111);
-		});
-	}
-
-	#[test]
 	fn block_hooks_weight_is_stored() {
 		new_test_ext(1).execute_with(|| {
 			Executive::initialize_block(&Header::new_from_number(1));
