@@ -17,7 +17,6 @@ codec = { package = "parity-scale-codec", version = "3", default-features = fals
 scale-info = { version = "2", default-features = false, features = ["derive"] }
 sp-api = { version = "4.0.0-dev", default-features = false, path = "../api" }
 sp-application-crypto = { version = "23", default-features = false, path = "../application-crypto" }
-sp-runtime = { version = "24", default-features = false, path = "../runtime" }
 sp-std = { version = "8", default-features = false, path = "../std" }
 
 [features]
@@ -27,11 +26,9 @@ std = [
 	"scale-info/std",
 	"sp-api/std",
 	"sp-application-crypto/std",
-	"sp-runtime/std",
 	"sp-std/std",
 ]
 serde = [
 	"scale-info/serde",
 	"sp-application-crypto/serde",
-	"sp-runtime/serde",
 ]

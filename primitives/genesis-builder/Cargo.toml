@@ -16,12 +16,10 @@ targets = ["x86_64-unknown-linux-gnu"]
 sp-api = { version = "4.0.0-dev", default-features = false, path = "../../primitives/api" }
 sp-runtime = { version = "24", default-features = false, path = "../../primitives/runtime" }
 sp-std = { version = "8", default-features = false, path = "../../primitives/std" }
-serde_json = { version = "1", default-features = false, features = ["alloc"] }
 
 [features]
 default = [ "std" ]
 std = [
 	"sp-api/std",
 	"sp-std/std",
-	"serde_json/std",
 ]

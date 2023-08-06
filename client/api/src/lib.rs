@@ -49,7 +49,6 @@ pub trait UsageProvider<Block: sp_runtime::traits::Block> {
 pub mod utils {
 	use sp_blockchain::{Error, HeaderBackend, HeaderMetadata};
 	use sp_runtime::traits::Block as BlockT;
-	use std::borrow::Borrow;
 
 	/// Returns a function for checking block ancestry, the returned function will
 	/// return `true` if the given hash (second parameter) is a descendent of the
@@ -69,7 +68,7 @@ pub mod utils {
 				return Ok(false)
 			}
 
-			let current = current.as_ref().map(|(c, p)| (c.borrow(), p.borrow()));
+			let current = current.as_ref().map(|(c, p)| (c, p));
 
 			let mut hash = hash;
 			if let Some((current_hash, current_parent_hash)) = current {

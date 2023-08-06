@@ -88,7 +88,7 @@ impl<AssetId: Ord> Ord for NativeOrAssetId<AssetId> {
 }
 impl<AssetId: Ord> PartialOrd for NativeOrAssetId<AssetId> {
 	fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
-		Some(<Self as Ord>::cmp(self, other))
+		Some(self.cmp(other))
 	}
 }
 impl<AssetId: Ord> PartialEq for NativeOrAssetId<AssetId> {

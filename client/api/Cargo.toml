@@ -33,7 +33,6 @@ sp-database = { version = "4.0.0-dev", path = "../../primitives/database" }
 sp-externalities = { version = "0.19", path = "../../primitives/externalities" }
 sp-runtime = { version = "24", default-features = false, path = "../../primitives/runtime" }
 sp-state-machine = { version = "0.28", path = "../../primitives/state-machine" }
-sp-statement-store = { version = "4.0.0-dev", path = "../../primitives/statement-store" }
 sp-storage = { version = "13", path = "../../primitives/storage" }
 
 [dev-dependencies]

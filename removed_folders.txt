@@ -8,6 +8,7 @@
 ./frame/conviction-voting
 ./frame/core-fellowship
 ./frame/democracy
+./frame/examples
 ./frame/identity
 ./frame/insecure-randomness-collective-flip
 ./frame/lottery
@@ -17,6 +18,7 @@
 ./frame/proxy
 ./frame/ranked-collective
 ./frame/recovery
+./frame/root-offences
 ./frame/salary
 ./frame/scored-pool
 ./frame/society
