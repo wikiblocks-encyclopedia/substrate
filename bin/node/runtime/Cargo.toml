@@ -67,7 +67,6 @@ pallet-election-provider-multi-phase = { version = "4.0.0-dev", default-features
 pallet-election-provider-support-benchmarking = { version = "4.0.0-dev", default-features = false, path = "../../../frame/election-provider-support/benchmarking", optional = true }
 pallet-grandpa = { version = "4.0.0-dev", default-features = false, path = "../../../frame/grandpa" }
 pallet-im-online = { version = "4.0.0-dev", default-features = false, path = "../../../frame/im-online" }
-pallet-indices = { version = "4.0.0-dev", default-features = false, path = "../../../frame/indices" }
 pallet-message-queue = { version = "7.0.0-dev", default-features = false, path = "../../../frame/message-queue" }
 pallet-nfts = { version = "4.0.0-dev", default-features = false, path = "../../../frame/nfts" }
 pallet-nfts-runtime-api = { version = "4.0.0-dev", default-features = false, path = "../../../frame/nfts/runtime-api" }
@@ -125,7 +124,6 @@ std = [
 	"frame-executive/std",
 	"pallet-grandpa/std",
 	"pallet-im-online/std",
-	"pallet-indices/std",
 	"sp-inherents/std",
 	"pallet-message-queue/std",
 	"pallet-scheduler/std",
@@ -187,7 +185,6 @@ runtime-benchmarks = [
 	"pallet-election-provider-support-benchmarking/runtime-benchmarks",
 	"pallet-grandpa/runtime-benchmarks",
 	"pallet-im-online/runtime-benchmarks",
-	"pallet-indices/runtime-benchmarks",
 	"pallet-message-queue/runtime-benchmarks",
 	"pallet-offences-benchmarking/runtime-benchmarks",
 	"pallet-glutton/runtime-benchmarks",
@@ -222,7 +219,6 @@ try-runtime = [
 	"pallet-election-provider-multi-phase/try-runtime",
 	"pallet-grandpa/try-runtime",
 	"pallet-im-online/try-runtime",
-	"pallet-indices/try-runtime",
 	"pallet-message-queue/try-runtime",
 	"pallet-offences/try-runtime",
 	"pallet-glutton/try-runtime",

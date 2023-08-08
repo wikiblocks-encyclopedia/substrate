@@ -17,6 +17,7 @@
 ./frame/examples
 ./frame/fast-unstake
 ./frame/identity
+./frame/indices
 ./frame/insecure-randomness-collective-flip
 ./frame/lottery
 ./frame/membership

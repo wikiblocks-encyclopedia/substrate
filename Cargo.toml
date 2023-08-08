@@ -89,7 +89,6 @@ members = [
 	"frame/executive",
 	"frame/grandpa",
 	"frame/im-online",
-	"frame/indices",
 	"frame/offences",
 	"frame/offences/benchmarking",
 	"frame/preimage",

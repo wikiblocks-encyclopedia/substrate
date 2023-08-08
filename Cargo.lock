@@ -3348,7 +3348,6 @@ dependencies = [
  "pallet-glutton",
  "pallet-grandpa",
  "pallet-im-online",
- "pallet-indices",
  "pallet-message-queue",
  "pallet-nft-fractionalization",
  "pallet-nfts",
@@ -5361,23 +5360,6 @@ dependencies = [
  "sp-io",
  "sp-runtime",
  "sp-staking",
- "sp-std",
-]
-
-[[package]]
-name = "pallet-indices"
-version = "4.0.0-dev"
-dependencies = [
- "frame-benchmarking",
- "frame-support",
- "frame-system",
- "pallet-balances",
- "parity-scale-codec",
- "scale-info",
- "sp-core",
- "sp-io",
- "sp-keyring",
- "sp-runtime",
  "sp-std",
 ]
 
