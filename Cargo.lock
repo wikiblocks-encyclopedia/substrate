@@ -9029,7 +9029,6 @@ dependencies = [
  "blake2b_simd",
  "byteorder",
  "digest 0.10.7",
- "sha2 0.10.7",
  "sha3",
  "twox-hash",
 ]
