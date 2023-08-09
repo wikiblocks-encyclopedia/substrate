@@ -34,7 +34,7 @@ use frame_support::{
 	pallet_prelude::Get,
 	parameter_types,
 	traits::{
-		tokens::nonfungibles_v2::Inspect, AsEnsureOriginWithArg, ConstU128, ConstU16, ConstU32,
+		AsEnsureOriginWithArg, ConstU128, ConstU16, ConstU32,
 		Currency, EqualPrivilegeOnly, Everything, Imbalance, KeyOwnerProofSystem, OnUnbalanced,
 	},
 	weights::{
@@ -43,7 +43,7 @@ use frame_support::{
 		},
 		ConstantMultiplier, IdentityFee, Weight,
 	},
-	BoundedVec, PalletId,
+	PalletId,
 };
 use frame_system::{
 	limits::{BlockLength, BlockWeights},
@@ -54,7 +54,6 @@ use node_primitives::{Balance, BlockNumber, Hash, Moment, Nonce};
 use pallet_asset_conversion::{NativeOrAssetId, NativeOrAssetIdConverter};
 use pallet_election_provider_multi_phase::SolutionAccuracyOf;
 use pallet_im_online::sr25519::AuthorityId as ImOnlineId;
-use pallet_nfts::PalletFeatures;
 use pallet_session::historical as pallet_session_historical;
 pub use pallet_transaction_payment::{CurrencyAdapter, Multiplier, TargetedFeeAdjustment};
 use pallet_transaction_payment::{FeeDetails, RuntimeDispatchInfo};
@@ -1039,66 +1038,6 @@ impl pallet_uniques::Config for Runtime {
 }
 
 parameter_types! {
-	pub const NftFractionalizationPalletId: PalletId = PalletId(*b"fraction");
-	pub NewAssetSymbol: BoundedVec<u8, StringLimit> = (*b"FRAC").to_vec().try_into().unwrap();
-	pub NewAssetName: BoundedVec<u8, StringLimit> = (*b"Frac").to_vec().try_into().unwrap();
-}
-
-impl pallet_nft_fractionalization::Config for Runtime {
-	type RuntimeEvent = RuntimeEvent;
-	type Deposit = AssetDeposit;
-	type Currency = Balances;
-	type NewAssetSymbol = NewAssetSymbol;
-	type NewAssetName = NewAssetName;
-	type StringLimit = StringLimit;
-	type NftCollectionId = <Self as pallet_nfts::Config>::CollectionId;
-	type NftId = <Self as pallet_nfts::Config>::ItemId;
-	type AssetBalance = <Self as pallet_balances::Config>::Balance;
-	type AssetId = <Self as pallet_assets::Config<Instance1>>::AssetId;
-	type Assets = Assets;
-	type Nfts = Nfts;
-	type PalletId = NftFractionalizationPalletId;
-	type WeightInfo = pallet_nft_fractionalization::weights::SubstrateWeight<Runtime>;
-	type RuntimeHoldReason = RuntimeHoldReason;
-	#[cfg(feature = "runtime-benchmarks")]
-	type BenchmarkHelper = ();
-}
-
-parameter_types! {
-	pub Features: PalletFeatures = PalletFeatures::all_enabled();
-	pub const MaxAttributesPerCall: u32 = 10;
-}
-
-impl pallet_nfts::Config for Runtime {
-	type RuntimeEvent = RuntimeEvent;
-	type CollectionId = u32;
-	type ItemId = u32;
-	type Currency = Balances;
-	type ForceOrigin = frame_system::EnsureRoot<AccountId>;
-	type CollectionDeposit = CollectionDeposit;
-	type ItemDeposit = ItemDeposit;
-	type MetadataDepositBase = MetadataDepositBase;
-	type AttributeDepositBase = MetadataDepositBase;
-	type DepositPerByte = MetadataDepositPerByte;
-	type StringLimit = StringLimit;
-	type KeyLimit = KeyLimit;
-	type ValueLimit = ValueLimit;
-	type ApprovalsLimit = ApprovalsLimit;
-	type ItemAttributesApprovalsLimit = ItemAttributesApprovalsLimit;
-	type MaxTips = MaxTips;
-	type MaxDeadlineDuration = MaxDeadlineDuration;
-	type MaxAttributesPerCall = MaxAttributesPerCall;
-	type Features = Features;
-	type OffchainSignature = Signature;
-	type OffchainPublic = <Signature as traits::Verify>::Signer;
-	type WeightInfo = pallet_nfts::weights::SubstrateWeight<Runtime>;
-	#[cfg(feature = "runtime-benchmarks")]
-	type Helper = ();
-	type CreateOrigin = AsEnsureOriginWithArg<EnsureSigned<AccountId>>;
-	type Locker = ();
-}
-
-parameter_types! {
 	pub const MigrationSignedDepositPerItem: Balance = 1 * CENTS;
 	pub const MigrationSignedDepositBase: Balance = 20 * DOLLARS;
 	pub const MigrationMaxKeyLen: u32 = 512;
@@ -1172,8 +1111,6 @@ construct_runtime!(
 		Assets: pallet_assets::<Instance1>,
 		PoolAssets: pallet_assets::<Instance2>,
 		Uniques: pallet_uniques,
-		Nfts: pallet_nfts,
-		NftFractionalization: pallet_nft_fractionalization,
 		VoterList: pallet_bags_list::<Instance1>,
 		StateTrieMigration: pallet_state_trie_migration,
 		Referenda: pallet_referenda,
@@ -1262,8 +1199,6 @@ mod benches {
 		[frame_system, SystemBench::<Runtime>]
 		[pallet_timestamp, Timestamp]
 		[pallet_uniques, Uniques]
-		[pallet_nfts, Nfts]
-		[pallet_nft_fractionalization, NftFractionalization]
 		[pallet_utility, Utility]
 	);
 }
@@ -1507,50 +1442,6 @@ impl_runtime_apis! {
 		}
 		fn query_length_to_fee(length: u32) -> Balance {
 			TransactionPayment::length_to_fee(length)
-		}
-	}
-
-	impl pallet_nfts_runtime_api::NftsApi<Block, AccountId, u32, u32> for Runtime {
-		fn owner(collection: u32, item: u32) -> Option<AccountId> {
-			<Nfts as Inspect<AccountId>>::owner(&collection, &item)
-		}
-
-		fn collection_owner(collection: u32) -> Option<AccountId> {
-			<Nfts as Inspect<AccountId>>::collection_owner(&collection)
-		}
-
-		fn attribute(
-			collection: u32,
-			item: u32,
-			key: Vec<u8>,
-		) -> Option<Vec<u8>> {
-			<Nfts as Inspect<AccountId>>::attribute(&collection, &item, &key)
-		}
-
-		fn custom_attribute(
-			account: AccountId,
-			collection: u32,
-			item: u32,
-			key: Vec<u8>,
-		) -> Option<Vec<u8>> {
-			<Nfts as Inspect<AccountId>>::custom_attribute(
-				&account,
-				&collection,
-				&item,
-				&key,
-			)
-		}
-
-		fn system_attribute(
-			collection: u32,
-			item: u32,
-			key: Vec<u8>,
-		) -> Option<Vec<u8>> {
-			<Nfts as Inspect<AccountId>>::system_attribute(&collection, &item, &key)
-		}
-
-		fn collection_attribute(collection: u32, key: Vec<u8>) -> Option<Vec<u8>> {
-			<Nfts as Inspect<AccountId>>::collection_attribute(&collection, &key)
 		}
 	}
 

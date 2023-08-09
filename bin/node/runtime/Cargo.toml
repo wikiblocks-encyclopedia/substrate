@@ -68,9 +68,6 @@ pallet-election-provider-support-benchmarking = { version = "4.0.0-dev", default
 pallet-grandpa = { version = "4.0.0-dev", default-features = false, path = "../../../frame/grandpa" }
 pallet-im-online = { version = "4.0.0-dev", default-features = false, path = "../../../frame/im-online" }
 pallet-message-queue = { version = "7.0.0-dev", default-features = false, path = "../../../frame/message-queue" }
-pallet-nfts = { version = "4.0.0-dev", default-features = false, path = "../../../frame/nfts" }
-pallet-nfts-runtime-api = { version = "4.0.0-dev", default-features = false, path = "../../../frame/nfts/runtime-api" }
-pallet-nft-fractionalization = { version = "4.0.0-dev", default-features = false, path = "../../../frame/nft-fractionalization" }
 pallet-offences = { version = "4.0.0-dev", default-features = false, path = "../../../frame/offences" }
 pallet-offences-benchmarking = { version = "4.0.0-dev", path = "../../../frame/offences/benchmarking", default-features = false, optional = true }
 pallet-glutton = { version = "4.0.0-dev", default-features = false, path = "../../../frame/glutton" }
@@ -162,9 +159,6 @@ std = [
 	"pallet-remark/std",
 	"pallet-root-testing/std",
 	"pallet-uniques/std",
-	"pallet-nfts/std",
-	"pallet-nfts-runtime-api/std",
-	"pallet-nft-fractionalization/std",
 	"log/std",
 	"frame-try-runtime?/std",
 	"sp-io/std",
@@ -199,8 +193,6 @@ runtime-benchmarks = [
 	"pallet-timestamp/runtime-benchmarks",
 	"pallet-utility/runtime-benchmarks",
 	"pallet-uniques/runtime-benchmarks",
-	"pallet-nfts/runtime-benchmarks",
-	"pallet-nft-fractionalization/runtime-benchmarks",
 	"frame-system-benchmarking/runtime-benchmarks",
 ]
 try-runtime = [
@@ -238,6 +230,4 @@ try-runtime = [
 	"pallet-asset-conversion-tx-payment/try-runtime",
 	"pallet-asset-tx-payment/try-runtime",
 	"pallet-uniques/try-runtime",
-	"pallet-nfts/try-runtime",
-	"pallet-nft-fractionalization/try-runtime",
 ]

@@ -23,6 +23,8 @@
 ./frame/membership
 ./frame/merkle-mountain-range
 ./frame/multisig
+./frame/nfts
+./frame/nft-fractionalization
 ./frame/nicks
 ./frame/nis
 ./frame/node-authorization
