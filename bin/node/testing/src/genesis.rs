@@ -21,8 +21,8 @@
 use crate::keyring::*;
 use kitchensink_runtime::{
 	constants::currency::*, wasm_binary_unwrap, AccountId, AssetsConfig, BabeConfig,
-	BalancesConfig, GluttonConfig, GrandpaConfig, IndicesConfig, RuntimeGenesisConfig,
-	SessionConfig, StakerStatus, StakingConfig, SystemConfig, BABE_GENESIS_EPOCH_CONFIG,
+	BalancesConfig, GluttonConfig, GrandpaConfig, RuntimeGenesisConfig, SessionConfig,
+	StakerStatus, StakingConfig, SystemConfig, BABE_GENESIS_EPOCH_CONFIG,
 };
 use sp_keyring::Sr25519Keyring;
 use sp_runtime::Perbill;
@@ -51,7 +51,6 @@ pub fn config_endowed(code: Option<&[u8]>, extra_endowed: Vec<AccountId>) -> Run
 			code: code.map(|x| x.to_vec()).unwrap_or_else(|| wasm_binary_unwrap().to_vec()),
 			..Default::default()
 		},
-		indices: IndicesConfig { indices: vec![] },
 		balances: BalancesConfig { balances: endowed },
 		session: SessionConfig {
 			keys: vec![
@@ -83,10 +82,7 @@ pub fn config_endowed(code: Option<&[u8]>, extra_endowed: Vec<AccountId>) -> Run
 		sudo: Default::default(),
 		assets: AssetsConfig { assets: vec![(9, alice(), true, 1)], ..Default::default() },
 		pool_assets: Default::default(),
-		transaction_storage: Default::default(),
 		transaction_payment: Default::default(),
-		alliance_motion: Default::default(),
-		nomination_pools: Default::default(),
 		glutton: GluttonConfig {
 			compute: Default::default(),
 			storage: Default::default(),

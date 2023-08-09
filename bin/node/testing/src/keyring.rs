@@ -20,7 +20,7 @@
 
 use codec::Encode;
 use kitchensink_runtime::{CheckedExtrinsic, SessionKeys, SignedExtra, UncheckedExtrinsic};
-use node_primitives::{AccountId, Balance, Index};
+use node_primitives::{AccountId, Balance, Nonce};
 use sp_keyring::{AccountKeyring, Sr25519Keyring};
 use sp_runtime::generic::Era;
 
@@ -99,10 +99,7 @@ pub fn sign(
 					}
 				})
 				.into();
-			UncheckedExtrinsic {
-				signature: Some((sp_runtime::MultiAddress::Id(signed), signature, extra)),
-				function: payload.0,
-			}
+			UncheckedExtrinsic { signature: Some((signed, signature, extra)), function: payload.0 }
 		},
 		None => UncheckedExtrinsic { signature: None, function: xt.function },
 	}

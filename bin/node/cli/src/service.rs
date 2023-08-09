@@ -440,7 +440,6 @@ pub fn new_full_base(
 			telemetry.as_ref().map(|x| x.handle()),
 		);
 
-		let client_clone = client.clone();
 		let slot_duration = babe_link.config().slot_duration();
 		let babe_config = sc_consensus_babe::BabeParams {
 			keystore: keystore_container.keystore(),
@@ -450,19 +449,16 @@ pub fn new_full_base(
 			block_import,
 			sync_oracle: sync_service.clone(),
 			justification_sync_link: sync_service.clone(),
-			create_inherent_data_providers: move |parent, ()| {
-				let client_clone = client_clone.clone();
-				async move {
-					let timestamp = sp_timestamp::InherentDataProvider::from_system_time();
+			create_inherent_data_providers: move |_, ()| async move {
+				let timestamp = sp_timestamp::InherentDataProvider::from_system_time();
 
-					let slot =
+				let slot =
 						sp_consensus_babe::inherents::InherentDataProvider::from_timestamp_and_slot_duration(
 							*timestamp,
 							slot_duration,
 						);
 
-					Ok((slot, timestamp))
-				}
+				Ok((slot, timestamp))
 			},
 			force_authoring,
 			backoff_authoring_blocks,

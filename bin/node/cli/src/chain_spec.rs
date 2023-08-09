@@ -20,9 +20,8 @@
 
 use grandpa_primitives::AuthorityId as GrandpaId;
 use kitchensink_runtime::{
-	constants::currency::*, wasm_binary_unwrap, AuthorityDiscoveryConfig, BabeConfig,
-	BalancesConfig, Block, GrandpaConfig, ImOnlineConfig, IndicesConfig, MaxNominations,
-	NominationPoolsConfig, SessionConfig, SessionKeys, StakerStatus, StakingConfig, SudoConfig,
+	constants::currency::*, wasm_binary_unwrap, BabeConfig, BalancesConfig, Block, ImOnlineConfig,
+	MaxNominations, SessionConfig, SessionKeys, StakerStatus, StakingConfig, SudoConfig,
 	SystemConfig,
 };
 use pallet_im_online::sr25519::AuthorityId as ImOnlineId;
@@ -288,8 +287,6 @@ pub fn testnet_genesis(
 		}))
 		.collect::<Vec<_>>();
 
-	let num_endowed_accounts = endowed_accounts.len();
-
 	const ENDOWMENT: Balance = 10_000_000 * DOLLARS;
 	const STASH: Balance = ENDOWMENT / 1000;
 
@@ -298,7 +295,6 @@ pub fn testnet_genesis(
 		balances: BalancesConfig {
 			balances: endowed_accounts.iter().cloned().map(|x| (x, ENDOWMENT)).collect(),
 		},
-		indices: IndicesConfig { indices: vec![] },
 		session: SessionConfig {
 			keys: initial_authorities
 				.iter()
@@ -334,7 +330,6 @@ pub fn testnet_genesis(
 		},
 		pool_assets: Default::default(),
 		transaction_payment: Default::default(),
-		alliance_motion: Default::default(),
 		glutton: Default::default(),
 	}
 }
