@@ -34,8 +34,8 @@ use frame_support::{
 	pallet_prelude::Get,
 	parameter_types,
 	traits::{
-		AsEnsureOriginWithArg, ConstU128, ConstU16, ConstU32,
-		Currency, EqualPrivilegeOnly, Everything, Imbalance, KeyOwnerProofSystem, OnUnbalanced,
+		AsEnsureOriginWithArg, ConstU128, ConstU16, ConstU32, Currency, EqualPrivilegeOnly,
+		Everything, Imbalance, KeyOwnerProofSystem, OnUnbalanced,
 	},
 	weights::{
 		constants::{

@@ -1596,14 +1596,12 @@ impl<T: Config> Pallet<T> {
 	// - [`DesiredTargets`] exists if and only if [`Snapshot`] is present.
 	// - [`SnapshotMetadata`] exist if and only if [`Snapshot`] is present.
 	fn try_state_snapshot() -> Result<(), TryRuntimeError> {
-		if <Snapshot<T>>::exists() &&
+		if (<Snapshot<T>>::exists() &&
 			<SnapshotMetadata<T>>::exists() &&
-			<DesiredTargets<T>>::exists()
-		{
-			Ok(())
-		} else if !<Snapshot<T>>::exists() &&
-			!<SnapshotMetadata<T>>::exists() &&
-			!<DesiredTargets<T>>::exists()
+			<DesiredTargets<T>>::exists()) ||
+			(!<Snapshot<T>>::exists() &&
+				!<SnapshotMetadata<T>>::exists() &&
+				!<DesiredTargets<T>>::exists())
 		{
 			Ok(())
 		} else {
