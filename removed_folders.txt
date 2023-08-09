@@ -45,3 +45,4 @@
 ./primitives/consensus/pow
 ./primitives/merkle-mountain-range
 ./primitives/transaction-storage-proof
+./utils/binary-merkle-tree
