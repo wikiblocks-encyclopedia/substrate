@@ -273,6 +273,3 @@ inherits = "release"
 lto = "fat"
 # https://doc.rust-lang.org/rustc/codegen-options/index.html#codegen-units
 codegen-units = 1
-
-[patch.crates-io]
-snow = { git = "https://github.com/kayabaNerve/snow", branch = "0.9.2" }
