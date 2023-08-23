@@ -34,6 +34,5 @@ sp-consensus = { version = "0.10.0-dev", path = "../../../primitives/consensus/c
 sp-consensus-babe = { version = "0.10.0-dev", path = "../../../primitives/consensus/babe" }
 sp-keystore = { version = "0.27", path = "../../../primitives/keystore" }
 sp-runtime = { version = "24", path = "../../../primitives/runtime" }
-sp-statement-store = { version = "4.0.0-dev", path = "../../../primitives/statement-store" }
 substrate-frame-rpc-system = { version = "4.0.0-dev", path = "../../../utils/frame/rpc/system" }
 substrate-state-trie-migration-rpc = { version = "4.0.0-dev", path = "../../../utils/frame/rpc/state-trie-migration-rpc/" }

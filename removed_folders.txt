@@ -1,6 +1,10 @@
 ./client/consensus/beefy
 ./client/consensus/merkle-mountain-range
 ./client/consensus/pow
+./client/network/statement
+./client/rpc/src/statement
+./client/rpc-api/src/statement
+./client/statement-store
 ./frame/alliance
 ./frame/asset-rate
 ./frame/atomic-swap
@@ -36,6 +40,7 @@
 ./frame/salary
 ./frame/scored-pool
 ./frame/society
+./frame/statement
 ./frame/tips
 ./frame/transaction-storage
 ./frame/treasury
@@ -44,5 +49,6 @@
 ./primitives/consensus/beefy
 ./primitives/consensus/pow
 ./primitives/merkle-mountain-range
+./primitives/statement-store
 ./primitives/transaction-storage-proof
 ./utils/binary-merkle-tree
