@@ -30,7 +30,7 @@ log = { version = "0.4", optional = true }
 tracing = { version = "0.1", default-features = false }
 tracing-core = { version = "0.1", default-features = false}
 
-ed25519 = { version = "1.5.3", optional = true }
+ed25519 = { version = "2", optional = true }
 
 [build-dependencies]
 rustversion = "1"

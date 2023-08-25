@@ -1440,7 +1440,7 @@ pub type SubstrateHostFunctions = (
 #[cfg(test)]
 mod tests {
 	use super::*;
-	use sp_core::{crypto::UncheckedInto, map, storage::Storage};
+	use sp_core::{map, storage::Storage};
 	use sp_state_machine::BasicExternalities;
 
 	#[test]
