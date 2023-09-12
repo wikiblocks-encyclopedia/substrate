@@ -47,7 +47,7 @@ paste = "1"
 array-bytes = { version = "6", optional = true }
 ed25519-zebra = { version = "4", default-features = false, optional = true }
 blake2 = { version = "0.10", default-features = false, optional = true }
-schnorrkel = { version = "0.11", git = "https://github.com/serai-dex/schnorrkel", features = ["preaudit_deprecated"], default-features = false }
+schnorrkel = { version = "0.11", features = ["preaudit_deprecated"], default-features = false }
 merlin = { version = "3", default-features = false }
 sp-core-hashing = { version = "9", path = "./hashing", default-features = false, optional = true }
 sp-runtime-interface = { version = "17", default-features = false, path = "../runtime-interface" }

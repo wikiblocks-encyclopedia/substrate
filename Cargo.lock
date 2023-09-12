@@ -8331,13 +8331,15 @@ dependencies = [
 
 [[package]]
 name = "schnorrkel"
-version = "0.11.0"
-source = "git+https://github.com/serai-dex/schnorrkel#7967995d14f8c6bae1a49e0118da2985b29a292c"
+version = "0.11.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "064aaec4e66d5dfcb6ea6c91bec9dc282b3505b5dd897cf0601dea6ded7c9824"
 dependencies = [
  "arrayref",
  "arrayvec",
  "curve25519-dalek 4.1.0",
  "merlin",
+ "rand",
  "rand_core 0.6.4",
  "serde_bytes",
  "sha2",
@@ -9681,7 +9683,7 @@ dependencies = [
 [[package]]
 name = "substrate-bip39"
 version = "0.4.4"
-source = "git+https://github.com/serai-dex/substrate-bip39#4596f602481e08f62966063dcadb3f44aa70cbb8"
+source = "git+https://github.com/serai-dex/substrate-bip39#37c349724fd8326b1321f193a660bee353b1fb9d"
 dependencies = [
  "hmac",
  "pbkdf2 0.12.2",
