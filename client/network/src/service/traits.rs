@@ -1,4 +1,4 @@
-This file is part of a fork of Substrate which has had various changes.
+// This file is part of a fork of Substrate which has had various changes.
 //
 // Copyright (C) Parity Technologies (UK) Ltd.
 // Copyright (C) 2022-2023 Luke Parker
