@@ -383,7 +383,6 @@ where
 		+ 'static,
 	<TCl as ProvideRuntimeApi<TBl>>::Api: sp_api::Metadata<TBl>
 		+ sp_transaction_pool::runtime_api::TaggedTransactionQueue<TBl>
-		+ sp_session::SessionKeys<TBl>
 		+ sp_api::ApiExt<TBl, StateBackend = TBackend::State>,
 	TBl: BlockT,
 	TBl::Hash: Unpin,
@@ -407,14 +406,6 @@ where
 	} = params;
 
 	let chain_info = client.usage_info().chain;
-
-	sp_session::generate_initial_session_keys(
-		client.clone(),
-		chain_info.best_hash,
-		config.dev_key_seed.clone().map(|s| vec![s]).unwrap_or_default(),
-		keystore.clone(),
-	)
-	.map_err(|e| Error::Application(Box::new(e)))?;
 
 	let sysinfo = sc_sysinfo::gather_sysinfo();
 	sc_sysinfo::print_sysinfo(&sysinfo);
@@ -603,7 +594,7 @@ where
 		+ Sync
 		+ 'static,
 	TBackend: sc_client_api::backend::Backend<TBl> + 'static,
-	<TCl as ProvideRuntimeApi<TBl>>::Api: sp_session::SessionKeys<TBl> + sp_api::Metadata<TBl>,
+	<TCl as ProvideRuntimeApi<TBl>>::Api: sp_api::Metadata<TBl>,
 	TExPool: MaintainedTransactionPool<Block = TBl, Hash = <TBl as BlockT>::Hash> + 'static,
 	TBl::Hash: Unpin,
 	TBl::Header: Unpin,

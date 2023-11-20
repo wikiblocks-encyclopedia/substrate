@@ -42,7 +42,7 @@ use sp_runtime::Perbill;
 use std::sync::Arc;
 use substrate_test_runtime_client::{
 	self,
-	runtime::{Block, Extrinsic, ExtrinsicBuilder, SessionKeys, Transfer},
+	runtime::{Block, Extrinsic, ExtrinsicBuilder, Transfer},
 	AccountKeyring, Backend, Client, DefaultTestClientBuilderExt, TestClientBuilderExt,
 };
 
@@ -231,55 +231,6 @@ async fn author_should_insert_key() {
 	let pubkeys = setup.keystore.keys(ED25519).unwrap();
 
 	assert!(pubkeys.contains(&keypair.public().to_raw_vec()));
-}
-
-#[tokio::test]
-async fn author_should_rotate_keys() {
-	let setup = TestSetup::default();
-	let api = setup.author().into_rpc();
-
-	let new_pubkeys: Bytes = api.call("author_rotateKeys", EmptyParams::new()).await.unwrap();
-	let session_keys =
-		SessionKeys::decode(&mut &new_pubkeys[..]).expect("SessionKeys decode successfully");
-	let ed25519_pubkeys = setup.keystore.keys(ED25519).unwrap();
-	let sr25519_pubkeys = setup.keystore.keys(SR25519).unwrap();
-	assert!(ed25519_pubkeys.contains(&session_keys.ed25519.to_raw_vec()));
-	assert!(sr25519_pubkeys.contains(&session_keys.sr25519.to_raw_vec()));
-}
-
-#[tokio::test]
-async fn author_has_session_keys() {
-	// Setup
-	let api = TestSetup::into_rpc();
-
-	// Add a valid session key
-	let pubkeys: Bytes = api
-		.call("author_rotateKeys", EmptyParams::new())
-		.await
-		.expect("Rotates the keys");
-
-	// Add a session key in a different keystore
-	let non_existent_pubkeys: Bytes = {
-		let api2 = TestSetup::default().author().into_rpc();
-		api2.call("author_rotateKeys", EmptyParams::new())
-			.await
-			.expect("Rotates the keys")
-	};
-
-	// Then…
-	let existing = api.call::<_, bool>("author_hasSessionKeys", vec![pubkeys]).await.unwrap();
-	assert!(existing, "Existing key is in the session keys");
-
-	let inexistent = api
-		.call::<_, bool>("author_hasSessionKeys", vec![non_existent_pubkeys])
-		.await
-		.unwrap();
-	assert_eq!(inexistent, false, "Inexistent key is not in the session keys");
-
-	assert_matches!(
-		api.call::<_, bool>("author_hasSessionKeys", vec![Bytes::from(vec![1, 2, 3])]).await,
-		Err(RpcError::Call(CallError::Custom(err))) if err.message().contains("Session keys are not encoded correctly")
-	);
 }
 
 #[tokio::test]
