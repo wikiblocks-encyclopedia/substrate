@@ -37,6 +37,18 @@ pub trait AuthorApi<Hash, BlockHash> {
 	#[method(name = "author_insertKey")]
 	fn insert_key(&self, key_type: String, suri: String, public: Bytes) -> RpcResult<()>;
 
+	/// Generate new session keys and returns the corresponding public keys.
+	#[method(name = "author_rotateKeys")]
+	fn rotate_keys(&self) -> RpcResult<Bytes>;
+
+	/// Checks if the keystore has private keys for the given session public keys.
+	///
+	/// `session_keys` is the SCALE encoded session keys object from the runtime.
+	///
+	/// Returns `true` iff all private keys could be found.
+	#[method(name = "author_hasSessionKeys")]
+	fn has_session_keys(&self, session_keys: Bytes) -> RpcResult<bool>;
+
 	/// Checks if the keystore has private keys for the given public key and key type.
 	///
 	/// Returns `true` if a private key could be found.
