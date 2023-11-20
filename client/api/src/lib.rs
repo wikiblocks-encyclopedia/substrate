@@ -69,7 +69,7 @@ pub mod utils {
 				return Ok(false)
 			}
 
-			let current = current.as_ref().map(|(c, p)| (c, p));
+			let current = current.as_ref();
 
 			let mut hash = hash;
 			if let Some((current_hash, current_parent_hash)) = current {
