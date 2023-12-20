@@ -859,7 +859,6 @@ impl NetworkBehaviour for DiscoveryBehaviour {
 						stats,
 						..
 					} => {
-					    println!("\r\n\r\n--Put Record for {}----\r\n", hex::encode(ok.key));
 						let ev = match res {
 							Ok(ok) =>
 								DiscoveryOut::ValuePut(ok.key, stats.duration().unwrap_or_default()),
