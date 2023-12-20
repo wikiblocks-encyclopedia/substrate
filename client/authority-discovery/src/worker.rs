@@ -249,10 +249,12 @@ where
 	pub async fn run(mut self) {
 		loop {
 			self.start_new_lookups();
+			dbg!("started new lookups");
 
 			futures::select! {
 				// Process incoming events.
 				event = self.dht_event_rx.next().fuse() => {
+					dbg!("dht_event_rx tripped");
 					if let Some(event) = event {
 						self.handle_dht_event(event).await;
 					} else {
@@ -263,13 +265,15 @@ where
 				},
 				// Handle messages from [`Service`]. Ignore if sender side is closed.
 				msg = self.from_service.select_next_some() => {
+					dbg!("from_service tripped");
 					self.process_message_from_service(msg);
 				},
 				// Publish own addresses.
 				only_if_changed = future::select(
 					self.publish_interval.next().map(|_| false),
 					self.publish_if_changed_interval.next().map(|_| true)
-				).map(|e| e.factor_first().0).fuse() => {
+				).map(|e| {dbg!(e);e.factor_first().0}).fuse() => {
+					dbg!("publish select tripped");
 					if let Err(e) = self.publish_ext_addresses(only_if_changed).await {
 						error!(
 							target: LOG_TARGET,
@@ -279,6 +283,7 @@ where
 				},
 				// Request addresses of authorities.
 				_ = self.query_interval.next().fuse() => {
+					dbg!("query tripped");
 					if let Err(e) = self.refill_pending_lookups_queue().await {
 						error!(
 							target: LOG_TARGET,
@@ -337,6 +342,8 @@ where
 	/// If `only_if_changed` is true, the function has no effect if the list of keys to publish
 	/// is equal to `self.latest_published_keys`.
 	async fn publish_ext_addresses(&mut self, only_if_changed: bool) -> Result<()> {
+		dbg!("publishing ext addrs");
+
 		let key_store = match &self.role {
 			Role::PublishAndDiscover(key_store) => key_store,
 			Role::Discover => return Ok(()),
@@ -373,6 +380,7 @@ where
 		)?;
 
 		for (key, value) in kv_pairs.into_iter() {
+		    dbg!("publishing literal");
 			self.network.put_value(key, value);
 		}
 
@@ -382,6 +390,8 @@ where
 	}
 
 	async fn refill_pending_lookups_queue(&mut self) -> Result<()> {
+	    dbg!("refilling pending lookups");
+
 		let best_hash = self.client.best_hash().await?;
 
 		let local_keys = match &self.role {
@@ -419,6 +429,7 @@ where
 	}
 
 	fn start_new_lookups(&mut self) {
+	    dbg!("starting new lookups");
 		while self.in_flight_lookups.len() < MAX_IN_FLIGHT_LOOKUPS {
 			let authority_id = match self.pending_lookups.pop() {
 				Some(authority) => authority,
