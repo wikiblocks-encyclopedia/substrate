@@ -131,7 +131,6 @@ pub struct OffchainWorkerOptions<RA, Block: traits::Block, Storage, CE> {
 pub struct OffchainWorkers<RA, Block: traits::Block, Storage> {
 	runtime_api_provider: Arc<RA>,
 	thread_pool: Mutex<ThreadPool>,
-	shared_http_client: api::SharedClient,
 	enable_http_requests: bool,
 	keystore: Option<KeystorePtr>,
 	offchain_db: Option<OffchainDb<Storage>>,
@@ -161,7 +160,6 @@ impl<RA, Block: traits::Block, Storage> OffchainWorkers<RA, Block, Storage> {
 				"offchain-worker".into(),
 				num_cpus::get(),
 			)),
-			shared_http_client: api::SharedClient::new(),
 			enable_http_requests,
 			keystore,
 			offchain_db: offchain_db.map(OffchainDb::new),
@@ -247,7 +245,6 @@ where
 			let (api, runner) = api::AsyncApi::new(
 				self.network_provider.clone(),
 				self.is_validator,
-				self.shared_http_client.clone(),
 			);
 			tracing::debug!(target: LOG_TARGET, "Spawning offchain workers at {hash:?}");
 			let header = header.clone();

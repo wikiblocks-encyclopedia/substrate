@@ -7847,7 +7847,6 @@ dependencies = [
  "futures",
  "futures-timer",
  "hyper",
- "hyper-rustls",
  "lazy_static",
  "libp2p",
  "log",
